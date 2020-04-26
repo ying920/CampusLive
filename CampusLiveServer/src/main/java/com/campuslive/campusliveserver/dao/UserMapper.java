@@ -27,4 +27,5 @@ public interface UserMapper {
     //验证Android用户密码是否正确
     @Select("select count(userID) from user where userID=#{userID} and userPsd=#{userPsd}")
     int isPsdCorrect(int userID,String userPsd);
+
 }

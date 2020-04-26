@@ -77,13 +77,16 @@ public class UserController {
         //账户不存在新建账户
         User user = new User();
         user.setUserID(userID);
+        user.setUserType(0);
         //1-Android产生密码
         if(check==1){
             user.setUserPsd(userPsd);
+            user.setUserType(1);
         }
 
         //添加用户
         userMapper.add(user);
         return "Create account successfully!";
     }
+
 }

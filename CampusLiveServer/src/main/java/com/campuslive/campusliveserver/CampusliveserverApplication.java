@@ -5,6 +5,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+
 /**
  * @author 林新宇
  * @Phone 17810204868
@@ -19,8 +23,17 @@ public class CampusliveserverApplication {
         SpringApplication.run(CampusliveserverApplication.class, args);
     }
 
+    //用于测试服务器是否联通，暂无功能性用途
     @RequestMapping(value = "/hi")
     public String hello() {
-        return "Hello World";
+        return "HelloWorld";
+    }
+
+    //用于测试get时间，暂无功能性用途
+    @RequestMapping(value = "/gettime")
+    public String gettime(){
+        Date date = new Date();//获得系统时间.
+        String nowTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
+        return nowTime;
     }
 }

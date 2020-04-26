@@ -75,22 +75,22 @@ CREATE TABLE `CustomerService`  (
 -- Table structure for Employee
 -- ----------------------------
 DROP TABLE IF EXISTS `Employee`;
-CREATE TABLE `Employee`  (
-  `employeeID` int(11) NOT NULL,
-  `employeePsd` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `empolyeeName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `employeeSchool` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `employeeAge` int(2) NULL DEFAULT NULL,
-  `employeePhone` int(11) NULL DEFAULT NULL,
-  `employeeMail` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `employeeWechat` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `employeeBalance` double(255, 0) NULL DEFAULT NULL,
-  `userCredit` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `userImage` bit(1) NULL DEFAULT NULL,
-  `businessNum` int(11) NULL DEFAULT NULL,
-  `employeeBasicSalary` double(10, 2) NULL DEFAULT NULL,
-  PRIMARY KEY (`employeeID`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+# CREATE TABLE `Employee`  (
+#   `employeeID` int(11) NOT NULL,
+#   `employeePsd` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+#   `empolyeeName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+#   `employeeSchool` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+#   `employeeAge` int(2) NULL DEFAULT NULL,
+#   `employeePhone` int(11) NULL DEFAULT NULL,
+#   `employeeMail` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+#   `employeeWechat` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+#   `employeeBalance` double(255, 0) NULL DEFAULT NULL,
+#   `userCredit` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+#   `userImage` bit(1) NULL DEFAULT NULL,
+#   `businessNum` int(11) NULL DEFAULT NULL,
+#   `employeeBasicSalary` double(10, 2) NULL DEFAULT NULL,
+#   PRIMARY KEY (`employeeID`) USING BTREE
+# ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for Order
@@ -124,7 +124,10 @@ CREATE TABLE `User`  (
   `userBalance` double(255, 0) NULL DEFAULT NULL,
   `userCredit` int(255) NULL DEFAULT NULL,
   `userImage` bit(1) NULL DEFAULT NULL,
+  `userType` int(3) NULL DEFAULT NULL,
   `userState` int(3) NULL DEFAULT NULL,
+  `businessNum` int(11) NULL DEFAULT NULL,
+  `employeeBasicSalary` double(10, 2) NULL DEFAULT NULL,
   PRIMARY KEY (`userID`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
