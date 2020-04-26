@@ -10,6 +10,7 @@ package com.campuslive.campusliveserver.entity;
 public class User {
     private int userID;
     private String userPsd;
+    private int userType;
 
     public User() {
     }
@@ -30,11 +31,20 @@ public class User {
         this.userPsd = userPsd;
     }
 
+    public int getUserType() {
+        return userType;
+    }
+
+    public void setUserType(int userType) {
+        this.userType = userType;
+    }
+
     @Override
     public String toString() {
         return "User{" +
                 "userID=" + userID +
                 ", userPsd='" + userPsd + '\'' +
+                ", userType=" + userType +
                 '}';
     }
 }
