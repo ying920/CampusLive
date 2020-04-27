@@ -8,6 +8,11 @@ package com.campuslive.campusliveserver.entity;
  */
 
 public class User {
+    //定义用户状态
+    //state=0 -> 用户未进行实名验证, state=1 -> 用户正常, state=2 -> 用户帐号异常
+    static public int NOT_VERIFY_IDENTITY = 0;
+    static public int VERIFY_IDENTITY = 1;
+
     private int userID;
     private String userPsd;
     private int userType;

@@ -5,8 +5,10 @@ import com.campuslive.campusliveserver.dao.UserMapper;
 import com.campuslive.campusliveserver.entity.User;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import static com.campuslive.campusliveserver.entity.User.NOT_VERIFY_IDENTITY;
+import static com.campuslive.campusliveserver.entity.User.VERIFY_IDENTITY;
 
 
 /**
@@ -18,11 +20,13 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class UserController {
-    //实现自动装配
-    @Autowired
-    private UserMapper userMapper;
-    @Autowired
-    private StudentMapper studentMapper;
+    private final UserMapper userMapper;
+    private final StudentMapper studentMapper;
+
+    public UserController(UserMapper userMapper, StudentMapper studentMapper) {
+        this.userMapper = userMapper;
+        this.studentMapper = studentMapper;
+    }
 
 //    //form提交形式
 //    //验证账号密码
@@ -44,9 +48,9 @@ public class UserController {
      * @Phone 17810204868
      * @email aomiga523@163.com
      * @description 登陆操作，POST请求json格式数据
-     * @param json
-     * @return
-     * @throws JSONException
+     * @param json 详见LoginJSON.txt
+     * @return string
+     * @throws JSONException  抛出JSON相关异常
      */
     @ResponseBody
     @RequestMapping(value = "/login", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
@@ -89,6 +93,8 @@ public class UserController {
 
         //添加用户
         userMapper.add(user);
+        //初始化用户，未进行学生认证
+        userMapper.updateUserState(userID,NOT_VERIFY_IDENTITY);
         return "Create account successfully!";
     }
 
@@ -97,9 +103,9 @@ public class UserController {
      * @Phone 17810204868
      * @email aomiga523@163.com
      * @description 实名验证操作，POST请求json格式数据
-     * @param json
-     * @return
-     * @throws JSONException
+     * @param json 详见IdentityVerifyJSON.txt
+     * @return string
+     * @throws JSONException 抛出JSON相关异常
      */
     @ResponseBody
     @RequestMapping(value = "/identity-verify", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
@@ -107,11 +113,18 @@ public class UserController {
         JSONObject jsonObject = new JSONObject(json);
         JSONObject dataJsonObject = jsonObject.getJSONObject("data");
 
+        //return dataJsonObject.toString();
+        int userID=dataJsonObject.getInt("userID");
         String stuPersonID=dataJsonObject.getString("stuPersonID");
         int stuID=dataJsonObject.getInt("stuID");
         String stuName = dataJsonObject.getString("stuName");
 
         int isRealName = studentMapper.identityVerify(stuPersonID,stuID,stuName);
+        if(isRealName==0){
+            return "Error information";
+        }else{
+            userMapper.updateUserState(userID,VERIFY_IDENTITY);
+        }
         return "This user: "+isRealName;
     }
 
