@@ -109,6 +109,17 @@ CREATE TABLE `Order`  (
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
+-- Table structure for Student
+-- ----------------------------
+DROP TABLE IF EXISTS `Student`;
+CREATE TABLE `Student`  (
+  `stuPersonID` varchar(18) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci  NOT NULL,
+  `stuID` int(11) NULL DEFAULT NULL,
+  `stuName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`stuPersonID`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
 -- Table structure for User
 -- ----------------------------
 DROP TABLE IF EXISTS `User`;

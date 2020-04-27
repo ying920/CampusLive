@@ -1,5 +1,6 @@
 package com.campuslive.campusliveserver.controller;
 
+import com.campuslive.campusliveserver.dao.StudentMapper;
 import com.campuslive.campusliveserver.dao.UserMapper;
 import com.campuslive.campusliveserver.entity.User;
 import org.json.JSONException;
@@ -20,6 +21,8 @@ public class UserController {
     //实现自动装配
     @Autowired
     private UserMapper userMapper;
+    @Autowired
+    private StudentMapper studentMapper;
 
 //    //form提交形式
 //    //验证账号密码
@@ -87,6 +90,29 @@ public class UserController {
         //添加用户
         userMapper.add(user);
         return "Create account successfully!";
+    }
+
+    /**
+     * @author 林新宇
+     * @Phone 17810204868
+     * @email aomiga523@163.com
+     * @description 实名验证操作，POST请求json格式数据
+     * @param json
+     * @return
+     * @throws JSONException
+     */
+    @ResponseBody
+    @RequestMapping(value = "/identity-verify", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    public String realNameVerify(@RequestBody String json) throws JSONException{
+        JSONObject jsonObject = new JSONObject(json);
+        JSONObject dataJsonObject = jsonObject.getJSONObject("data");
+
+        String stuPersonID=dataJsonObject.getString("stuPersonID");
+        int stuID=dataJsonObject.getInt("stuID");
+        String stuName = dataJsonObject.getString("stuName");
+
+        int isRealName = studentMapper.identityVerify(stuPersonID,stuID,stuName);
+        return "This user: "+isRealName;
     }
 
 }

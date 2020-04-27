@@ -28,4 +28,8 @@ public interface UserMapper {
     @Select("select count(userID) from user where userID=#{userID} and userPsd=#{userPsd}")
     int isPsdCorrect(int userID,String userPsd);
 
+    //验证用户是否已经实名验证
+    //state=0 -> 用户未进行实名验证, state=1 -> 用户正常, state=2 -> 用户帐号异常
+    @Select("select userState from user where userID=#{userID}")
+    int getUserState(int userID);
 }
