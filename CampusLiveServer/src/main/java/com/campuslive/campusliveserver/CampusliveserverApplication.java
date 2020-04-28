@@ -30,8 +30,8 @@ public class CampusliveserverApplication {
     }
 
     //用于测试get时间，暂无功能性用途
-    @RequestMapping(value = "/gettime")
-    public String gettime(){
+    @RequestMapping(value = "/get-time")
+    public String getTime(){
         Date date = new Date();//获得系统时间.
         String nowTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
         return nowTime;

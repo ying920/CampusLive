@@ -13,7 +13,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 @Mapper
 public interface StudentMapper {
-    @Select("select count(stuPersonID) from student where stuPersonID=#{stuPersonID} and stuID=#{stuID} and stuName=#{stuName}")
-    int identityVerify(String stuPersonID,int stuID,String stuName);
+    //用于学生验证
+    @Select("select count(stuPersonID) from student where stuPersonID=#{stuPersonID} and stuID=#{stuID} and stuName=#{stuName} and stuSchool=#{stuSchool}")
+    int identityVerify(String stuPersonID,int stuID,String stuName,String stuSchool);
 }
 

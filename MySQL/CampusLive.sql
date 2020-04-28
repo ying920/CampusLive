@@ -20,8 +20,8 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- ----------------------------
 -- Table structure for Address
 -- ----------------------------
-DROP TABLE IF EXISTS `Address`;
-CREATE TABLE `Address`  (
+DROP TABLE IF EXISTS `UserAddress`;
+CREATE TABLE `UserAddress`  (
   `userID` int(11) NOT NULL,
   `Address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`userID`, `Address`) USING BTREE,
@@ -116,6 +116,7 @@ CREATE TABLE `Student`  (
   `stuPersonID` varchar(18) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci  NOT NULL,
   `stuID` int(11) NULL DEFAULT NULL,
   `stuName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `stuSchool` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`stuPersonID`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
