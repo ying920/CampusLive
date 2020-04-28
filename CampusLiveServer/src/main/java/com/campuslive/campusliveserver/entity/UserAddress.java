@@ -8,6 +8,10 @@ package com.campuslive.campusliveserver.entity;
  */
 
 public class UserAddress {
+    //定义用户添加地址状态
+    static public int ADD_ADDRESS_FAIL = 0;
+    static public int ADD_ADDRESS_SUCCESSFULLY = 1;
+
     private int userID;
     private String userAddress;
 

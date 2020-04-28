@@ -98,7 +98,7 @@ public class UserController {
 
         try{
             //添加用户
-            userMapper.add(user);
+            userMapper.addUser(user);
             //初始化用户，未进行学生认证
             userMapper.updateUserState(userID,NOT_VERIFY_IDENTITY);
             returnJson.put("msg","Create account successfully!");
