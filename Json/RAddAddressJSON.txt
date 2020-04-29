@@ -1,0 +1,6 @@
+//check=0 -> 添加地址失败, check=1 -> 添加地址成功
+{
+    "data": null,
+    "msg": "String",
+    "check": "0"
+}

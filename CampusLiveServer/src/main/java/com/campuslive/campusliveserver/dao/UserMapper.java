@@ -19,7 +19,7 @@ import org.springframework.stereotype.Repository;
 public interface UserMapper {
     //注册成功，插入一条数据
     @Insert("insert into user (userID,userPsd) values (#{userID},#{userPsd})")
-    void add(User user);
+    void addUser(User user);
 
     //验证用户是否存在
     @Select("select count(userID) from User where userID=#{userID}")

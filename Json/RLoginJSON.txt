@@ -1,0 +1,6 @@
+//check=0 -> 用户已存在无需创建, check=1 -> 用户成功创建, check=2 -> 用户创建失败,check=-1 -> 用户密码错误
+{
+    "data": null,
+    "msg": "String",
+    "check": "0"
+}

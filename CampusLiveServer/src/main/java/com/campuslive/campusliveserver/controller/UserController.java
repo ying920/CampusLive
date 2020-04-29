@@ -7,8 +7,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.web.bind.annotation.*;
 
-import static com.campuslive.campusliveserver.entity.User.NOT_VERIFY_IDENTITY;
-import static com.campuslive.campusliveserver.entity.User.VERIFY_IDENTITY;
+import static com.campuslive.campusliveserver.entity.User.*;
 
 
 /**
@@ -49,7 +48,7 @@ public class UserController {
      * @email aomiga523@163.com
      * @description 登陆操作，POST请求json格式数据
      * @param json 详见LoginJSON.txt
-     * @return string
+     * @return json格式字符串 详见RLoginJSON.txt
      * @throws JSONException  抛出JSON相关异常
      */
     @ResponseBody
@@ -62,23 +61,29 @@ public class UserController {
         int userID = dataJsonObject.getInt("userID");
         String userPsd = dataJsonObject.getString("userPsd");
 
+        //创建返回Json对象
+        JSONObject returnJson = new JSONObject();
+        returnJson.put("data",null);
+
         //如果账户存在便显示存在
-        if(userMapper.isExist(userID)>0){
+        if(userMapper.isExist(userID)==IS_EXISTED){
             //微信用户直接显示已存在
-            if(check==0){
-                return "Account exists!";
+            if(check==WECHAT_LOGIN){
+                returnJson.put("msg","Account exists!");
+                returnJson.put("check",ACCOUNT_EXISTED);
             }
             //Android用户检验密码是否正确
-            else if(check==1){
+            else if(check==ANDROID_LOGIN){
                 int isPsdCorrect=userMapper.isPsdCorrect(userID,userPsd);
                 if(isPsdCorrect==0){
-                    return "Password is wrong!";
+                    returnJson.put("msg","Password is wrong!");
+                    returnJson.put("check",PASSWORD_WRONG);
                 }else{
-                    return "Account exists!";
+                    returnJson.put("msg","Account exists!");
+                    returnJson.put("check",ACCOUNT_EXISTED);
                 }
-            }else if(check==2){
-                return "This is Web Account";
             }
+            return returnJson.toString();
         }
 
         //账户不存在新建账户
@@ -91,11 +96,18 @@ public class UserController {
             user.setUserType(1);
         }
 
-        //添加用户
-        userMapper.add(user);
-        //初始化用户，未进行学生认证
-        userMapper.updateUserState(userID,NOT_VERIFY_IDENTITY);
-        return "Create account successfully!";
+        try{
+            //添加用户
+            userMapper.addUser(user);
+            //初始化用户，未进行学生认证
+            userMapper.updateUserState(userID,NOT_VERIFY_IDENTITY);
+            returnJson.put("msg","Create account successfully!");
+            returnJson.put("check", ACCOUNT_CREATED_SUCCESSFULLY);
+        }catch (Exception e){
+            returnJson.put("msg","Create account fail!");
+            returnJson.put("check",ACCOUNT_CREATED_FAIL);
+        }
+        return returnJson.toString();
     }
 
     /**
@@ -104,7 +116,7 @@ public class UserController {
      * @email aomiga523@163.com
      * @description 实名验证操作，POST请求json格式数据
      * @param json 详见IdentityVerifyJSON.txt
-     * @return string
+     * @return json格式字符串 详见RIdentityVerifyJSON.txt
      * @throws JSONException 抛出JSON相关异常
      */
     @ResponseBody
@@ -113,19 +125,34 @@ public class UserController {
         JSONObject jsonObject = new JSONObject(json);
         JSONObject dataJsonObject = jsonObject.getJSONObject("data");
 
-        //return dataJsonObject.toString();
+        //创建返回Json对象
+        JSONObject returnJson = new JSONObject();
+        returnJson.put("data",null);
+
+        //获取对应数据
         int userID=dataJsonObject.getInt("userID");
         String stuPersonID=dataJsonObject.getString("stuPersonID");
         int stuID=dataJsonObject.getInt("stuID");
         String stuName = dataJsonObject.getString("stuName");
+        String stuSchool=dataJsonObject.getString("stuSchool");
 
-        int isRealName = studentMapper.identityVerify(stuPersonID,stuID,stuName);
-        if(isRealName==0){
-            return "Error information";
+        if(userMapper.getUserState(userID)==VERIFY_IDENTITY){
+            returnJson.put("msg","Account has been verified!");
+            returnJson.put("check",HAS_VERIFIED);
+            return returnJson.toString();
+        }
+
+        int isRealName = studentMapper.identityVerify(stuPersonID,stuID,stuName,stuSchool);
+        if(isRealName==VERIFY_FAIL){
+            returnJson.put("msg","Error information!");
+            returnJson.put("check",VERIFY_FAIL);
+            return returnJson.toString();
         }else{
             userMapper.updateUserState(userID,VERIFY_IDENTITY);
         }
-        return "This user: "+isRealName;
+        returnJson.put("msg","Verify successfully!");
+        returnJson.put("check",VERIFY_SUCCESS);
+        return returnJson.toString();
     }
 
 }
