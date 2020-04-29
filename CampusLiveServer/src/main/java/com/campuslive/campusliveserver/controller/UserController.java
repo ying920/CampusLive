@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 
 import static com.campuslive.campusliveserver.entity.User.*;
 
-
 /**
  * @author 林新宇
  * @Phone 17810204868

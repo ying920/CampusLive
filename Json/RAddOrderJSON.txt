@@ -1,0 +1,11 @@
+//state=0 -> 创建成功, state=-1 -> 订单创建失败
+{
+    "msg": "Create userOrder successfully!",
+    "data": {
+        "orderTime": "2020-04-29 13:29:59",
+        "orderMoney": 3,
+        "orderID": 1000000002,
+        "orderState": 0
+    },
+    "check": 0
+}
