@@ -47,7 +47,7 @@ public class UserAddressController {
      * @author 林新宇
      * @Phone 17810204868
      * @email aomiga523@163.com
-     * @description 获取地址操作，GET请求
+     * @description 添加地址操作，POST请求
      * @param json POST传入参数 详见AddAddressJSON.txt
      * @return json格式字符串 详见RAddAddressJSON.txt
      * @throws JSONException  抛出JSON相关异常

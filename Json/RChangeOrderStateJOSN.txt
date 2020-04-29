@@ -1,0 +1,16 @@
+//check=0 -> 修改成功, check=-1 -> 订单修改失败
+{
+    "msg": "Modify userOrder check successfully!",
+    "data": {
+        "orderScore": "0",
+        "orderAddress": "逸夫楼815",
+        "orderTime": "2020-04-29 14:19:13",
+        "clientID": "17301069",
+        "orderMoney": "3.0",
+        "orderID": "1000000002",
+        "serverID": "0",
+        "ordercheck": "1",
+        "orderContent": "西门取快递"
+    },
+    "check": 0
+}
