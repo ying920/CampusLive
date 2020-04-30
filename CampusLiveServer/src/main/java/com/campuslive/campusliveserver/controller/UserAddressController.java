@@ -1,9 +1,12 @@
 package com.campuslive.campusliveserver.controller;
 
 import com.campuslive.campusliveserver.dao.UserAddressMapper;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 import static com.campuslive.campusliveserver.entity.UserAddress.ADD_ADDRESS_FAIL;
 import static com.campuslive.campusliveserver.entity.UserAddress.ADD_ADDRESS_SUCCESSFULLY;
@@ -34,10 +37,19 @@ public class UserAddressController {
      */
     @RequestMapping(value="/get-address/{userID}", method= RequestMethod.GET)
     public String getAllUserAddress(@PathVariable int userID) throws JSONException {
-        String str = userAddressMapper.getAddress(userID).toString();
+        //String str = userAddressMapper.getAddress(userID).toString();
+        List<String> stringList=userAddressMapper.getAddress(userID);
 
         JSONObject returnJson = new JSONObject();
-        returnJson.put("data",str);
+
+        JSONArray returnDataJsonArray = new JSONArray();
+        for(String str:stringList){
+            JSONObject addressJson = new JSONObject();
+            addressJson.put("address",str);
+            returnDataJsonArray.put(addressJson);
+        }
+
+        returnJson.put("data",returnDataJsonArray);
         returnJson.put("msg","Successfully get address!");
 
         return returnJson.toString();

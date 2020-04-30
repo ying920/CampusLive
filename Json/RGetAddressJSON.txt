@@ -1,4 +1,0 @@
-{
-    "data": "[hkj, sdfg, sdfgh]",
-    "msg": "Successfully get address!"
-}
