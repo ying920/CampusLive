@@ -1,8 +1,0 @@
-//check=0时pwd为空，check=1时为用户设定的pwd
-{
-    "data": {
-        "userID": "1",		//id是手机号吧
-        "userPsd": "123456"	
-    },
-    "check": "0"		//0-微信，1-Android
-}

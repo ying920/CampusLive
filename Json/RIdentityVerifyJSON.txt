@@ -1,6 +1,0 @@
-//check=-1 -> 用户已经进行过学生认证,check=0 -> 用户学生认证失败,check=1 -> 用户学生认证成功
-{
-    "data": null,
-    "msg": "String",
-    "check": "0"
-}

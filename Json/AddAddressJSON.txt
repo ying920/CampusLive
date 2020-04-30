@@ -1,8 +1,0 @@
-//check无用
-{
-    "data": {
-        "userID": "1",
-        "userAddress": "123456"
-    },
-    "check": "0"
-}
