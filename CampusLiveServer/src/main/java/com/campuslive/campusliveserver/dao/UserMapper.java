@@ -22,7 +22,7 @@ public interface UserMapper {
     void addUser(User user);
 
     //验证用户是否存在
-    @Select("select count(userID) from User where userID=#{userID}")
+    @Select("select count(userID) from user where userID=#{userID}")
     int isExist(int userID);
 
     //验证Android用户密码是否正确

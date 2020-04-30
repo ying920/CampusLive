@@ -61,7 +61,8 @@ public class UserController {
         String userPsd = dataJsonObject.getString("userPsd");
 
         //创建返回Json对象
-        JSONObject returnJson = new JSONObject();
+        JSONObject returnJson;
+        returnJson = new JSONObject();
         returnJson.put("data",null);
 
         //如果账户存在便显示存在

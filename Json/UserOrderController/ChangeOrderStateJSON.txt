@@ -1,0 +1,9 @@
+//orderState=0 -> 订单已下单,未接单, orderState=-1 -> 订单取消, orderState=1 -> 订单已结单,未完成, orderState=2 -> 订单已完成,未付款
+//orderState=3 -> 订单已付款,未评分, orderState=4 -> 订单已评分,无问题, orderState=5 -> 订单需售后或投诉
+{
+    "data": {
+        "orderID": "1000000002",
+        "orderState":"1"
+    },
+    "check": "0"
+}

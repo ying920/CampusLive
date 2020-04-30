@@ -116,10 +116,37 @@ public class UserOrderController {
         return returnJson.toString();
     }
 
+    /**
+     * @author 林新宇
+     * @Phone 17810204868
+     * @email aomiga523@163.com
+     * @description 查看订单操作，GET请求
+     * @param orderID GET传入参数
+     * @return json格式字符串 详见RGetOrderJSON.txt
+     * @throws JSONException  抛出JSON相关异常
+     */
+    @RequestMapping(value="/get-order/{orderID}", method= RequestMethod.GET)
+    public String getOneOrder(@PathVariable int orderID) throws JSONException{
+        //创建返回Json对象
+        JSONObject returnJson = new JSONObject();
+
+        try{
+            JSONObject returnDataJsonObject = new JSONObject(userOrderMapper.getOrder(orderID).toString());
+            returnJson.put("data",returnDataJsonObject);
+            returnJson.put("msg","Query userOrder successfully!");
+            returnJson.put("check",QUERY_ORDER_SUCCESSFULLY);
+        }catch (Exception e){
+            returnJson.put("data",null);
+            returnJson.put("msg","Query userOrder failed!");
+            returnJson.put("check",QUERY_ORDER_FAILED);
+        }
+
+        return returnJson.toString();
+    }
+
     //获取当前系统时间
     public String getTime(){
         Date date = new Date();//获得系统时间.
-        String nowTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
-        return nowTime;
+        return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
     }
 }
