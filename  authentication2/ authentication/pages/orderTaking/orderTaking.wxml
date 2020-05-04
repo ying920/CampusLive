@@ -1,0 +1,14 @@
+<!--pages/orderTaking/orderTaking.wxml-->
+<text class='Title'>订单广场</text>
+<view class='container'>
+  <view class='noDataView' hidden='{{noDataViewHidden}}'>{{noData}}</view>
+  <view class='orderList' wx:for="{{items}}" wx:key="{{index}}" wx:for-index="index" wx:for-item="items"> 
+    <view class='theOrderID'>订单编号：{{items.orderID}}</view>
+    <view class='thePrice'>价格：{{items.price}}</view>
+    <view class='theContent'>订单内容：{{items.content}}</view>
+    <view class='theAddress'>配送地址：{{items.address}}</view>
+    <view class="flex-row">
+      <button class="button1" bindtap="oneChildBtnClk">接单</button>
+    </view>
+  </view>
+</view>
