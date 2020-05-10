@@ -2,12 +2,14 @@ package com.campuslive.campusliveserver.controller;
 
 import com.campuslive.campusliveserver.dao.UserOrderMapper;
 import com.campuslive.campusliveserver.entity.UserOrder;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import static com.campuslive.campusliveserver.entity.UserOrder.*;
 
@@ -143,6 +145,33 @@ public class UserOrderController {
 
         return returnJson.toString();
     }
+
+    /**
+     * @author 林新宇
+     * @Phone 17810204868
+     * @email aomiga523@163.com
+     * @description 查看所有未接单的订单，GET请求
+     * @return json格式字符串 详见RGetAllMissedOrderJSON.txt
+     * @throws JSONException  抛出JSON相关异常
+     */
+    @RequestMapping(value="/get-all-missed-order", method = RequestMethod.GET)
+    public String getAllMissedOrder() throws JSONException{
+        //创建返回Json对象
+        JSONObject returnJson = new JSONObject();
+
+        JSONArray returnDataJsonArray = new JSONArray();
+        List<UserOrder> missedOrderList = userOrderMapper.getAllMissedOrder();
+        for(UserOrder userOrder:missedOrderList){
+            JSONObject missedOrderJson = new JSONObject(userOrder.toString());
+            returnDataJsonArray.put(missedOrderJson);
+        }
+
+        returnJson.put("data",returnDataJsonArray);
+        returnJson.put("msg","Get all missed order successfully!");
+
+        return returnJson.toString();
+    }
+
 
     //获取当前系统时间
     public String getTime(){

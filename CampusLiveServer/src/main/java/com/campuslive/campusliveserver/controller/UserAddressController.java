@@ -1,6 +1,7 @@
 package com.campuslive.campusliveserver.controller;
 
 import com.campuslive.campusliveserver.dao.UserAddressMapper;
+import com.campuslive.campusliveserver.entity.UserAddress;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -38,14 +39,14 @@ public class UserAddressController {
     @RequestMapping(value="/get-address/{userID}", method= RequestMethod.GET)
     public String getAllUserAddress(@PathVariable int userID) throws JSONException {
         //String str = userAddressMapper.getAddress(userID).toString();
-        List<String> stringList=userAddressMapper.getAddress(userID);
+        List<UserAddress> userAddressList=userAddressMapper.getAddress(userID);
 
         JSONObject returnJson = new JSONObject();
 
         JSONArray returnDataJsonArray = new JSONArray();
-        for(String str:stringList){
-            JSONObject addressJson = new JSONObject();
-            addressJson.put("address",str);
+        for(UserAddress userAddress:userAddressList){
+            JSONObject addressJson = new JSONObject(userAddress.toString());
+            //addressJson.put("address",userAddress);
             returnDataJsonArray.put(addressJson);
         }
 

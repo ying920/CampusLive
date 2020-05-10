@@ -7,6 +7,8 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * @author 林新宇
  * @Phone 17810204868
@@ -36,4 +38,8 @@ public interface UserOrderMapper {
     //获取订单信息
     @Select("select * from userOrder where orderID=#{orderID}")
     UserOrder getOrder(int orderID);
+
+    //获取所有未接单订单信息
+    @Select("select * from userOrder where orderState=0")
+    List<UserOrder> getAllMissedOrder();
 }
