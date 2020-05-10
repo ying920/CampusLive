@@ -13,7 +13,7 @@ public class UserAddress {
     static public int ADD_ADDRESS_SUCCESSFULLY = 1;
 
     private int userID;
-    private String userAddress;
+    private String address;
 
     public UserAddress() {
     }
@@ -26,19 +26,17 @@ public class UserAddress {
         this.userID = userID;
     }
 
-    public String getUserAddress() {
-        return userAddress;
+    public String getAddress() {
+        return address;
     }
 
-    public void setUserAddress(String userAddress) {
-        this.userAddress = userAddress;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     @Override
     public String toString() {
-        return "UserAddress{" +
-                "userID=" + userID +
-                ", userAddress='" + userAddress + '\'' +
-                '}';
+        return "{\"userID\":\"" + userID +
+                "\",\"address\":\"" + address +"\"}";
     }
 }

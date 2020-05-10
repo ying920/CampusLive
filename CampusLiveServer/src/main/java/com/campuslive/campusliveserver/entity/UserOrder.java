@@ -122,13 +122,13 @@ public class UserOrder {
     @Override
     public String toString() {
         return  "{\"orderID\":\"" + orderID +
-                "\",\n\"orderMoney\":\"" + orderMoney +
-                "\",\n\"orderTime\":\"" + orderTime +
-                "\",\n\"orderState\":\"" + orderState +
-                "\",\n\"clientID\":\"" + clientID +
-                "\",\n\"serverID\":\"" + serverID +
-                "\",\n\"orderContent\":\"" + orderContent +
-                "\",\n\"orderAddress\":\"" + orderAddress +
-                "\",\n\"orderScore\":\"" + orderScore+"\"}";
+                "\",\"orderMoney\":\"" + orderMoney +
+                "\",\"orderTime\":\"" + orderTime +
+                "\",\"orderState\":\"" + orderState +
+                "\",\"clientID\":\"" + clientID +
+                "\",\"serverID\":\"" + serverID +
+                "\",\"orderContent\":\"" + orderContent +
+                "\",\"orderAddress\":\"" + orderAddress +
+                "\",\"orderScore\":\"" + orderScore+"\"}";
     }
 }
