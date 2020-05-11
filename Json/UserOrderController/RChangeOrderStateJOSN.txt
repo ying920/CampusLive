@@ -1,4 +1,4 @@
-//check=0 -> 修改成功, check=-1 -> 订单修改失败
+//check=0修改成功，check=-1修改失败
 {
     "msg": "Modify userOrder check successfully!",
     "data": {

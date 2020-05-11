@@ -42,4 +42,8 @@ public interface UserOrderMapper {
     //获取所有未接单订单信息
     @Select("select * from userOrder where orderState=0")
     List<UserOrder> getAllMissedOrder();
+
+    //获取指定用户所有订单信息
+    @Select("select * from userOrder where clientID=#{clientID}")
+    List<UserOrder> getAllMyOrder(int clientID);
 }
