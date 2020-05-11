@@ -1,40 +1,49 @@
 //check=0获取成功，check=-1获取失败
 {
-    "msg": "Get all missed order successfully!",
-    "data": [
-        {
-            "orderScore": "0",
-            "orderAddress": "逸夫楼815",
-            "orderTime": "2020-05-11 19:21:58",
-            "clientID": "19990523",
-            "orderMoney": "3.0",
-            "orderID": "1000000001",
-            "serverID": "0",
-            "orderState": "0",
-            "orderContent": "西门取快递"
-        },
-        {
-            "orderScore": "0",
-            "orderAddress": "逸夫楼815",
-            "orderTime": "2020-05-11 19:22:02",
-            "clientID": "19990523",
-            "orderMoney": "3.0",
-            "orderID": "1000000002",
-            "serverID": "0",
-            "orderState": "0",
-            "orderContent": "西门取快递"
-        },
-        {
-            "orderScore": "0",
-            "orderAddress": "逸夫楼815",
-            "orderTime": "2020-05-11 19:22:07",
-            "clientID": "19990523",
-            "orderMoney": "3.0",
-            "orderID": "1000000003",
-            "serverID": "0",
-            "orderState": "1",
-            "orderContent": "西门取快递"
-        }
-    ],
+    "msg": "Get all order successfully!",
+    "data": {
+        "ReceivedOrder": [
+            {
+                "orderScore": "0",
+                "orderAddress": "逸夫楼815",
+                "orderTime": "2020-05-11 19:22:07",
+                "clientID": "19990523",
+                "orderMoney": "3.0",
+                "orderID": "1000000003",
+                "serverID": "0",
+                "orderState": "1",
+                "orderContent": "西门取快递"
+            }
+        ],
+        "PaidOrder": [],
+        "MissedOrder": [
+            {
+                "orderScore": "0",
+                "orderAddress": "逸夫楼815",
+                "orderTime": "2020-05-11 19:21:58",
+                "clientID": "19990523",
+                "orderMoney": "3.0",
+                "orderID": "1000000001",
+                "serverID": "0",
+                "orderState": "0",
+                "orderContent": "西门取快递"
+            },
+            {
+                "orderScore": "0",
+                "orderAddress": "逸夫楼815",
+                "orderTime": "2020-05-11 19:22:02",
+                "clientID": "19990523",
+                "orderMoney": "3.0",
+                "orderID": "1000000002",
+                "serverID": "0",
+                "orderState": "0",
+                "orderContent": "西门取快递"
+            }
+        ],
+        "AfterSaleOrder": [],
+        "CanceledOrder": [],
+        "FinishedOrder": [],
+        "MarkedOrder": []
+    },
     "check": 0
 }

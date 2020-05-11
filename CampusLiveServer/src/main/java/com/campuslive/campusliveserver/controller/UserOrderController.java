@@ -194,17 +194,76 @@ public class UserOrderController {
         //创建返回Json对象
         JSONObject returnJson = new JSONObject();
 
+        JSONObject returnDataJson = new JSONObject();
+
         try {
-            JSONArray returnDataJsonArray = new JSONArray();
-            List<UserOrder> missedOrderList = userOrderMapper.getAllMyOrder(clientID);
+
+            //获取已下单，未接单订单
+            JSONArray missedOrderJsonArray = new JSONArray();
+            List<UserOrder> missedOrderList = userOrderMapper.getMyMissedOrder(clientID);
             for (UserOrder userOrder : missedOrderList) {
                 JSONObject missedOrderJson = new JSONObject(userOrder.toString());
-                returnDataJsonArray.put(missedOrderJson);
+                missedOrderJsonArray.put(missedOrderJson);
             }
+            returnDataJson.put("MissedOrder", missedOrderJsonArray);
 
-            returnJson.put("data", returnDataJsonArray);
-            returnJson.put("msg", "Get all missed order successfully!");
-            returnJson.put("check",QUERY_ORDER_SUCCESSFULLY);
+            //获取订单取消订单
+            JSONArray canceledOrderJsonArray = new JSONArray();
+            List<UserOrder> canceledOrderList = userOrderMapper.getMyCanceledOrder(clientID);
+            for (UserOrder userOrder : canceledOrderList) {
+                JSONObject cancelOrderJson = new JSONObject(userOrder.toString());
+                canceledOrderJsonArray.put(cancelOrderJson);
+            }
+            returnDataJson.put("CanceledOrder", canceledOrderJsonArray);
+
+            //获取已接单，未完成订单
+            JSONArray receivedOrderJsonArray = new JSONArray();
+            List<UserOrder> receivedOrderList = userOrderMapper.getMyReceivedOrder(clientID);
+            for (UserOrder userOrder : receivedOrderList) {
+                JSONObject receivedOrderJson = new JSONObject(userOrder.toString());
+                receivedOrderJsonArray.put(receivedOrderJson);
+            }
+            returnDataJson.put("ReceivedOrder", receivedOrderJsonArray);
+
+            //获取已完成，未付款订单
+            JSONArray finishedOrderJsonArray = new JSONArray();
+            List<UserOrder> finishedOrderList = userOrderMapper.getMyFinishedOrder(clientID);
+            for (UserOrder userOrder : finishedOrderList) {
+                JSONObject finishedOrderJson = new JSONObject(userOrder.toString());
+                finishedOrderJsonArray.put(finishedOrderJson);
+            }
+            returnDataJson.put("FinishedOrder", finishedOrderJsonArray);
+
+            //获取已付款，未评分订单
+            JSONArray paidOrderJsonArray = new JSONArray();
+            List<UserOrder> paidOrderList = userOrderMapper.getMyPaidOrder(clientID);
+            for (UserOrder userOrder : paidOrderList) {
+                JSONObject paidOrderJson = new JSONObject(userOrder.toString());
+                paidOrderJsonArray.put(paidOrderJson);
+            }
+            returnDataJson.put("PaidOrder", paidOrderJsonArray);
+
+            //获取已评分，无问题订单
+            JSONArray markedOrderJsonArray = new JSONArray();
+            List<UserOrder> markedOrderList = userOrderMapper.getMyMarkedOrder(clientID);
+            for (UserOrder userOrder : markedOrderList) {
+                JSONObject markedOrderJson = new JSONObject(userOrder.toString());
+                markedOrderJsonArray.put(markedOrderJson);
+            }
+            returnDataJson.put("MarkedOrder", markedOrderJsonArray);
+
+            //获取需要售后订单
+            JSONArray afterSaleOrderJsonArray = new JSONArray();
+            List<UserOrder> afterSaleOrderList = userOrderMapper.getMyAfterSaleOrder(clientID);
+            for (UserOrder userOrder : afterSaleOrderList) {
+                JSONObject afterSaleOrderJson = new JSONObject(userOrder.toString());
+                afterSaleOrderJsonArray.put(afterSaleOrderJson);
+            }
+            returnDataJson.put("AfterSaleOrder", afterSaleOrderJsonArray);
+
+            returnJson.put("data", returnDataJson);
+            returnJson.put("msg", "Get all order successfully!");
+            returnJson.put("check", QUERY_ORDER_SUCCESSFULLY);
         }catch (Exception e){
             returnJson.put("data",null);
             returnJson.put("msg","Query userOrder failed!");
