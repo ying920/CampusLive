@@ -13,11 +13,11 @@ public class UserOrder {
     //state=3 -> 订单已付款,未评分, state=4 -> 订单已评分,无问题, state=5 -> 订单需售后或投诉
     static public int ORDER_DEFAULT = 0;
     static public int ORDER_CANCELED = -1;
-    static public int ORDER_TAKEN = 1;
+    static public int ORDER_RECEIVED = 1;
     static public int ORDER_FINISHED = 2;
     static public int ORDER_PAID = 3;
-    static public int ORDER_SCORED = 4;
-    static public int ORDER_AFTER = 5;
+    static public int ORDER_MARKED = 4;
+    static public int ORDER_AFTER_SALE = 5;
 
     //定义创建订单操作结果
     //state=0 -> 创建成功, state=-1 -> 订单创建失败

@@ -46,4 +46,32 @@ public interface UserOrderMapper {
     //获取指定用户所有订单信息
     @Select("select * from userOrder where clientID=#{clientID}")
     List<UserOrder> getAllMyOrder(int clientID);
+
+    //获取指定用户未接单订单信息
+    @Select("select * from userOrder where clientID=#{clientID} and orderState=0")
+    List<UserOrder> getMyMissedOrder(int clientID);
+
+    //获取指定用户已取消订单信息
+    @Select("select * from userOrder where clientID=#{clientID} and orderState=-1")
+    List<UserOrder> getMyCanceledOrder(int clientID);
+
+    //获取指定用户未接单订单信息
+    @Select("select * from userOrder where clientID=#{clientID} and orderState=1")
+    List<UserOrder> getMyReceivedOrder(int clientID);
+
+    //获取指定用户已完成订单信息
+    @Select("select * from userOrder where clientID=#{clientID} and orderState=2")
+    List<UserOrder> getMyFinishedOrder(int clientID);
+
+    //获取指定用户已付款订单信息
+    @Select("select * from userOrder where clientID=#{clientID} and orderState=3")
+    List<UserOrder> getMyPaidOrder(int clientID);
+
+    //获取指定用户已评分订单信息
+    @Select("select * from userOrder where clientID=#{clientID} and orderState=4")
+    List<UserOrder> getMyMarkedOrder(int clientID);
+
+    //获取指定用户售后订单信息
+    @Select("select * from userOrder where clientID=#{clientID} and orderState=5")
+    List<UserOrder> getMyAfterSaleOrder(int clientID);
 }
