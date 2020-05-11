@@ -1,0 +1,45 @@
+.listimg image {
+  margin-right: 5px;
+  margin-left: 8px;
+  vertical-align: middle;
+  width: 20px;
+  height: 20px;
+}
+
+.content{
+  display: flex;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  flex-flow:row;
+}
+
+
+/*分割线样式*/
+.divLine{
+ background: #E0E3DA;
+ width: 100%;
+ height: 5rpx;
+}
+.title text{
+  font-size: 20px;
+  color: #fff;
+  }
+
+.title{
+  background-color: crimson;
+  padding: 15px 0;
+  text-align: center;
+  }
+
+  .button{
+    width:100%;  
+    border-radius: 3px;  
+    padding-top:2px;  
+    font-size:14px;  
+    background-color:#CC3333;  
+    color:white;  
+    overflow:hidden;  
+    height:45px;  
+    bottom: 0;
+    position: fixed;
+  }
