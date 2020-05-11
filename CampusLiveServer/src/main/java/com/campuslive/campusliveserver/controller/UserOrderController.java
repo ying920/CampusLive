@@ -184,7 +184,7 @@ public class UserOrderController {
      * @author 林新宇
      * @Phone 17810204868
      * @email aomiga523@163.com
-     * @description 查看订单操作，GET请求
+     * @description 查看指定用户所有订单
      * @param clientID GET传入参数
      * @return json格式字符串 详见RGetAllMyOrderJSON.txt
      * @throws JSONException  抛出JSON相关异常
