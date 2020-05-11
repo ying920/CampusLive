@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-import static com.campuslive.campusliveserver.entity.UserAddress.ADD_ADDRESS_FAIL;
-import static com.campuslive.campusliveserver.entity.UserAddress.ADD_ADDRESS_SUCCESSFULLY;
+import static com.campuslive.campusliveserver.entity.UserAddress.*;
+import static com.campuslive.campusliveserver.entity.UserOrder.QUERY_ORDER_FAILED;
 
 /**
  * @author 林新宇
@@ -43,15 +43,22 @@ public class UserAddressController {
 
         JSONObject returnJson = new JSONObject();
 
-        JSONArray returnDataJsonArray = new JSONArray();
-        for(UserAddress userAddress:userAddressList){
-            JSONObject addressJson = new JSONObject(userAddress.toString());
-            //addressJson.put("address",userAddress);
-            returnDataJsonArray.put(addressJson);
-        }
+        try {
+            JSONArray returnDataJsonArray = new JSONArray();
+            for (UserAddress userAddress : userAddressList) {
+                JSONObject addressJson = new JSONObject(userAddress.toString());
+                //addressJson.put("address",userAddress);
+                returnDataJsonArray.put(addressJson);
+            }
 
-        returnJson.put("data",returnDataJsonArray);
-        returnJson.put("msg","Successfully get address!");
+            returnJson.put("data", returnDataJsonArray);
+            returnJson.put("msg", "Get address successfully !");
+            returnJson.put("check",GET_ADDRESS_SUCCESSFULLY);
+        }catch(Exception e){
+            returnJson.put("data",null);
+            returnJson.put("msg","Get address failed!");
+            returnJson.put("check",GET_ADDRESS_FAIL);
+        }
 
         return returnJson.toString();
     }

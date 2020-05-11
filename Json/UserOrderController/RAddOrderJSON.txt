@@ -1,4 +1,4 @@
-//state=0 -> 创建成功, state=-1 -> 订单创建失败
+//check=0创建成功，check=-1创建失败
 {
     "msg": "Create userOrder successfully!",
     "data": {

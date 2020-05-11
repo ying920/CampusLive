@@ -159,19 +159,60 @@ public class UserOrderController {
         //创建返回Json对象
         JSONObject returnJson = new JSONObject();
 
-        JSONArray returnDataJsonArray = new JSONArray();
-        List<UserOrder> missedOrderList = userOrderMapper.getAllMissedOrder();
-        for(UserOrder userOrder:missedOrderList){
-            JSONObject missedOrderJson = new JSONObject(userOrder.toString());
-            returnDataJsonArray.put(missedOrderJson);
-        }
+        try {
+            JSONArray returnDataJsonArray = new JSONArray();
+            List<UserOrder> missedOrderList = userOrderMapper.getAllMissedOrder();
+            for (UserOrder userOrder : missedOrderList) {
+                JSONObject missedOrderJson = new JSONObject(userOrder.toString());
+                returnDataJsonArray.put(missedOrderJson);
+            }
 
-        returnJson.put("data",returnDataJsonArray);
-        returnJson.put("msg","Get all missed order successfully!");
+            returnJson.put("data", returnDataJsonArray);
+            returnJson.put("msg", "Get all missed order successfully!");
+            returnJson.put("check",QUERY_ORDER_SUCCESSFULLY);
+        }catch (Exception e){
+            returnJson.put("data",null);
+            returnJson.put("msg","Query userOrder failed!");
+            returnJson.put("check",QUERY_ORDER_FAILED);
+        }
 
         return returnJson.toString();
     }
 
+
+    /**
+     * @author 林新宇
+     * @Phone 17810204868
+     * @email aomiga523@163.com
+     * @description 查看指定用户所有订单
+     * @param clientID GET传入参数
+     * @return json格式字符串 详见RGetAllMyOrderJSON.txt
+     * @throws JSONException  抛出JSON相关异常
+     */
+    @RequestMapping(value="/get-all-my-order/{clientID}", method= RequestMethod.GET)
+    public String getAllMyOrder(@PathVariable int clientID) throws JSONException{
+        //创建返回Json对象
+        JSONObject returnJson = new JSONObject();
+
+        try {
+            JSONArray returnDataJsonArray = new JSONArray();
+            List<UserOrder> missedOrderList = userOrderMapper.getAllMyOrder(clientID);
+            for (UserOrder userOrder : missedOrderList) {
+                JSONObject missedOrderJson = new JSONObject(userOrder.toString());
+                returnDataJsonArray.put(missedOrderJson);
+            }
+
+            returnJson.put("data", returnDataJsonArray);
+            returnJson.put("msg", "Get all missed order successfully!");
+            returnJson.put("check",QUERY_ORDER_SUCCESSFULLY);
+        }catch (Exception e){
+            returnJson.put("data",null);
+            returnJson.put("msg","Query userOrder failed!");
+            returnJson.put("check",QUERY_ORDER_FAILED);
+        }
+
+        return returnJson.toString();
+    }
 
     //获取当前系统时间
     public String getTime(){
