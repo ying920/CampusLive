@@ -1,0 +1,200 @@
+
+<!-- <swiper autoplay interval="2500" circular indicator-dots >
+  <swiper-item> <image mode = "widthFix" src="http://gw.alicdn.com/imgextra/i3/13/O1CN01hQN6By1BxzkLlTJp8_!!13-0-lubanu.jpg"/></swiper-item>
+  <swiper-item> <image mode = "widthFix" src="http://gw.alicdn.com/imgextra/i4/154/O1CN01pWztdm1D0ZajsVcfK_!!154-0-lubanu.jpg"/></swiper-item>
+  <swiper-item> <image mode = "widthFix" src="http://gw.alicdn.com/imgextra/i1/88/O1CN01Zu2LXk1CWLS5FY9Tz_!!88-0-lubanu.jpg"/></swiper-item>
+</swiper> -->
+
+<!-- 收货地址 -->
+<!-- <view class="revice_address_row"> -->
+  <!-- 当收货地址 不存在 按钮显示  对象 空对象 bool类型也是true  -->
+  <!-- <view class="address_btn" wx:if="{{!address.userName}}">
+    <button bindtap="handleChooseAddress" type="primary" plain >获取收货地址</button>
+  </view> -->
+  <!-- 当收货地址 存在 详细信息就显示 -->
+  <!-- <view wx:else  class="user_info_row" >
+    <view class="user_info">
+      <view>下单人：{{address.userName}}</view>
+      <view>用户地址：{{address.all}}</view>
+    </view>
+    <view class="user_phone">{{address.telNumber}}</view>
+  </view>
+</view>  -->
+
+
+
+<!-- 版权
+<view class="dz-footer">
+      <view class="dz-footer__text">Copyright © 2020-2021 DZ Winston</view>
+</view> -->
+
+
+<!-- 地图信息 -->
+<map  id='myMap'class='mainmap' latitude='{{realAddress.lat}}' longitude='{{realAddress.lng}}' scale="16"  markers='{{markers}}' bindregionchange="regionchange" show-location='true' ><cover-view class='refresh'><cover-image  bindtap='refresh' src='../../icons/refresh.png' style='width:30px;height:30spx;'></cover-image></cover-view></map>
+
+
+<!-- 下单 -->
+<view class="page_bd"></view>
+<view class="weui-tab">
+  <view class="weui-navbar">
+    <block wx:for="{{tabs}}" wx:key="*this">
+      <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+          <view class="weui-navbar__title">{{item}}</view>
+      </view>
+    </block>
+    <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+  </view>
+
+</view>
+<view class="weui-tab__panel">
+          <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
+            <view class="page">
+              <view class="page__bd">
+                <view class="weui-panel">
+
+                  <view class="weui-panel__bd">
+                    <view class="weui-media-box weui-media-box_small-appmsg">
+                      <view class="weui-cells weui-cells_in-small-appmsg">
+                        <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap='fahuodizhi'>
+                          <view class="weui-cell__hd">
+                            <image src="/icons/start.png" style="width: 20px;height: 20px;margin-right: 5px" />
+                          </view>
+                          <view class="weui-cell__bd weui-cell_primary">
+                            <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                              <view class="weui-media-box__title">{{dizhi1}}</view>
+                              <view class="weui-media-box__desc">{{information1}}</view>
+                            </view>
+                          </view>
+                          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+                        </view>
+                        <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap="handleChooseAddress">
+                          <view class="weui-cell__hd">
+                            <image src="/icons/end.png" style="width: 20px;height: 20px;margin-right: 5px" />
+                          </view>
+                          <view class="weui-cell__bd weui-cell_primary">
+                            <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                              <view class="weui-media-box__title">{{dizhi2.all}}</view>
+                              <view class="weui-media-box__desc">{{information2}}</view>
+                            </view>
+                          </view>
+                          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+                        </view>
+                        <navigator url="/pages/yaoqiu/yaoqiu" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                          <view class="weui-cell__hd">
+                            <image src="/icons/weight.png" style="width: 20px;height: 20px;margin-right: 5px" />
+                          </view>
+                          <view class="weui-cell__bd weui-cell_primary">
+                            <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                              <view class="weui-media-box__title">{{thingType}}</view>
+                              <view class="weui-media-box__desc">{{weight}}</view>
+                            </view>
+                          </view>
+                          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+                        </navigator>
+                      </view>
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+          <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
+
+            <view class="page">
+              <view class="page__bd">
+                <view class="weui-panel">
+
+                  <view class="weui-panel__bd">
+                    <view class="weui-media-box weui-media-box_small-appmsg">
+                      <view class="weui-cells weui-cells_in-small-appmsg">
+                        <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap='handleChooseAddress'>
+                          <view class="weui-cell__hd">
+                            <image src="/icons/start.png" style="width: 20px;height: 20px;margin-right: 5px" />
+                          </view>
+                          <view class="weui-cell__bd weui-cell_primary">
+                            <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                              <view class="weui-media-box__title">{{dizhi2.all}}</view>
+                              <view class="weui-media-box__desc">{{information11}}</view>
+                            </view>
+                          </view>
+                          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+                        </view>
+
+                         <navigator url="/pages/yaoqiu2/yaoqiu" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                          <view class="weui-cell__hd">
+                            <image src="/icons/weight.png" style="width: 20px;height: 20px;margin-right: 5px" />
+                          </view>
+                          <view class="weui-cell__bd weui-cell_primary">
+                            <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                              <view class="weui-media-box__title">{{thingType2}}</view>
+                              <view class="weui-media-box__desc">{{typeforthing2}}</view>
+                            </view>
+                          </view>
+                          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+                        </navigator>
+                        
+                      
+                      </view>
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          
+          
+          </view>
+
+          <view class="weui-tab__content" hidden="{{activeIndex != 2}}">
+            <view class="page">
+              <view class="page__bd">
+                <view class="weui-panel">
+
+                  <view class="weui-panel__bd">
+                    <view class="weui-media-box weui-media-box_small-appmsg">
+                      <view class="weui-cells weui-cells_in-small-appmsg">
+                        
+                        <navigator url="/pages/shouhuo/shouhuo" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                          <view class="weui-cell__hd">
+                            <image src="/icons/end.png" style="width: 20px;height: 20px;margin-right: 5px" />
+                          </view>
+                          <view class="weui-cell__bd weui-cell_primary">
+                            <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                              <view class="weui-media-box__title">{{dizhi2.all}}</view>
+                              <view class="weui-media-box__desc">{{information22}}</view>
+                            </view>
+                          </view>
+                          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+                        </navigator>
+                        <navigator url="/pages/yaoqiu3/yaoqiu" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                          <view class="weui-cell__hd">
+                            <image src="/icons/weight.png" style="width: 20px;height: 20px;margin-right: 5px" />
+                          </view>
+                          <view class="weui-cell__bd weui-cell_primary">
+                            <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                              <view class="weui-media-box__title">{{thingType3}}</view>
+                              <view class="weui-media-box__desc">{{typeforthing3}}</view>
+                            </view>
+                          </view>
+                          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+                        </navigator>
+                      </view>
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+
+<!-- 下单规则 -->
+<view class="dz-rule">
+  <view class="dz-rule__text" bindtap="show">计价规则 ></view>
+</view>
+
+<!-- 下单按钮 -->
+<view class="revice_address_row"> 
+ 
+  <view class="address_btn" >
+    <button bindtap='gotopay' type="primary" plain >下单</button>
+  </view>
+</view>
