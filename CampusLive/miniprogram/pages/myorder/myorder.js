@@ -6,28 +6,33 @@ Page({
   data: {
     currtab: 0,
     swipertab: [{ name: '已完成', index: 0 }, { name: '待付款', index: 1 },{ name: '待接单', index: 2 },{ name: '待收货', index: 3 }, { name: '已取消', index: 4 }],
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  /**   var _this = this
+    var _this = this
 
     wx.request({
-      url: '/get-my-all-order/{clientID}/myorder.json',//json数据地址
+      url: 'http://littleeyes.cn:8080/get-my-all-order/19990523',
       headers: {
         'Content-Type': 'application/json'
       },
       method: 'GET',
       success: function (res) {
-
+        console.log(res.data.data)
         _this.setData({
-          listitems: res.data,
+          alreadyOrder:res.data.data.FinishedOrder,
+          waitPayOrder:res.data.data.PaidOrder,
+          waittakeOrder:res.data.data.MissedOrder,
+          waitreceiveOrder:res.data.data.CanceledOrder,
+          lostOrder: res.data.data.CanceledOrderitems
+
         })
       }
     })
-  */
   },
 
   /**
@@ -101,11 +106,11 @@ Page({
 
   alreadyShow: function(){
 
-    this.setData({
+    // this.setData({
 
-      alreadyOrder: [{ name: "跃动体育运动俱乐部(圆明园店)", state: "交易成功", time: "2018-09-30 14:00-16:00", status: "已结束", url: "../../images/bad0.png", money: "132" }, { name: "跃动体育运动俱乐部(圆明园店)", state: "交易成功", time: "2018-10-12 18:00-20:00", status: "未开始", url: "../../images/bad3.jpg", money: "205" }]
+    //   alreadyOrder:res.data.data.FinishedOrder
 
-    })
+    // })
 
   },
 
@@ -113,39 +118,35 @@ Page({
 
   waitPayShow:function(){
 
-    this.setData({
+    // this.setData({
 
-      waitPayOrder: [{ name: "跃动体育运动俱乐部(圆明园店)", state: "待付款", time: "2018-10-14 14:00-16:00", status: "未开始", url: "../../images/bad1.jpg", money: "186" }],
-
-    })
+    //   waitPayOrder:res.data.data.PaidOrder
+    // })
 
   },
 
   waittakeShow: function(){
-    this.setData({
+    // this.setData({
 
-      waittakeOrder: [{ name: "跃动体育运动俱乐部(圆明园店)", state: "待接单", time: "2018-10-14 14:00-16:00", status: "待接单", url: "../../images/bad1.jpg", money: "186" }],
-
-    }) },
+    //   waittakeOrder:res.data.data.MissedOrder
+    // }) 
+  },
 
   waitreceiveShow: function(){
-    this.setData({
+    // this.setData({
 
-      waitreceiveOrder: [{ name: "跃动体育运动俱乐部(圆明园店)", state: "待收货", time: "2018-10-14 14:00-16:00", status: "待收货", url: "../../images/bad1.jpg", money: "186" }],
-
-    }) },
+    //   waitreceiveOrder:res.data.data.CanceledOrder
+    // }) 
+  },
 
   lostShow: function () {
 
-    this.setData({
+    // this.setData({
 
-      lostOrder: [{ name: "跃动体育运动俱乐部(圆明园店)", state: "已取消", time: "2018-10-4 10:00-12:00", status: "未开始", url: "../../images/bad1.jpg", money: "122" }],
-
-    })
+    //   lostOrder: res.data.data.CanceledOrderitems
+    // })
 
   },
-
-
 
   /**
    * 生命周期函数--监听页面隐藏
