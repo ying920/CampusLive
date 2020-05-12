@@ -1,9 +1,0 @@
-/* pages/orderTaking/orderTaking.wxss */
-.orderList{
-  /* background-color: #898989; */
-  height: 80%;
-  width: 80%;
-  margin-left: 10%;
-  box-shadow: 4px 4px 8px  rgba(0,0,0,0.5);
-  margin-bottom: 20px;
-}
