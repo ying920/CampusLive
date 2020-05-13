@@ -11,7 +11,7 @@ page {
 }
 .revice_address_row .address_btn {
   width: 100%;
-  height: 50%;
+  height: 100%;
   display: flex;
   justify-content:center;
   color: #ff0000;

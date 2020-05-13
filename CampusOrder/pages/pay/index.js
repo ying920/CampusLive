@@ -79,7 +79,7 @@ Page({
 
   },
   onLoad: function (options) {
-    this.valuecheck();
+    
   },
   onShow:function(){
     
@@ -256,16 +256,16 @@ Page({
   },//备注输入
 
 
-  async xiadanzhifu() {
+xiadanzhifu:function(){
   
     const {totalmoney}=this.data;
 
     if(totalmoney===0.00){
-      await showToast({title:"您还没有选择费用"});
+      showToast({title:"您还没有选择费用"});
       return ;
     }
-   wx.navigateTo({
-        url: '../paymethod/index',
+    wx.navigateTo({
+        url: '../paymethod/index?money1=' + totalmoney,
       })
   },//点击下单并判断能否跳转到支付
 

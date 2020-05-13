@@ -4,7 +4,7 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": false,
+		"urlCheck": true,
 		"es6": true,
 		"postcss": true,
 		"preloadBackgroundData": false,
@@ -26,7 +26,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "2.11.0",
 	"appid": "wxdf265ba8ddbc971f",
-	"projectname": "miniprogram-2",
+	"projectname": "CampusOrder",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},
@@ -76,6 +76,19 @@
 					"name": "支付",
 					"pathName": "pages/pay/index",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "钱包",
+					"pathName": "pages/qianbao/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "支付确认",
+					"pathName": "pages/paymethod/index",
 					"scene": null
 				}
 			]

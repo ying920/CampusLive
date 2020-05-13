@@ -1,4 +1,4 @@
-
+<!-- 轮播图广告 -->
 <!-- <swiper autoplay interval="2500" circular indicator-dots >
   <swiper-item> <image mode = "widthFix" src="http://gw.alicdn.com/imgextra/i3/13/O1CN01hQN6By1BxzkLlTJp8_!!13-0-lubanu.jpg"/></swiper-item>
   <swiper-item> <image mode = "widthFix" src="http://gw.alicdn.com/imgextra/i4/154/O1CN01pWztdm1D0ZajsVcfK_!!154-0-lubanu.jpg"/></swiper-item>
@@ -120,6 +120,21 @@
                           <view class="weui-cell__ft weui-cell__ft_in-access"></view>
                         </view>
 
+
+                        <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap="fahuodizhi">
+                          <view class="weui-cell__hd">
+                            <image src="/icons/end.png" style="width: 20px;height: 20px;margin-right: 5px" />
+                          </view>
+                          <view class="weui-cell__bd weui-cell_primary">
+                            <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                              <view class="weui-media-box__title">{{dizhi1}}</view>
+                              <view class="weui-media-box__desc">{{information22}}</view>
+                            </view>
+                          </view>
+                          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+                        </view>
+
+
                          <navigator url="/pages/yaoqiu2/yaoqiu" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
                           <view class="weui-cell__hd">
                             <image src="/icons/weight.png" style="width: 20px;height: 20px;margin-right: 5px" />
@@ -160,7 +175,7 @@
                           <view class="weui-cell__bd weui-cell_primary">
                             <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
                               <view class="weui-media-box__title">{{dizhi2.all}}</view>
-                              <view class="weui-media-box__desc">{{information22}}</view>
+                              <view class="weui-media-box__desc">{{information222}}</view>
                             </view>
                           </view>
                           <view class="weui-cell__ft weui-cell__ft_in-access"></view>
@@ -195,6 +210,6 @@
 <view class="revice_address_row"> 
  
   <view class="address_btn" >
-    <button bindtap='gotopay' type="primary" plain >下单</button>
+    <button bindtap='gotopay'  plain >下单</button>
   </view>
 </view>

@@ -15,7 +15,7 @@ page,view,text,swiper,swiper-item,image,navigator{
  */
  page{
    /* 定义主题颜色 */
-   --themeColor:#eb4450;
+   --themeColor:#eb0f1e;
    /*
     定义统一字体大小  假设设计稿 大小是 375px 
     1px= 2rpx

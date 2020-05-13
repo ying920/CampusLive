@@ -32,31 +32,25 @@ var lat;
 var lng;
 
 
-
-
-
-
-
-
-
 Page({
   data:{
     dz: {},
-    tabs: ["取送件", "代排队","代办事" ],
+    tabs: ["代送件", "代取件","代办事" ],
     activeIndex: 0,
     sliderOffset: 0,
     sliderLeft: 0,
     dizhi1:'',
     information1:'从哪里出发',
-    information11:'排队地点',
+    information11:'从哪取',
     dizhi2:'收货地址',
     information2:'送到哪里去',
-    information22:'要办理的事情所在地点',
+    information22:'从哪收',
+    information222:'要办理的事情所在地点',
     thingType:'',
     weight:'请选择要配送的物品类型，重量',
     thingType2:'',
     thingType3:'',
-    typeforthing2:'请选择要代排队事情的类型',
+    typeforthing2:'请选择要取件的物品类型，重量',
     typeforthing3:'请选择要代办事情的类型',
   
     latitude:'',
@@ -64,63 +58,111 @@ Page({
     localCity:'',
     realAddress:{},
 
-    // markers: [{
+    markers: [{
 
-    //   id: 0,
-    //   iconPath: '../../icons/location.png',
-    //   latitude:28.727340,
-    //   longitude:115.816720,
-    //   width: 25,
-    //   height: 25,
-    //   callout: {
-    //     content: '最快5分钟内接单',
-    //     fontSize: 16,
-    //     color: '#ffffff',
-    //     bgColor: '#319ED3',
-    //     padding: 8,
-    //     borderRadius:15,
-    //     boxShadow: '4px 8px 16px 0 rgba(0)',
-    //     display:'ALWAYS'
-    //   },
+      id: 0,
+      iconPath: '../../icons/location.png',
+      latitude:28.727340,
+      longitude:115.816720,
+      width: 25,
+      height: 25,
+      callout: {
+        content: '最快5分钟内接单',
+        fontSize: 16,
+        color: '#ffffff',
+        bgColor: '#319ED3',
+        padding: 8,
+        borderRadius:15,
+        boxShadow: '4px 8px 16px 0 rgba(0)',
+        display:'ALWAYS'
+      },
       
-    // }],
+    }],
 
-    // controls: [{
-    //   id: 1,
-    //   iconPath: '../../icons/refresh.png',
-    //   position: {
-    //     left: 30,
-    //     width: 330,
-    //     height: 330
-    //   }
-    // }],
+    controls: [{
+      id: 1,
+      iconPath: '../../icons/refresh.png',
+      position: {
+        left: 30,
+        width: 330,
+        height: 330
+      }
+    }],
 
-   
   
+  },
+
+  tabClick: function (e) {
+    this.setData({
+      sliderOffset: e.currentTarget.offsetLeft,
+      activeIndex: e.currentTarget.id
+    });
   },
   async gotopay(){
 
-    const {dizhi1,dizhi2,thingType}=this.data;
-    //判断是否填了出发地址
-    if(!dizhi1){
-      await showToast({title:"您还没选择出发地址"});
-      return ;
-    }
-    //判断用户是否选择送达地址
-    if(!dizhi2.cityName){
-      await showToast({title:"您还没选择送达地址"});
-      return ;
-    }
-    //判断是否选择商品类型
-    if(!thingType){
-      await showToast({title:"您还没选择商品类型及重量"});
-      return ;
-    }
-    //否则跳转到支付页面
-    wx.navigateTo({
-      url: '../pay/index',
-    });
+    const {dizhi1,dizhi2,thingType,thingType2,thingType3,activeIndex}=this.data;
 
+    if(activeIndex==0){
+      //判断是否填了出发地址
+      if(!dizhi1){
+        await showToast({title:"您还没选择出发地址！"});
+        return ;
+      }
+      //判断用户是否选择送达地址
+      if(!dizhi2.cityName){
+        await showToast({title:"您还没选择送达地址！"});
+        return ;
+      }
+      //判断是否选择商品类型
+      if(!thingType){
+        await showToast({title:"您还没选择商品类型及重量！"});
+        return ;
+      }
+        //否则跳转到支付页面
+      wx.navigateTo({
+        url: '../pay/index',
+      });
+    }
+    if(activeIndex==1){
+       //判断是否填了出发地址
+      if(!dizhi1){
+        await showToast({title:"您还没选择从哪收件！"});
+        return ;
+      }
+      //判断用户是否选择送达地址
+      if(!dizhi2.cityName){
+        await showToast({title:"您还没选择从哪取件！"});
+        return ;
+      }
+      //判断是否选择商品类型
+      if(!thingType2){
+        await showToast({title:"您还没选择商品类型及重量！"});
+        return ;
+      }
+        //否则跳转到支付页面
+      wx.navigateTo({
+        url: '../pay/index',
+      }); 
+    }
+    if(activeIndex==2){
+
+     //判断用户是否选择送达地址
+     if(!dizhi2.cityName){
+       await showToast({title:"您还没选择需要代办事的地点！"});
+       return ;
+     }
+     //判断是否选择商品类型
+     if(!thingType3){
+       await showToast({title:"您还没选择需要办理的事情类型！"});
+       return ;
+     }
+       //否则跳转到支付页面
+     wx.navigateTo({
+       url: '../pay/index',
+     }); 
+   }
+   
+  
 
   },
   onShow() {
@@ -178,12 +220,7 @@ Page({
     // }
     },
 
-  tabClick: function (e) {
-    this.setData({
-      sliderOffset: e.currentTarget.offsetLeft,
-      activeIndex: e.currentTarget.id
-    });
-  },
+ 
 
   show:function(){
     wx.navigateTo({
@@ -195,8 +232,6 @@ Page({
     
     var that = this;
    
-
-
     wx.getSystemInfo({
       success: function (res) {
         that.setData({
@@ -280,52 +315,60 @@ Page({
       }
     });
   },
-//   regionchange:function(e){
-//     this.mapCtx.getCenterLocation({
-//       success: function (res) {
-//         lat = res.latitude,
-//         lng = res.longitude
+
+    /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+    this.mapCtx = wx.createMapContext('myMap', this)
+  },
+
+  regionchange:function(e){
+    this.mapCtx.getCenterLocation({
+      success: function (res) {
+        lat = res.latitude,
+        lng = res.longitude
         
-//       }
-//     })
-//     this.mapCtx.translateMarker({
-//       markerId: 0,
+      }
+    })
+    this.mapCtx.translateMarker({
+      markerId: 0,
      
-//       duration: 500,
-//       destination: {
-//         latitude: lat,
-//         longitude:lng,
-//       }
-//     })
+      duration: 500,
+      destination: {
+        latitude: lat,
+        longitude:lng,
+      }
+    })
    
 
-//   },
-// refresh:function(){
-//   var that = this
-//   this.mapCtx.moveToLocation()
-// wx.getStorage({
-//   key: 'location',
-//   success: function(res) {
+  },
+refresh:function(){
+  var that = this
+  this.mapCtx.moveToLocation()
+wx.getStorage({
+  key: 'location',
+  success: function(res) {
     
-//   that.setData({
-//     latitude:res.data.latitude,
-//     longitude:res.data.longitude
-//   })
-//   },
-// }),
-// lat = that.data.latitude;
-// lng = that.data.longitude
-//   this.mapCtx.translateMarker({
-//     markerId: 0,
+  that.setData({
+    latitude:res.data.latitude,
+    longitude:res.data.longitude
+  })
+  },
+}),
+lat = that.data.latitude;
+lng = that.data.longitude
+  this.mapCtx.translateMarker({
+    markerId: 0,
 
-//     duration: 500,
-//     destination: {
-//       latitude: lat,
-//       longitude: lng
-//     }
+    duration: 500,
+    destination: {
+      latitude: lat,
+      longitude: lng
+    }
    
-//   })
-//  console.log(that.data.latitude)
-// }
+  })
+ console.log(that.data.latitude)
+}
 
 });

@@ -148,7 +148,7 @@ Page({
 
   select:function(event){
     var item = event.currentTarget.dataset.item;
-   item.flag = 1;
+    item.flag = 1;
     var id = parseInt(item.id);
     let grids = this.data.grids;
     grids[id].flag = item.flag;
@@ -159,6 +159,7 @@ Page({
    
   },
   submit:function(){
+  
     let grids = this.data.grids;
     var detail ;
     for( var i = 0; i < grids.length; i++) {
@@ -167,9 +168,26 @@ Page({
       }
     }
     console.log(detail);
-    wx.reLaunch({
+  //   wx.reLaunch({
+    
+  //    url: '/pages/xiadan/index?thingType2=' + detail + "&weight=" + this.data.weight,
+  //  })
 
-     url: '/pages/xiadan/index?thingType=' + detail + "&weight=" + this.data.weight,
-   })
+    
+    let pages = getCurrentPages();
+    let prevPage = pages[ pages.length - 2 ];  
+
+    prevPage.setData({  // 将我们想要传递的参数在这里直接setData。上个页面就会执行这里的操作。
+    
+      thingType2:detail+', '+this.data.weight+'公斤'
+
+    })
+    wx.navigateBack({
+ 
+      delta: 1  // 返回上一级页面。
+  
+  })
+
+
   }
 })
