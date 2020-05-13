@@ -3,11 +3,14 @@ package com.campuslive.campusliveserver.controller;
 import com.campuslive.campusliveserver.dao.StudentMapper;
 import com.campuslive.campusliveserver.dao.UserMapper;
 import com.campuslive.campusliveserver.entity.User;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.web.bind.annotation.*;
 
 import static com.campuslive.campusliveserver.entity.User.*;
+import static com.campuslive.campusliveserver.entity.UserOrder.QUERY_ORDER_FAILED;
+import static com.campuslive.campusliveserver.entity.UserOrder.QUERY_ORDER_SUCCESSFULLY;
 
 /**
  * @author 林新宇
@@ -155,4 +158,30 @@ public class UserController {
         return returnJson.toString();
     }
 
+    /**
+     * @author 林新宇
+     * @Phone 17810204868
+     * @email aomiga523@163.com
+     * @description 查询个人信息操作，GET请求
+     * @param userID GET传入参数
+     * @return json格式字符串 详见RMyAccountJSON.txt
+     * @throws JSONException 抛出JSON相关异常
+     */
+    @RequestMapping(value="/get-my-account/{userID}", method= RequestMethod.GET)
+    public String getAllMyOrder(@PathVariable int userID) throws JSONException{
+        //创建返回Json对象
+        JSONObject returnJson = new JSONObject();
+
+        try {
+            JSONObject returnDataJson = new JSONObject(userMapper.getMyAccount(userID).toString());
+            returnJson.put("data", returnDataJson);
+            returnJson.put("msg", "Query user successfully!");
+            returnJson.put("check", QUERY_USER_SUCCESSFULLY);
+        }catch (Exception e){
+            returnJson.put("data",null);
+            returnJson.put("msg","Query user failed!");
+            returnJson.put("check",QUERY_USER_FAILED);
+        }
+        return returnJson.toString();
+    }
 }

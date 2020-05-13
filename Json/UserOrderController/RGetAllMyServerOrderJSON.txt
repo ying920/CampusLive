@@ -1,0 +1,27 @@
+//check=0获取成功，check=-1获取失败
+{
+    "msg": "Get all order successfully!",
+    "data": {
+        "AfterSaleServerOrder": [],
+        "PaidServerOrder": [],
+        "ReceivedServerOrder": [
+            {
+                "orderType": "1",
+                "orderScore": "0",
+                "orderAddress": "逸夫楼815",
+                "orderTime": "2020-05-13 16:31:29",
+                "clientID": "19990523",
+                "orderMoney": "3.0",
+                "orderID": "1000000001",
+                "orderRemarkContent": "null",
+                "orderReserveTime": "null",
+                "serverID": "19990208",
+                "orderState": "1",
+                "orderContent": "西门取快递"
+            }
+        ],
+        "MarkedServerOrder": [],
+        "FinishedServerOrder": []
+    },
+    "check": 0
+}
