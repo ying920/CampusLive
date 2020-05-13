@@ -38,10 +38,13 @@ public class UserOrder {
     private double orderMoney;
     private String orderTime;
     private int orderState;
+    private int orderType;
     private int clientID;
     private int serverID;
     private String orderContent;
     private String orderAddress;
+    private String orderReserveTime;
+    private String orderRemarkContent;
     private int orderScore;
 
     public UserOrder() {
@@ -79,6 +82,14 @@ public class UserOrder {
         this.orderState = orderState;
     }
 
+    public int getOrderType() {
+        return orderType;
+    }
+
+    public void setOrderType(int orderType) {
+        this.orderType = orderType;
+    }
+
     public int getClientID() {
         return clientID;
     }
@@ -111,6 +122,22 @@ public class UserOrder {
         this.orderAddress = orderAddress;
     }
 
+    public String getOrderReserveTime() {
+        return orderReserveTime;
+    }
+
+    public void setOrderReserveTime(String orderReserveTime) {
+        this.orderReserveTime = orderReserveTime;
+    }
+
+    public String getOrderRemarkContent() {
+        return orderRemarkContent;
+    }
+
+    public void setOrderRemarkContent(String orderRemarkContent) {
+        this.orderRemarkContent = orderRemarkContent;
+    }
+
     public int getOrderScore() {
         return orderScore;
     }
@@ -125,10 +152,13 @@ public class UserOrder {
                 "\",\"orderMoney\":\"" + orderMoney +
                 "\",\"orderTime\":\"" + orderTime +
                 "\",\"orderState\":\"" + orderState +
+                "\",\"orderType\":\"" + orderType +
                 "\",\"clientID\":\"" + clientID +
                 "\",\"serverID\":\"" + serverID +
                 "\",\"orderContent\":\"" + orderContent +
                 "\",\"orderAddress\":\"" + orderAddress +
+                "\",\"orderReserveTime\":\"" + orderReserveTime +
+                "\",\"orderRemarkContent\":\"" + orderRemarkContent +
                 "\",\"orderScore\":\"" + orderScore+"\"}";
     }
 }
