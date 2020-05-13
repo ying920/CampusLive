@@ -276,6 +276,82 @@ public class UserOrderController {
         return returnJson.toString();
     }
 
+
+    /**
+     * @author 林新宇
+     * @Phone 17810204868
+     * @email aomiga523@163.com
+     * @description 查看指定服务用户所有订单
+     * @param serverID GET传入参数
+     * @return json格式字符串 详见RGetAllMyServerOrderJSON.txt
+     * @throws JSONException  抛出JSON相关异常
+     */
+    @RequestMapping(value="/get-all-my-server-order/{serverID}", method= RequestMethod.GET)
+    public String getAllMyServerOrder(@PathVariable int serverID) throws JSONException{
+        //创建返回Json对象
+        JSONObject returnJson = new JSONObject();
+
+        JSONObject returnDataJson = new JSONObject();
+
+        try {
+            //获取已接单，未完成订单
+            JSONArray receivedServerOrderJsonArray = new JSONArray();
+            List<UserOrder> receivedServerOrderList = userOrderMapper.getMyReceivedServerOrder(serverID);
+            for (UserOrder userOrder : receivedServerOrderList) {
+                JSONObject receivedServerOrderJson = new JSONObject(userOrder.toString());
+                receivedServerOrderJsonArray.put(receivedServerOrderJson);
+            }
+            returnDataJson.put("ReceivedServerOrder", receivedServerOrderJsonArray);
+
+            //获取已完成，未付款订单
+            JSONArray finishedServerOrderJsonArray = new JSONArray();
+            List<UserOrder> finishedServerOrderList = userOrderMapper.getMyFinishedServerOrder(serverID);
+            for (UserOrder userOrder : finishedServerOrderList) {
+                JSONObject finishedServerOrderJson = new JSONObject(userOrder.toString());
+                finishedServerOrderJsonArray.put(finishedServerOrderJson);
+            }
+            returnDataJson.put("FinishedServerOrder", finishedServerOrderJsonArray);
+
+            //获取已付款，未评分订单
+            JSONArray paidServerOrderJsonArray = new JSONArray();
+            List<UserOrder> paidServerOrderList = userOrderMapper.getMyPaidServerOrder(serverID);
+            for (UserOrder userOrder : paidServerOrderList) {
+                JSONObject paidServerOrderJson = new JSONObject(userOrder.toString());
+                paidServerOrderJsonArray.put(paidServerOrderJson);
+            }
+            returnDataJson.put("PaidServerOrder", paidServerOrderJsonArray);
+
+            //获取已评分，无问题订单
+            JSONArray markedServerOrderJsonArray = new JSONArray();
+            List<UserOrder> markedServerOrderList = userOrderMapper.getMyMarkedServerOrder(serverID);
+            for (UserOrder userOrder : markedServerOrderList) {
+                JSONObject markedServerOrderJson = new JSONObject(userOrder.toString());
+                markedServerOrderJsonArray.put(markedServerOrderJson);
+            }
+            returnDataJson.put("MarkedServerOrder", markedServerOrderJsonArray);
+
+            //获取需要售后订单
+            JSONArray afterSaleServerOrderJsonArray = new JSONArray();
+            List<UserOrder> afterSaleServerOrderList = userOrderMapper.getMyAfterSaleServerOrder(serverID);
+            for (UserOrder userOrder : afterSaleServerOrderList) {
+                JSONObject afterSaleServerOrderJson = new JSONObject(userOrder.toString());
+                afterSaleServerOrderJsonArray.put(afterSaleServerOrderJson);
+            }
+            returnDataJson.put("AfterSaleServerOrder", afterSaleServerOrderJsonArray);
+
+            returnJson.put("data", returnDataJson);
+            returnJson.put("msg", "Get all order successfully!");
+            returnJson.put("check", QUERY_ORDER_SUCCESSFULLY);
+        }catch (Exception e){
+            returnJson.put("data",null);
+            returnJson.put("msg","Query userOrder failed!");
+            returnJson.put("check",QUERY_ORDER_FAILED);
+        }
+
+        return returnJson.toString();
+    }
+
+
     //获取当前系统时间
     public String getTime(){
         Date date = new Date();//获得系统时间.

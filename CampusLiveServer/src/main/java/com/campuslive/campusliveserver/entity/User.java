@@ -37,7 +37,18 @@ public class User {
 
     private int userID;
     private String userPsd;
+    private String userName;
+    private String userSchool;
+    private int userAge;
+    private int userPhone;
+    private String userMail;
+    private String userWechat;
+    private double userBalance;
+    private int userCredit;
     private int userType;
+    private int userState;
+    private int businessNum;
+    private double employeeBasicSalary;
 
     public User() {
     }
@@ -58,6 +69,70 @@ public class User {
         this.userPsd = userPsd;
     }
 
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getUserSchool() {
+        return userSchool;
+    }
+
+    public void setUserSchool(String userSchool) {
+        this.userSchool = userSchool;
+    }
+
+    public int getUserAge() {
+        return userAge;
+    }
+
+    public void setUserAge(int userAge) {
+        this.userAge = userAge;
+    }
+
+    public int getUserPhone() {
+        return userPhone;
+    }
+
+    public void setUserPhone(int userPhone) {
+        this.userPhone = userPhone;
+    }
+
+    public String getUserMail() {
+        return userMail;
+    }
+
+    public void setUserMail(String userMail) {
+        this.userMail = userMail;
+    }
+
+    public String getUserWechat() {
+        return userWechat;
+    }
+
+    public void setUserWechat(String userWechat) {
+        this.userWechat = userWechat;
+    }
+
+    public double getUserBalance() {
+        return userBalance;
+    }
+
+    public void setUserBalance(double userBalance) {
+        this.userBalance = userBalance;
+    }
+
+    public int getUserCredit() {
+        return userCredit;
+    }
+
+    public void setUserCredit(int userCredit) {
+        this.userCredit = userCredit;
+    }
+
     public int getUserType() {
         return userType;
     }
@@ -66,12 +141,45 @@ public class User {
         this.userType = userType;
     }
 
+    public int getUserState() {
+        return userState;
+    }
+
+    public void setUserState(int userState) {
+        this.userState = userState;
+    }
+
+    public int getBusinessNum() {
+        return businessNum;
+    }
+
+    public void setBusinessNum(int businessNum) {
+        this.businessNum = businessNum;
+    }
+
+    public double getEmployeeBasicSalary() {
+        return employeeBasicSalary;
+    }
+
+    public void setEmployeeBasicSalary(double employeeBasicSalary) {
+        this.employeeBasicSalary = employeeBasicSalary;
+    }
+
     @Override
     public String toString() {
-        return "User{" +
-                "userID=" + userID +
-                ", userPsd='" + userPsd + '\'' +
-                ", userType=" + userType +
-                '}';
+        return "{\"userID\":\"" + userID +
+                "\",\"userPsd\":\"" + userPsd +
+                "\",\"userName\":\"" + userName +
+                "\",\"userSchool\":\"" + userSchool +
+                "\",\"userAge\":\"" + userAge +
+                "\",\"userPhone\":\"" + userPhone +
+                "\",\"userMail\":\"" + userMail +
+                "\",\"userWechat\":\"" + userWechat +
+                "\",\"userBalance\":\"" + userBalance +
+                "\",\"userCredit\":\"" + userCredit +
+                "\",\"userType\":\"" + userType +
+                "\",\"userState\":\"" + userState +
+                "\",\"businessNum\":\"" + businessNum +
+                "\",\"employeeBasicSalary\":\"" + employeeBasicSalary +"\"}";
     }
 }
