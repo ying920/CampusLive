@@ -28,7 +28,8 @@ public interface UserOrderMapper {
     void changeOrderState(int orderID, int orderState);
 
     //写入订单，下单功能
-    @Insert("insert into userOrder (orderID,orderMoney,orderTime,clientID,serverID,orderContent,orderAddress,orderScore) values (#{orderID},#{orderMoney},#{orderTime},#{clientID},#{serverID},#{orderContent},#{orderAddress},#{orderScore})")
+    @Insert("insert into userOrder (orderID,orderMoney,orderTime,orderType,clientID,serverID,orderContent,orderAddress,orderReserveTime,orderScore) " +
+            "values (#{orderID},#{orderMoney},#{orderTime},#{orderType},#{clientID},#{serverID},#{orderContent},#{orderAddress},#{orderReserveTime},#{orderScore})")
     void addOrder(UserOrder userOrder);
 
     //获取最大订单ID

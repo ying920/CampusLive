@@ -82,21 +82,24 @@ public class UserOrderController {
         int orderID = userOrderMapper.getMaxOrderID()+1;
         double orderMoney = dataJsonObject.getDouble("orderMoney");
         String orderTime = getTime();
+        int orderType = dataJsonObject.getInt("orderType");
         int clientID = dataJsonObject.getInt("clientID");
         String orderContent = dataJsonObject.getString("orderContent");
         String orderAddress = dataJsonObject.getString("orderAddress");
+        String orderReserveTime = dataJsonObject.getString("orderReserveTime");
 
         UserOrder userOrder = new UserOrder();
         userOrder.setOrderID(orderID);
         userOrder.setOrderTime(orderTime);
+        userOrder.setOrderType(orderType);
         userOrder.setOrderMoney(orderMoney);
         userOrder.setClientID(clientID);
         userOrder.setOrderContent(orderContent);
         userOrder.setOrderAddress(orderAddress);
+        userOrder.setOrderReserveTime(orderReserveTime);
 
         //创建返回Json对象
         JSONObject returnJson = new JSONObject();
-        //returnJson.put("data",null);
 
         try{
             userOrderMapper.addOrder(userOrder);

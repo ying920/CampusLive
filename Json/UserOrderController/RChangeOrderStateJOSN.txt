@@ -1,15 +1,18 @@
 //check=0修改成功，check=-1修改失败
 {
-    "msg": "Modify userOrder check successfully!",
+    "msg": "Modify userOrder state successfully!",
     "data": {
+        "orderType": "1",
         "orderScore": "0",
         "orderAddress": "逸夫楼815",
-        "orderTime": "2020-04-29 14:19:13",
-        "clientID": "17301069",
+        "orderTime": "2020-05-11 19:22:07",
+        "clientID": "19990523",
         "orderMoney": "3.0",
-        "orderID": "1000000002",
+        "orderID": "1000000003",
+        "orderRemarkContent": "null",
+        "orderReserveTime": "null",
         "serverID": "0",
-        "ordercheck": "1",
+        "orderState": "1",
         "orderContent": "西门取快递"
     },
     "check": 0
