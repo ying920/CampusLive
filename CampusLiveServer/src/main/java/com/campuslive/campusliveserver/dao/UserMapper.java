@@ -38,4 +38,8 @@ public interface UserMapper {
     //state=0 -> 用户未进行实名验证, state=1 -> 用户正常, state=2 -> 用户帐号异常
     @Update("update user set userState=#{userState} where userID=#{userID}")
     void updateUserState(int userID,int userState);
+
+    //获取指定用户个人信息
+    @Select("select * from user where userID=#{userID}")
+    User getMyAccount(int userID);
 }

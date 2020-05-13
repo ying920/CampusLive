@@ -35,6 +35,11 @@ public class User {
     static public int VERIFY_FAIL = 0;
     static public int VERIFY_SUCCESS = 1;
 
+    //定义查询个人信息操作状态
+    //state=-1 -> 查询用户失败, state=0 -> 查询成功
+    static  public int QUERY_USER_SUCCESSFULLY = 0;
+    static  public int QUERY_USER_FAILED = -1;
+
     private int userID;
     private String userPsd;
     private String userName;

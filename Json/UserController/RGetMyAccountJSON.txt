@@ -1,0 +1,21 @@
+//check=0查询成功，check=-1查询失败
+{
+    "msg": "Query user successfully!",
+    "data": {
+        "businessNum": "0",
+        "userPhone": "0",
+        "userPsd": "null",
+        "userName": "null",
+        "userID": "19990523",
+        "employeeBasicSalary": "0.0",
+        "userSchool": "null",
+        "userAge": "0",
+        "userWechat": "null",
+        "userCredit": "0",
+        "userState": "1",
+        "userMail": "null",
+        "userBalance": "0.0",
+        "userType": "0"
+    },
+    "check": 0
+}
