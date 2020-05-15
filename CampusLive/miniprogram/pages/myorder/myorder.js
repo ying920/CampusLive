@@ -5,7 +5,7 @@ Page({
    */
   data: {
     currtab: 0,
-    swipertab: [{ name: '已完成', index: 0 }, { name: '待付款', index: 1 },{ name: '待接单', index: 2 },{ name: '待收货', index: 3 }, { name: '已取消', index: 4 }],
+    swipertab: [{ name: '已完成', index: 0 }, { name: '待付款', index: 1 },{ name: '待接单', index: 2 },{ name: '已接单', index: 3 },{ name: '待收货', index: 4 }, { name: '已取消', index: 5 }],
 
   },
 
@@ -14,21 +14,26 @@ Page({
    */
   onLoad: function (options) {
     var _this = this
-
     wx.request({
-      url: 'http://littleeyes.cn:8080/get-my-all-order/19990523',
+      url: 'http://littleeyes.cn:8080/get-all-my-order/19990523',
       headers: {
         'Content-Type': 'application/json'
       },
       method: 'GET',
       success: function (res) {
-        console.log(res.data.data)
+        console.log(res.data.msg)
         _this.setData({
-          alreadyOrder:res.data.data.FinishedOrder,
-          waitPayOrder:res.data.data.PaidOrder,
+          // alreadyOrder:res.data.data.FinishedOrder,
+          // waitPayOrder:res.data.data.PaidOrder,
+          // waittakeOrder:res.data.data.MissedOrder,
+          // waitreceiveOrder:res.data.data.CanceledOrder,
+          // lostOrder:res.data.data.CanceledOrder
+
+          alreadyOrder:res.data.data.MissedOrder,
+          waitPayOrder:res.data.data.MissedOrder,
           waittakeOrder:res.data.data.MissedOrder,
-          waitreceiveOrder:res.data.data.CanceledOrder,
-          lostOrder: res.data.data.CanceledOrderitems
+          waitreceiveOrder:res.data.data.MissedOrder,
+          lostOrder:res.data.data.MissedOrder
 
         })
       }

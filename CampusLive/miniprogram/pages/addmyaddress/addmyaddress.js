@@ -69,21 +69,16 @@ Page({
    wx.request({
       url: 'http://littleeyes.cn:8080/add-address', 
       data: {
-        data:{ userID: 19990523, userAddress: e.detail.value.newaddress },
-        check:0
+        userID: "19990523",
+        userAddress: e.detail.value.newaddress
       },
       header: {
         "content-Type": "application/x-www-form-urlencoded" 
       },
       method: "POST",
       complete: function( res ) { 
-       self.setData( {  
-        
-       }); 
-       if( res == null || res.data == null ) { 
-        console.error( '网络请求失败' ); 
-        return; 
-       } 
+        console.info(res);
+
       } 
     })
       

@@ -4,8 +4,8 @@
         <view class="avatar">
         <image style="border-radius:50%;" src="{{'/images/user/user1.jpg'}}"></image>
         </view> 
-         <view class="text"> 
-         <text>17271246</text>
+         <view class="text" wx:for="{{user}}"> 
+         <text>{{item.userID}}</text>
          </view>
     </view>
   </view>

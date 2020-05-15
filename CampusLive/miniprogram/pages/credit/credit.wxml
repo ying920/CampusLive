@@ -4,8 +4,8 @@
         <view class="avatar">
         <image  src="{{'/images/user/pingfen2.png'}}"></image>
         </view>        
-         <view class="text"> 
-         <text>4.5</text>
+         <view class="text"  wx:for="{{user}}"> 
+         <text>{{item.userCredit}}</text>
          </view>
      </view>
   </view>

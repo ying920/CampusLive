@@ -126,5 +126,33 @@
 .productCount>view {
   float: right;
   margin-right: 30rpx;
-
 }
+
+ /* .button{
+  height: 80rpx;
+  line-height: 80rpx;
+  border-bottom: 1rpx solid #f3f3f3;
+  position: relative;
+  } */
+
+.button .button1{
+  /* position: absolute;
+  right: 0;  */
+  float: right;
+  margin-right: 10rpx;
+  width: 20%;
+  height: 60rpx;
+  background-color: crimson;
+  } 
+  .button .button2{
+    float: right;
+    margin-right: 10rpx;
+    width: 20%;
+    height: 60rpx;
+    background-color: crimson;
+    } 
+
+
+
+
+
