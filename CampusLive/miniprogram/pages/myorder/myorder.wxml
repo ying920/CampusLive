@@ -29,8 +29,8 @@
           </view>
         </view>
         <view class='button'>
-          <button class='button1' type='primary' size="mini">评价</button>
-          <button class='button2' type='primary' size="mini">投诉</button>
+          <button class='button1' type='primary' size="mini" bindtap="evaluate">评价</button>
+          <button class='button2' type='primary' size="mini" bindtap="complain">投诉</button>
         </view>
       </view>
     </scroll-view>
@@ -58,7 +58,8 @@
           </view>
         </view>
         <view class='button'>
-          <button class='button1' type='primary' size="mini">完成</button>
+          <button class='button1' type='primary' size="mini" bindtap="topay">付款</button>
+          <button class='button2' type='primary' size="mini" bindtap="cancel">取消</button>
         </view>
       </view>
     </scroll-view>
@@ -85,6 +86,9 @@
             <text>合计：￥{{item.orderMoney}}</text>
           </view>
         </view>
+        <view class='button'>
+          <button class='button1' type='primary' size="mini" bindtap="cancel">取消</button>
+        </view>
       </view>
     </scroll-view>
   </swiper-item>
@@ -110,7 +114,7 @@
           </view>
         </view>
        <view class='button'>
-          <button class='button1' type='primary' size="mini">完成</button>
+          <button class='button1' type='primary' size="mini" bindtap="complete">完成</button>
         </view>
       </view>
     </scroll-view>
@@ -138,7 +142,7 @@
           </view>
         </view>
         <view class='button'>
-          <button class='button1' type='primary' size="mini">收货</button>
+          <button class='button1' type='primary' size="mini" bindtap="receive">收货</button>
         </view>
       </view>      
     </scroll-view>

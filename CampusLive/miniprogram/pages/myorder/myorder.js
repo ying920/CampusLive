@@ -186,7 +186,75 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  evaluate:function(e){
+    console.log("success")  
+    wx.redirectTo({  
+    url: '../evaluate/evaluate' 
+    })
+    },
+
+  complain:function(e){
+    console.log("success")  
+    wx.redirectTo({  
+    url: '../complain/complain' 
+    })
+    },
+
+    topay:function(e){
+      console.log("success")  
+      wx.redirectTo({  
+        /**
+         * 填写邓智的付款界面
+         */
+      url: '../evaluate/evaluate' 
+      })
+      },
+
+  receive:function(e){
+    wx.showModal({
+      title: '收货',
+      content: '确认收货吗？',
+      success: function (res) {
+        if (res.confirm) {
+          console.log('点击确认回调')
+        }
+        else { 
+         console.log('点击取消回调')
+        }
+      }    
+    })
+  },
+
+  complete:function(e){
+    wx.showModal({
+      title: '完成',
+      content: '确认完成送货吗？',
+      success: function (res) {
+        if (res.confirm) {
+          console.log('点击确认回调')
+        }
+        else { 
+         console.log('点击取消回调')
+        }
+      }    
+    })
+  },
+
+  cancel:function(e){
+    wx.showModal({
+      title: '取消',
+      content: '确认取消订单吗？',
+      success: function (res) {
+        if (res.confirm) {
+          console.log('点击确认回调')
+        }
+        else { 
+         console.log('点击取消回调')
+        }
+      }    
+    })
   }
-
-
+  
 })

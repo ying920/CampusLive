@@ -8,7 +8,9 @@
     "pages/credit/credit",
     "pages/myaddress/myaddress",
     "pages/myorder/myorder",
-    "pages/addmyaddress/addmyaddress"
+    "pages/addmyaddress/addmyaddress",
+    "pages/evaluate/evaluate",
+    "pages/complain/complain"
   ],
   "window": {
     "backgroundTextStyle": "light",
