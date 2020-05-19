@@ -120,7 +120,7 @@ public class UserOrderController {
 
         int orderID = userOrderMapper.getMaxOrderID()+1;
         double orderMoney = dataJsonObject.getDouble("orderMoney");
-        String orderTime = getTime();
+        String orderTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
         int orderType = dataJsonObject.getInt("orderType");
         int clientID = dataJsonObject.getInt("clientID");
         String orderContent = dataJsonObject.getString("orderContent");
@@ -388,12 +388,5 @@ public class UserOrderController {
         }
 
         return returnJson.toString();
-    }
-
-
-    //获取当前系统时间
-    public String getTime(){
-        Date date = new Date();//获得系统时间.
-        return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
     }
 }
