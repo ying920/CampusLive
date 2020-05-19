@@ -27,6 +27,10 @@ public interface UserOrderMapper {
     @Update("update userOrder set orderState=#{orderState} where orderID=#{orderID}")
     void changeOrderState(int orderID, int orderState);
 
+    //接单功能，修改订单接单人和订单状态
+    @Update("update userOrder set serverID=#{serverID},orderState=#{orderState} where orderID=#{orderID}")
+    void serverGetOrder(int orderID,int serverID,int orderState);
+
     //写入订单，下单功能
     @Insert("insert into userOrder (orderID,orderMoney,orderTime,orderType,clientID,serverID,orderContent,orderAddress,orderReserveTime,orderScore) " +
             "values (#{orderID},#{orderMoney},#{orderTime},#{orderType},#{clientID},#{serverID},#{orderContent},#{orderAddress},#{orderReserveTime},#{orderScore})")
