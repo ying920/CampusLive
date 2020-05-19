@@ -1,0 +1,13 @@
+//check=0创建成功，check=-1创建失败
+{
+    "msg": "Add complaint record successfully!",
+    "data": {
+        "complaineeID": 19990208,
+        "complaintID": 1000000001,
+        "orderID": 1000000002,
+        "complaintContent": "我要投诉",
+        "complaintTime": "2020-05-19 14:58:09",
+        "complainantID": 19990523
+    },
+    "check": 0
+}
