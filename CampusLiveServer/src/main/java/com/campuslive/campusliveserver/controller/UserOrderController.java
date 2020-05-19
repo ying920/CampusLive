@@ -64,6 +64,45 @@ public class UserOrderController {
         return returnJson.toString();
     }
 
+
+    /**
+     * @author 林新宇
+     * @Phone 17810204868
+     * @email aomiga523@163.com
+     * @description 接单操作，修改接单人和订单状态，POST请求json格式数据
+     * @param json 详见ServerGetOrderJSON.txt
+     * @return json格式字符串 详见RServerGetOrderJSON.txt
+     * @throws JSONException  抛出JSON相关异常
+     */
+    @ResponseBody
+    @RequestMapping(value = "/server-get-order", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    public String serverGetOrder(@RequestBody String json) throws JSONException{
+        JSONObject jsonObject = new JSONObject(json);
+        JSONObject dataJsonObject = jsonObject.getJSONObject("data");
+
+        int orderID = dataJsonObject.getInt("orderID");
+        int serverID = dataJsonObject.getInt("serverID");
+        int state = dataJsonObject.getInt("orderState");
+
+        //创建返回Json对象
+        JSONObject returnJson = new JSONObject();
+
+        try{
+            userOrderMapper.serverGetOrder(orderID,serverID,state);
+        }catch (Exception e){
+            returnJson.put("data",null);
+            returnJson.put("msg","Modify userOrder state failed!");
+            returnJson.put("check",MODIFY_ORDER_STATE_FAILED);
+            return returnJson.toString();
+        }
+        JSONObject returnDataJsonObject = new JSONObject(userOrderMapper.getOrder(orderID).toString());
+        returnJson.put("data",returnDataJsonObject);
+        returnJson.put("msg","Modify userOrder state successfully!");
+        returnJson.put("check",MODIFY_ORDER_STATE_SUCCESSFULLY);
+        return returnJson.toString();
+    }
+
+
     /**
      * @author 林新宇
      * @Phone 17810204868
