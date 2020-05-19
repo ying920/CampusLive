@@ -11,4 +11,12 @@
         android:textSize="50sp"
         android:layout_centerInParent="true" />
 
+    <ViewFlipper
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:id="@+id/flipper_home_fragment" />
+
+
 </RelativeLayout>
