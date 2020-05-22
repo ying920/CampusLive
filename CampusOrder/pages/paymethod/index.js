@@ -1,6 +1,3 @@
-//index.js
-//获取应用实例
-const app = getApp()
 
 Page({
   data: {
@@ -8,14 +5,26 @@ Page({
     rightpwd:'110150',//正确密码
     pwdVal: '',  //输入的密码
     payFocus: true, //文本框焦点
-    money:500.00, //钱包余额
-    money1:0,//上界面传来的订单费用
+    money:500.00,
+    money1 :0,
+    flag:0,
   },
   onLoad: function (option) {
     this.showInputLayer();
     this.setData({
       money1:option.money1,
     });
+  },
+
+  upDate:function(){
+    if(this.data.flag==1){
+      var oldmoney = this.data.money;
+      var newmoney = oldmoney - this.data.money1;
+      this.setData({
+        money:newmoney,
+      })
+    }
+    
   },
   /**
    * 显示支付密码输入层
@@ -34,7 +43,7 @@ Page({
       showPayPwdInput: false, 
       payFocus: false, 
       pwdVal: '',
-      money:money-money1,
+      
     }, 
     function(){
       /**弹框**/
@@ -55,24 +64,34 @@ Page({
    * 输入密码监听
    */
   inputPwd: function(e){
+      const that=this;
       this.setData({
          pwdVal: e.detail.value ,
       });
       if (e.detail.value.length == 6){
-
         if(e.detail.value==this.data.rightpwd){
+          // this.setData({
+          //     money:this.data.money - this.data.money1
+          // }),
+          this.setData({
+            flag:1
+          }),
+          that.upDate(),
           wx.showToast({
             title: '支付成功！',
             icon:'success',
-            duration:1600,
+            duration:1900,
             mask:true,
             success:function(){
+              that.setData({
+                showPayPwdInput:false,
+              }),
               setTimeout(function(){
-                //this.hidePayLayer();
                 wx.switchTab({
                   url: '../xiadan/index',
                 });
-              },1600)
+              },1900)
+              
             }
           });
    

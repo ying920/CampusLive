@@ -270,5 +270,4 @@ xiadanzhifu:function(){
   },//点击下单并判断能否跳转到支付
 
 
-
 })

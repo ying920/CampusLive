@@ -9,61 +9,61 @@ Page({
     grids: [{
       id:0,
         flag:0,
-        image: "/icons/eat.png",
-        name: "餐饮"
+        image: "/icons/paidui.png",
+        name: "排队"
       },
       {
         id: 1,
         flag: 0,
-        image:'/icons/file.png',
-        name: "文件"
+        image:'/icons/chongwu3.png',
+        name: "照看宠物"
       },
 
       {
         id: 2,
         flag: 0,
-        image:'/icons/yaopin.png',
-        name: "药品"
+        image:'/icons/lingshi.png',
+        name: "买东西"
       }, 
      
       {
         id: 3,
         flag: 0,
-        image:'/icons/cake.png',
-        name: "蛋糕"
+        image:'/icons/diannao.png',
+        name: "修理电脑"
       }, 
       {
         id: 4,
         flag: 0,
-        image: '/icons/flower.png',
-        name: "鲜花"
+        image: '/icons/fanzhanzuo.png',
+        name: "占座"
       }, 
       {
         id: 5,
         flag: 0,
-        image:'/icons/key.png',
-        name: "钥匙"
+        image:'/icons/zuozuoye.png',
+        name: "做作业"
       }, 
       {
         id:6,
         flag: 0,
-        image:'/icons/shuma.png',
-        name: "数码"
+        image:'/icons/jiaofei.png',
+        name: "代缴费"
       },
        {
          id: 7,
          flag: 0,
-         image:'/icons/clothes.png',
-        name: "服饰"
+         image:'/icons/shangke.png',
+        name: "代上课"
       }, 
       {
         id: 8,
         flag: 0,
         image:'/icons/other.png',
-        name: "其他"
+        name: "其他，详情请联系"
       }
     ],
-    weight: '小于5'
+    weight: '小于1'
   },
 
   /**
@@ -123,9 +123,9 @@ Page({
   },
   slider: function(e) {
     var that = this;
-    if (e.detail.value == 4) {
+    if (e.detail.value == 1) {
       that.setData({
-        weight: "小于5"
+        weight: "小于1"
       })
     } else {
       that.setData({
@@ -135,9 +135,9 @@ Page({
   },
   slider2: function(e) {
     var that = this;
-    if (e.detail.value == 4) {
+    if (e.detail.value == 1) {
       that.setData({
-        weight: "小于5"
+        weight: "小于1"
       })
     } else {
       that.setData({
@@ -148,7 +148,7 @@ Page({
 
   select:function(event){
     var item = event.currentTarget.dataset.item;
-   item.flag = 1;
+    item.flag = 1;
     var id = parseInt(item.id);
     let grids = this.data.grids;
     grids[id].flag = item.flag;
@@ -176,7 +176,7 @@ Page({
 
   prevPage.setData({  // 将我们想要传递的参数在这里直接setData。上个页面就会执行这里的操作。
   
-    thingType3:detail+', '+this.data.weight+'公斤'
+    thingType3:detail+', '+this.data.weight+'小时'
 
   })
   wx.navigateBack({

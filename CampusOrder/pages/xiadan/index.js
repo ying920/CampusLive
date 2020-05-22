@@ -51,7 +51,7 @@ Page({
     thingType2:'',
     thingType3:'',
     typeforthing2:'请选择要取件的物品类型，重量',
-    typeforthing3:'请选择要代办事情的类型',
+    typeforthing3:'请选择要代办事情的类型以及所需时间',
   
     latitude:'',
     longitude:'',
