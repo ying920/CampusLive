@@ -122,6 +122,24 @@ Page({
       wx.navigateTo({
         url: '../pay/index',
       });
+      var that = this
+      wx.request({
+        url: 'http://littleeyes.cn:8080/get-all-my-order/'+'19990523',
+        headers:{
+          'Content-Type': 'application/json'
+        },
+        method: 'GET',
+        success:function(res){
+          //console.log("返回成功的数据:" + res.data.msg ) //返回的会是对象，可以用JSON转字符串打印出来方便查看数据  
+          console.log("返回成功的数据:"+ JSON.stringify(res.data)) //这样就可以愉快的看到后台的数据
+        },
+        fail:function(fail){
+          console.log("获取数据失败")
+        },
+        complete:function(arr){
+
+        }
+      })
     }
     if(activeIndex==1){
        //判断是否填了出发地址
@@ -273,8 +291,8 @@ Page({
              
             })
           }
-
         })
+
         qqmapsdk.reverseGeocoder({
 
           location: {
@@ -297,21 +315,35 @@ Page({
             let street = res.result.address_component.street;
             let street_number = res.result.address_component.street_number;
 
-
             that.setData({
               dizhi1:city+district+town+street+(street===street_number?'':street_number)
-              
             })
-
           },
-
           fail: function (res) {
-
             console.log(res);
-
           }
-
         });
+
+        wx.request({
+          url: 'http://littleeyes.cn:8080/add-address',
+          method: 'POST',
+          data:{
+              "userID": "1",
+              "userAddress": that.data.dizhi1
+          },
+          header: {  
+            'content-type': 'application/x-www-form-urlencoded'  //这里注意POST请求content-type是小写，大写会报错  
+          },
+          success:function(res){
+            that.setData({
+              userAddress:res.data.userAddress
+            })
+            console.log(res.data)
+          },
+          fail:function(err){
+            console.log("post失败了 小老弟!"+err.errMsg)
+          }
+        })
       }
     });
   },
