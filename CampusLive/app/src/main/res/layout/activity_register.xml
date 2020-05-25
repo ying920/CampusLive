@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".RegisterActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginBottom="25dp"
+        android:background="@drawable/register_background"
+        android:fontFamily="cursive"
+        android:paddingVertical="50dp"
+        android:text="@string/register_en"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="60sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/phone_num"
+        android:layout_marginHorizontal="40dp"
+        android:textSize="15sp"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginBottom="30dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/verification_code"
+        android:layout_marginHorizontal="40dp"
+        android:textSize="15sp"
+        />
+
+    <TextView
+        android:id="@+id/register_tip_1_textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="40dp"
+        android:text="@string/register_tip_1"
+        android:textAlignment="viewEnd"
+        android:textSize="15sp"
+        android:textColor="@android:color/holo_blue_light"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginBottom="30dp" />
+
+    <Button
+        android:id="@+id/register_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/register_cn"
+        android:textSize="20sp"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginBottom="30dp"/>
+
+    <TextView
+        android:id="@+id/register_tip_2_textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/register_tip_2"
+        android:layout_marginHorizontal="40dp"
+        android:textAlignment="center"
+        android:textColor="@android:color/holo_blue_light" />
+
+</LinearLayout>
