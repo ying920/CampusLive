@@ -31,7 +31,6 @@ var showModel = (title, content) => {
 var lat;
 var lng;
 
-
 Page({
   data:{
     dz: {},
@@ -40,6 +39,7 @@ Page({
     sliderOffset: 0,
     sliderLeft: 0,
     dizhi1:'',
+    useraddress:'',
     information1:'从哪里出发',
     information11:'从哪取',
     dizhi2:'收货地址',
@@ -122,24 +122,24 @@ Page({
       wx.navigateTo({
         url: '../pay/index',
       });
-      var that = this
-      wx.request({
-        url: 'http://littleeyes.cn:8080/get-all-my-order/'+'19990523',
-        headers:{
-          'Content-Type': 'application/json'
-        },
-        method: 'GET',
-        success:function(res){
-          //console.log("返回成功的数据:" + res.data.msg ) //返回的会是对象，可以用JSON转字符串打印出来方便查看数据  
-          console.log("返回成功的数据:"+ JSON.stringify(res.data)) //这样就可以愉快的看到后台的数据
-        },
-        fail:function(fail){
-          console.log("获取数据失败")
-        },
-        complete:function(arr){
+      // var that = this
+      // wx.request({
+      //   url: 'http://littleeyes.cn:8080/get-all-my-order/'+'19990523',
+      //   headers:{
+      //     'Content-Type': 'application/json'
+      //   },
+      //   method: 'GET',
+      //   success:function(res){
+      //     //console.log("返回成功的数据:" + res.data.msg ) //返回的会是对象，可以用JSON转字符串打印出来方便查看数据  
+      //     console.log("返回成功的数据:"+ JSON.stringify(res.data)) //这样就可以愉快的看到后台的数据
+      //   },
+      //   fail:function(fail){
+      //     console.log("获取数据失败")
+      //   },
+      //   complete:function(arr){
 
-        }
-      })
+      //   }
+      // })
     }
     if(activeIndex==1){
        //判断是否填了出发地址
@@ -179,7 +179,28 @@ Page({
        url: '../pay/index',
      }); 
    }
-   
+   var that = this
+    wx.request({
+      url: 'http://littleeyes.cn:8080/add-address',
+      method: 'POST',
+      data:{
+        data:{
+            "userID": "19990523",
+            "userAddress": that.data.dizhi1
+        },
+      check:0
+      },
+      header: {  
+        'content-type': 'application/json'  //这里注意POST请求content-type是小写，大写会报错  
+      },
+      success:function(res){
+
+        console.log(res.data)
+      },
+      fail:function(err){
+        console.log("post失败了 小老弟!"+err.errMsg)
+      }
+    })
   
 
   },
@@ -324,26 +345,7 @@ Page({
           }
         });
 
-        wx.request({
-          url: 'http://littleeyes.cn:8080/add-address',
-          method: 'POST',
-          data:{
-              "userID": "1",
-              "userAddress": that.data.dizhi1
-          },
-          header: {  
-            'content-type': 'application/x-www-form-urlencoded'  //这里注意POST请求content-type是小写，大写会报错  
-          },
-          success:function(res){
-            that.setData({
-              userAddress:res.data.userAddress
-            })
-            console.log(res.data)
-          },
-          fail:function(err){
-            console.log("post失败了 小老弟!"+err.errMsg)
-          }
-        })
+      
       }
     });
   },

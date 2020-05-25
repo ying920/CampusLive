@@ -267,6 +267,33 @@ xiadanzhifu:function(){
     wx.navigateTo({
         url: '../paymethod/index?money1=' + totalmoney,
       })
+
+    var that = this
+    wx.request({
+      url: 'http://littleeyes.cn:8080/add-order',
+      method: 'POST',
+      data:{
+        data:{
+          "orderMoney": that.data.totalmoney,
+          "orderType": "1",
+          "clientID": "17221002",
+          "orderContent": "广东111222取快递",
+          "orderAddress": "逸夫楼815111111111",
+          "orderReserveTime": that.data.sendtime
+        },
+        check: 0
+      },
+      header: {  
+        'content-type': 'application/json'  //这里注意POST请求content-type是小写，大写会报错  
+      },
+      success:function(res){
+        console.log(res.data)
+      },
+      fail:function(err){
+        console.log("post失败了 小老弟!"+err.errMsg)
+      }
+    })
+
   },//点击下单并判断能否跳转到支付
 
 
