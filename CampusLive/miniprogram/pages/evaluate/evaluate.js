@@ -8,6 +8,7 @@ Page({
     noteMaxLen: 300, // 最多放多少字
     info: "",
     noteNowLen: 0,//备注当前字数
+    myorderID:'',
     imgs: [{
             id: 1    
           }, {                 
@@ -44,13 +45,51 @@ Page({
   // 提交清空当前值
   bindSubmit: function () {
     var that = this;
+    console.log(that.data.myorderID); 
     wx.showToast({
       title: '发布成功',
       icon: 'success',
       duration: 1500,
       mask: false,
       success: function () {
-        that.setData({ info: '', noteNowLen: 0})
+        wx.request({
+          url: 'http://littleeyes.cn:8080/add-order-remark', 
+          data: {
+              data:{      
+                "orderID": that.data.myorderID,
+                 "orderRemarkContent": that.data.info,
+                 "orderScore": that.data.starId,
+              },
+              check:0
+          },
+          header: {
+            "content-Type": "application/json" 
+          },
+          method: "POST",
+          success: function (res) { 
+            console.info(res.data);
+          } 
+        })
+
+
+        wx.request({
+          url: 'http://littleeyes.cn:8080/change-order-state', 
+          data: {
+              data:{
+                "orderID": that.data.myorderID,
+                "orderState":"6",
+              },
+              check:0
+          },
+          header: {
+            "content-Type": "application/json" 
+          },
+          method: "POST",
+          success: function (res) { 
+            console.info(res.data);
+          } 
+        })
+        that.setData({ info: '', noteNowLen: 0, flag: 0 })
       }
     })
 
@@ -60,7 +99,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      myorderID:options.myorderID
+    })
+    console.log(this.data.myorderID);   
   },
 
   /**

@@ -8,6 +8,7 @@ Page({
     noteMaxLen: 300, // 最多放多少字
     info: "",
     noteNowLen: 0,//备注当前字数
+    myorderID:'',
   },
   
   bindTextAreaChange: function (e) {
@@ -28,6 +29,43 @@ Page({
       duration: 1500,
       mask: false,
       success: function () {
+        wx.request({
+          url: 'http://littleeyes.cn:8080/add-complaint-record', 
+          data: {
+              data:{              
+                "orderID": that.data.myorderID,
+                "complaintContent": that.data.info,
+              },
+              check:0
+          },
+          header: {
+            "Content-Type": "application/json" 
+          },
+          method: "POST",
+          success: function (res) { 
+            console.info(res.data);
+          } 
+        })
+
+
+        wx.request({
+          url: 'http://littleeyes.cn:8080/change-order-state', 
+          data: {
+              data:{
+                "orderID": that.data.myorderID,
+                "orderState": "7",
+              },
+              check:0
+          },
+          header: {
+            "Content-Type": "application/json" 
+          },
+          method: "POST",
+          success: function (res) { 
+            console.info(res.data);
+          } 
+        })
+
         that.setData({ info: '', noteNowLen: 0, flag: 0 })
       }
     })
@@ -38,7 +76,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      myorderID:options.myorderID
+    })
+    console.log(this.data.myorderID);
   },
 
   /**

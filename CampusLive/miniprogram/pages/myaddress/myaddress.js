@@ -12,13 +12,13 @@ Page({
   onLoad: function (options) {
     var _this = this
     wx.request({
-      url: 'http://littleeyes.cn:8080/get-address/19990523',//json数据地址
+      url: 'http://littleeyes.cn:8080/get-address/'+'19990523',
       headers: {
         'Content-Type': 'application/json'
       },
       method: 'GET',
       success: function (res) {
-        console.log(res.data.data)
+        console.log(res.data)
         _this.setData({
           listitems: res.data.data,
         })

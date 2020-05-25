@@ -6,7 +6,7 @@ Page({
   data: {
     currtab: 0,
     swipertab: [{ name: '已完成', index: 0 }, { name: '待付款', index: 1 },{ name: '待接单', index: 2 },{ name: '已接单', index: 3 },{ name: '待收货', index: 4 }, { name: '已取消', index: 5 }],
-
+    alreadyOrder:[],
   },
 
   /**
@@ -15,7 +15,7 @@ Page({
   onLoad: function (options) {
     var _this = this
     wx.request({
-      url: 'http://littleeyes.cn:8080/get-all-my-order/19990523',
+      url: 'http://littleeyes.cn:8080/get-all-my-order/'+'19990523',
       headers: {
         'Content-Type': 'application/json'
       },
@@ -23,19 +23,26 @@ Page({
       success: function (res) {
         console.log(res.data.msg)
         _this.setData({
-          // alreadyOrder:res.data.data.FinishedOrder,
-          // waitPayOrder:res.data.data.PaidOrder,
-          // waittakeOrder:res.data.data.MissedOrder,
-          // waitreceiveOrder:res.data.data.CanceledOrder,
-          // lostOrder:res.data.data.CanceledOrder
-
-          alreadyOrder:res.data.data.MissedOrder,
+          //alreadyOrder待改
+          alreadyOrder:res.data.data.MarkedOrder,
           waitPayOrder:res.data.data.MissedOrder,
-          waittakeOrder:res.data.data.MissedOrder,
-          waitreceiveOrder:res.data.data.MissedOrder,
-          lostOrder:res.data.data.MissedOrder
-
+          waittakeOrder:res.data.data.PaidOrder,
+          waitreceiveOrder:res.data.data.FinishedOrder,
+          lostOrder:res.data.data.CanceledOrder
         })
+      }
+    })
+        wx.request({
+          url: 'http://littleeyes.cn:8080/get-all-my-server-order/'+'19990523',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          method: 'GET',
+          success: function (res) {
+            console.log(res.data.data.ReceivedServerOrder)
+            _this.setData({   
+              takeOrder:res.data.data.ReceivedServerOrder, 
+            })
       }
     })
   },
@@ -104,52 +111,23 @@ Page({
       case 4:
         that.lostShow()
         break
-
     }
-
   },
 
   alreadyShow: function(){
-
-    // this.setData({
-
-    //   alreadyOrder:res.data.data.FinishedOrder
-
-    // })
-
   },
 
- 
-
   waitPayShow:function(){
-
-    // this.setData({
-
-    //   waitPayOrder:res.data.data.PaidOrder
-    // })
-
   },
 
   waittakeShow: function(){
-    // this.setData({
-
-    //   waittakeOrder:res.data.data.MissedOrder
-    // }) 
   },
 
   waitreceiveShow: function(){
-    // this.setData({
 
-    //   waitreceiveOrder:res.data.data.CanceledOrder
-    // }) 
   },
 
   lostShow: function () {
-
-    // this.setData({
-
-    //   lostOrder: res.data.data.CanceledOrderitems
-    // })
 
   },
 
@@ -190,15 +168,17 @@ Page({
 
   evaluate:function(e){
     console.log("success")  
+    console.log(e.currentTarget.id);
     wx.redirectTo({  
-    url: '../evaluate/evaluate' 
+    url: '../evaluate/evaluate?myorderID=' + e.currentTarget.id
     })
     },
 
   complain:function(e){
     console.log("success")  
+    console.log(e.currentTarget.id);
     wx.redirectTo({  
-    url: '../complain/complain' 
+    url: '../complain/complain?myorderID=' + e.currentTarget.id 
     })
     },
 
@@ -219,6 +199,23 @@ Page({
       success: function (res) {
         if (res.confirm) {
           console.log('点击确认回调')
+          wx.request({
+            url: 'http://littleeyes.cn:8080/change-order-state', 
+            data: {
+                data:{
+                  "orderID": e.currentTarget.id,
+                  "orderState": "5",
+                },
+                check:0
+            },
+            header: {
+              "content-Type": "application/json" 
+            },
+            method: "POST",
+            success: function (res) { 
+              console.info(res.data);
+            } 
+          })
         }
         else { 
          console.log('点击取消回调')
@@ -234,6 +231,23 @@ Page({
       success: function (res) {
         if (res.confirm) {
           console.log('点击确认回调')
+          wx.request({
+            url: 'http://littleeyes.cn:8080/change-order-state', 
+            data: {
+                data:{
+                  "orderID": e.currentTarget.id,
+                  "orderState": "4",
+                },
+                check:0
+            },
+            header: {
+              "content-Type": "application/json"
+            },
+            method: "POST",
+            success: function (res) { 
+              console.info(res.data);
+            } 
+          })
         }
         else { 
          console.log('点击取消回调')
@@ -249,6 +263,23 @@ Page({
       success: function (res) {
         if (res.confirm) {
           console.log('点击确认回调')
+          wx.request({
+            url: 'http://littleeyes.cn:8080/change-order-state', 
+            data: {
+                data:{
+                  "orderID": e.currentTarget.id,
+                  "orderState": "-1",
+                },
+                check:0
+            },
+            header: {
+              "content-Type": "application/json" 
+            },
+            method: "POST",
+            success: function (res) { 
+              console.info(res.data);
+            } 
+          })
         }
         else { 
          console.log('点击取消回调')
@@ -256,5 +287,5 @@ Page({
       }    
     })
   }
-  
+
 })

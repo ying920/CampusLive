@@ -63,22 +63,27 @@ Page({
   onShareAppMessage: function () {
 
   },
+
+
   formSubmit:function(e){
-    var self =this
     console.log(e.detail.value.newaddress)
+   
    wx.request({
       url: 'http://littleeyes.cn:8080/add-address', 
-      data: {
-        userID: "19990523",
-        userAddress: e.detail.value.newaddress
-      },
       header: {
-        "content-Type": "application/x-www-form-urlencoded" 
+        "content-Type": "application/json" 
       },
-      method: "POST",
-      complete: function( res ) { 
-        console.info(res);
+      data: {
+          data:{
+            "userID":"19990523",
+            "userAddress": e.detail.value.newaddress
+          },
+          check:0
+      },
 
+      method: "POST",
+      success: function (res) { 
+        console.info(res.data);
       } 
     })
       

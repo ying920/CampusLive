@@ -21,7 +21,7 @@ Page({
   onLoad: function (options) {
     var _this = this
     wx.request({
-      url: 'http://littleeyes.cn:8080/get-my-account/19990523',
+      url: 'http://littleeyes.cn:8080/get-my-account/'+'19990523',
       headers: {
         'Content-Type': 'application/json'
       },
