@@ -398,4 +398,40 @@ public class UserOrderController {
 
         return returnJson.toString();
     }
+
+
+    /**
+     * @author 林新宇
+     * @Phone 17810204868
+     * @email aomiga523@163.com
+     * @description 修改订单评分评价操作，POST请求json格式数据
+     * @param json 详见AddOrderRemarkJSON.txt
+     * @return json格式字符串 详见RAddOrderRemarkJSON.txt
+     * @throws JSONException  抛出JSON相关异常
+     */
+    @ResponseBody
+    @RequestMapping(value = "/add-order-remark", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    public String addOrderRemark(@RequestBody String json) throws JSONException{
+        JSONObject jsonObject = new JSONObject(json);
+        JSONObject dataJsonObject = jsonObject.getJSONObject("data");
+
+        int orderID = dataJsonObject.getInt("orderID");
+        String orderRemarkContent = dataJsonObject.getString("orderRemarkContent");
+        int orderScore = dataJsonObject.getInt("orderScore");
+
+
+        //创建返回Json对象
+        JSONObject returnJson = new JSONObject();
+
+        try{
+            userOrderMapper.addOrderRemark(orderID,orderRemarkContent,orderScore);
+        }catch (Exception e){
+            returnJson.put("msg","Modify userOrder failed!");
+            returnJson.put("check",MODIFY_ORDER_STATE_FAILED);
+            return returnJson.toString();
+        }
+        returnJson.put("msg","Modify userOrder successfully!");
+        returnJson.put("check",MODIFY_ORDER_STATE_SUCCESSFULLY);
+        return returnJson.toString();
+    }
 }
