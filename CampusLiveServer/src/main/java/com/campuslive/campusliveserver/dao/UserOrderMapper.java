@@ -105,4 +105,8 @@ public interface UserOrderMapper {
 
     @Select("select * from userOrder where serverID=#{serverID} and orderState=#{orderState}")
     List<UserOrder> getTheServerOrder(int serverID,int orderState);
+
+    //更改订单评论
+    @Update("update userOrder set orderRemarkContent=#{orderRemarkContent},orderScore=#{orderScore} where orderID=#{orderID}")
+    void addOrderRemark(int orderID, String orderRemarkContent,int orderScore);
 }

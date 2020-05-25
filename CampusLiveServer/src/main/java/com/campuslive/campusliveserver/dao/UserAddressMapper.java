@@ -23,6 +23,6 @@ public interface UserAddressMapper {
     List<UserAddress> getAddress(int userID);
 
     //增加用户地址
-    @Insert("insert into userAddress (userID,address) values (#{userID},#{address}")
+    @Insert("insert into userAddress (userID,address) values (#{userID},#{address})")
     void addUserAddress(int userID, String address);
 }
