@@ -3,4 +3,14 @@
     <string name="home_page_name">首页</string>
     <string name="take_order_page_name">接单</string>
     <string name="person_page_name">我的</string>
+    <string name="login_en">Login</string>
+    <string name="login_cn">登录</string>
+    <string name="register_en">Register</string>
+    <string name="register_cn">注册</string>
+    <string name="verification_code">验证码</string>
+    <string name="phone_num">手机号</string>
+    <string name="password">密码</string>
+    <string name="login_tip">若无账号，点此注册</string>
+    <string name="register_tip_2">未收到验证码？点此重新发送</string>
+    <string name="register_tip_1">点此获取验证码</string>
 </resources>
