@@ -1,0 +1,26 @@
+.weui-cells_after-title{
+  width: 92%;
+  margin:0 auto;
+  border:1px solid #ddd;
+  margin-top: 15px;
+}
+
+.btnSf{
+  width: 92%;
+  margin:30rpx auto;
+  
+}
+.btnSf button{
+    background: crimson;
+    color: #fff;
+}
+
+.itembox {
+  display: flex;
+  align-items: center;
+}
+
+.scorePin{
+  font-size:26rpx;
+  font-weight: 600;
+}

@@ -1,0 +1,49 @@
+<!--pages/MessageDetail/MessageDetail.wxml-->
+<view class="messageDetail">
+  
+  
+  <!-- 消息列表 -->
+  <scroll-view bindscrolltoupper="onMsgRefresh" id="dialog_list" scroll-y="{{true}}" scroll-with-animation='{{true}}' scroll-top='{{top_value}}'>
+    <!--单独一个对话-->
+    <view class="loading_view" wx:if="{{isLoading}}">
+      <image class="loading" src="/images/icons/loading.png"></image>
+      <text class="subtext">正在载入更多...</text>
+    </view>
+    <text class="subtext" style="margin-top: 40rpx; margin-bottom: 60rpx;" wx:if="{{noMore}}">没有更多了~</text>
+    <view class="singleDialog" wx:for="{{testMessageDetail.data}}" wx:key="item.content">
+      <!--显示时间-->
+      <text class="showTime" wx:if="{{item.showTime || sessionData.type === 'system' || sessionData.type === 'task'}}">{{item.string_time}}</text>
+      <view wx:if="{{sessionData.type === 'chat'}}">
+        <view wx:if="{{!item.self}}" class="left-box">
+          <image class="ava" src="{{item.target_user.avatar}}" />
+          <view class="details">
+            <text class="username" style="text-align:left;">{{item.target_user.nickname}}</text>
+            <text class="content" style="background-color:#ffffff;color:#252525;max-width:70%;">{{item.content}}</text>
+          </view>
+        </view>
+        <view wx:if="{{item.self}}" class="right-box">
+          <view class="details" style="align-items:flex-end;">
+            <text class="username" style="text-align:right;">{{item.target_user.nickname}}</text>
+            <text class="content" style="background-color:#def1fc;color:#252525;">{{item.content}}</text>
+          </view>
+          <image class="ava" src="{{item.target_user.avatar}}" />
+        </view>
+      </view>
+      <view wx:if="{{sessionData.type === 'system' || sessionData.type === 'task'}}" class='system-msg'>
+        <view>
+          <text class='system-title'>{{item.title}}</text>
+        </view>
+        <view>
+          <text class='system-content'>{{item.content}}</text>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>
+<!--发送信息-->
+<view wx:if="{{sessionData.type === 'chat' || status === 'detail'}}" class="mycomment comment_bottom">
+  <textarea class="comment_input" bindinput='replyInputChange' value='{{reply_content}}' cursor-spacing="40rpx" />
+  <image class="commit_btn" src="/images/icons/send.png" bindtap='submitRely' />
+</view>
+
+<view class="mask" catchtouchmove="preventTouchMove" bindtap="cancelReplying" wx:if="{{isReplying}}" />

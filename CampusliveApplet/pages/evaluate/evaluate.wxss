@@ -1,0 +1,36 @@
+.star {
+  width: 80rpx;
+  height: 80rpx;
+  margin: 0 5rpx;
+  vertical-align: middle;
+  margin-top: 15px;
+}
+
+.weui-cells_after-title{
+  width: 92%;
+  margin:15 auto;
+  border:1px solid #ddd;
+}
+
+.btnSf{
+  width: 92%;
+  margin:30rpx auto;
+  
+}
+.btnSf button{
+    background: crimson;
+    color: #fff;
+}
+
+.itembox {
+  display: flex;
+  align-items: center;
+}
+
+.scorePin{
+  font-size:35rpx;
+  font-weight: 600;
+  margin-top: 15px;
+}
+
+

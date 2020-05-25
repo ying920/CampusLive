@@ -1,0 +1,22 @@
+<view class="container">
+<view class='itembox'>
+  <view wx:for="{{imgs}}" wx:key="{{item.id}}" bindtap='select' data-index="{{item.id}}">
+    <image class="star" src="{{item.id>starId?src2:src1}}"></image>
+  </view>
+  <view class='scorePin'>{{starId}}.00</view>
+</view>
+
+<!--文本域  -->
+  <view class="weui-cells_after-title">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">
+        <textarea class="weui-textarea" bindinput="bindTextAreaChange" placeholder="我要提出建议..." style="height: 8em" value="{{info}}" maxlength="{{noteMaxLen}}" focus />
+        <view class="weui-textarea-counter">{{noteNowLen}}/{{noteMaxLen}}</view>
+      </view>
+    </view>
+  </view>
+<!--发布按钮  -->
+<view class="btnSf">
+<button bindtap="bindSubmit">发布</button>
+</view>
+</view>

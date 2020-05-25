@@ -1,0 +1,207 @@
+/* pages/messagelist/messagelist.wxss */
+
+#container {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+}
+
+#top {
+  text-align: center;
+}
+
+/*选择部分*/
+
+.sort-wrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  justify-items: center;
+  margin: 20rpx auto;
+  width: 80%;
+  background: #f6f6f6;
+  border-radius: 42rpx;
+}
+
+.sort-btn {
+  transition: all .2s;
+  display: flex;
+  font-size: 32rpx;
+  flex-direction: row;
+  flex: 1;
+  padding: 14rpx;
+  justify-content: center;
+  justify-items: center;
+}
+
+.nothing-box {
+  text-align: center;
+}
+
+.nothing-icon {
+  margin-top: 20%;
+  height: 128rpx;
+  width: 128rpx;
+}
+
+#list {
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+}
+
+/*管理列表*/
+
+.list_item {
+  display: flex;
+  flex-direction: row;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.item_img {
+  margin-top: 15rpx;
+  margin-left: 20rpx;
+  width: 96rpx;
+  height: 96rpx;
+  border-radius: 20rpx;
+  flex-shrink: 0;
+  margin-right: 10rpx;
+}
+
+/*分割线*/
+
+.band1 {
+  width: 100%;
+  height: 3rpx;
+  margin-top: 5rpx;
+  background: rgb(243, 243, 243);
+}
+
+/*分割线*/
+
+.band2 {
+  width: 100%;
+  height: 20rpx;
+  margin-top: 5rpx;
+  background: rgb(243, 243, 243);
+}
+
+.basic_info {
+  margin-left: 20rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.row_view {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+}
+
+/*用于主体*/
+
+.title {
+  margin-top: 18rpx;
+  font-size: 30rpx;
+  font-weight: bold;
+}
+
+.subtitle {
+  margin-top: 8rpx;
+  color: gray;
+  font-size: 28rpx;
+}
+
+.tab-select {
+  color: #fff;
+}
+
+.tab-title {
+  color: gray;
+}
+
+.tab-icon {
+  height: 32rpx;
+  width: 32rpx;
+  margin: 6rpx 16rpx;
+}
+
+.item-unread {
+  background: #f34b4b;
+  margin-top: 64rpx;
+  padding: 7rpx 14rpx;
+  font-size: 24rpx;
+  color: #fff;
+  border-radius: 14rpx;
+  position: absolute;
+  right: 20rpx;
+}
+
+.item_time {
+  font-size: 24rpx;
+  color: gray;
+  margin-top: 10rpx;
+  position: absolute;
+  right: 20rpx;
+}
+
+/*加载部分*/
+
+.loading_view {
+  margin-top: 20rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 60rpx;
+}
+
+.loading {
+  margin-right: 10rpx;
+  width: 45rpx;
+  height: 45rpx;
+  animation: animation 1s linear infinite;
+}
+
+@keyframes animation {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+.subtext {
+  color: gray;
+  font-size: 28rpx;
+}
+
+.mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: gray;
+  z-index: 500;
+  opacity: 0.7;
+}
+
+.gender-icon {
+  position: absolute;
+  height: 32rpx;
+  width: 32rpx;
+  flex-shrink: 0;
+  margin-top: 70rpx;
+  margin-left: 85rpx;
+}
+
+.sort-btn-select {
+  background: #85dbd0;
+  border-radius: 42rpx;
+}

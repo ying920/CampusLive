@@ -1,0 +1,18 @@
+<!--pages/orderDetail/orderDetail.wxml-->
+<view class='Title'>
+  <text >订单详情</text>
+</view>
+<view class='container'>
+  <!-- <view class='noDataView' hidden='{{noDataViewHidden}}'>{{noData}}</view> -->
+  <view class='orderList'> 
+    <view class='theOrderID'>订单编号：{{orderID}}</view>
+    <view class='thePrice'>价格¥：{{orderMoney}}</view>
+    <view class='theContent'>订单内容：{{orderContent}}</view>
+    <view class='theAddress'>配送地址：{{orderAddress}}</view>
+    <view class='theTime'>下单时间：{{orderTime}}</view>
+    <view class='theClientID'>客户ID：{{clientID}}</view>
+    <view class="flex-row">
+      <button class="button" bindtap="confirm" data-arg="">确认接单</button>
+    </view>
+  </view>
+</view>

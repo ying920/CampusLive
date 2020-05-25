@@ -1,0 +1,176 @@
+<!-- 切换栏 -->
+<view class="swiper-tab">
+  <block wx:for="{{swipertab}}" wx:key="sptab">
+    <view class="swiper-tab-list {{currtab == item.index ? 'on' : ''}}" data-current="{{item.index}}" bindtap="tabSwitch">{{item.name}}</view>
+  </block>
+</view>
+
+<swiper current="{{currtab}}" class="swiper-box" duration="300" style="height:{{deviceH-31}}px" bindchange="tabChange">
+  <!-- 完成 -->
+  <swiper-item>
+    <scroll-view class="hot-box" scroll-y="true">
+      <view  class="orderDetails" wx:for="{{alreadyOrder}}" wx:key=" ">
+        <view class="orderListTitle">
+          <text class="userName">{{item.clientID}}</text>
+          <text class="orderStatus">{{item.orderState}}</text>
+        </view>
+        <view class="orderListDetails">
+
+          <view class="productInfo">
+          <text class="productContent">{{item.orderContent}}</text>
+            <view class="productTitle">预定时间: {{item.orderTime}}</view>
+          </view>
+        </view>
+
+        <view class="productCount">
+          <view>
+            <text>合计：￥{{item.orderMoney}}</text>
+          </view>
+        </view>
+        <view class='button'>
+          <button class='button1' type='primary' size="mini" bindtap="evaluate" id="{{item.orderID}}">评价</button>
+          <button class='button2' type='primary' size="mini" bindtap="complain" id="{{item.orderID}}">投诉</button>
+        </view>
+      </view>
+    </scroll-view>
+  </swiper-item>
+
+  <!-- 待付款 -->
+  <swiper-item>
+    <scroll-view class="hot-box" scroll-y="true">
+      <view class="orderDetails" wx:for="{{waitPayOrder}}" wx:key=" ">
+         <view class="orderListTitle">
+          <text class="userName">{{item.clientID}}</text>
+          <text class="orderStatus">{{item.orderState}}</text>
+        </view>
+        <view class="orderListDetails">
+
+          <view class="productInfo">
+          <text class="productContent">{{item.orderContent}}</text>
+            <view class="productTitle">预定时间: {{item.orderTime}}</view>
+          </view>
+        </view>
+
+        <view class="productCount">
+          <view>
+            <text>合计：￥{{item.orderMoney}}</text>
+          </view>
+        </view>
+        <view class='button'>
+          <button class='button1' type='primary' size="mini" bindtap="topay" id="{{item.orderID}}">付款</button>
+          <button class='button2' type='primary' size="mini" bindtap="cancel" id="{{item.orderID}}">取消</button>
+        </view>
+      </view>
+    </scroll-view>
+  </swiper-item>
+
+	  <!-- 待接单 -->
+  <swiper-item>
+    <scroll-view class="hot-box" scroll-y="true">
+      <view  class="orderDetails" wx:for="{{waittakeOrder}}" wx:key=" ">
+         <view class="orderListTitle">
+          <text class="userName">{{item.clientID}}</text>
+          <text class="orderStatus">{{item.orderState}}</text>
+        </view>
+        <view class="orderListDetails">
+
+          <view class="productInfo">
+            <text class="productContent">{{item.orderContent}}</text>
+            <view class="productTitle">预定时间: {{item.orderTime}}</view>
+          </view>
+        </view>
+
+        <view class="productCount">
+          <view>
+            <text>合计：￥{{item.orderMoney}}</text>
+          </view>
+        </view>
+        <view class='button'>
+          <button class='button1' type='primary' size="mini" bindtap="cancel" id="{{item.orderID}}">取消</button>
+        </view>
+      </view>
+    </scroll-view>
+  </swiper-item>
+
+  	  <!-- 已接单 -->
+  <swiper-item>
+    <scroll-view class="hot-box" scroll-y="true">
+      <view  class="orderDetails" wx:for="{{takeOrder}}" wx:key=" ">
+         <view class="orderListTitle">
+          <text class="userName">{{item.clientID}}</text>
+        </view>
+        <view class="orderListDetails">
+
+          <view class="productInfo">
+            <text class="productContent">{{item.orderContent}}</text>
+            <view class="productTitle">预定时间: {{item.orderTime}}</view>
+          </view>
+        </view>
+
+        <view class="productCount">
+          <view>
+            <text>合计：￥{{item.orderMoney}}</text>
+          </view>
+        </view>
+       <view class='button'>
+          <button class='button1' type='primary' size="mini" bindtap="complete" id="{{item.orderID}}">完成</button>
+        </view>
+      </view>
+    </scroll-view>
+  </swiper-item>
+
+	  <!-- 待收货 -->
+  <swiper-item>
+    <scroll-view class="hot-box" scroll-y="true">
+      <view  class="orderDetails" wx:for="{{waitreceiveOrder}}" wx:key=" ">
+        <view class="orderListTitle">
+          <text class="userName">{{item.clientID}}</text>
+          <text class="orderStatus">{{item.orderState}}</text>
+        </view>
+        <view class="orderListDetails">
+
+          <view class="productInfo">
+            <text class="productContent">{{item.orderContent}}</text>
+            <view class="productTitle">预定时间: {{item.orderTime}}</view>
+          </view>
+        </view>
+
+        <view class="productCount">
+          <view>
+            <text>合计：￥{{item.orderMoney}}</text>
+          </view>
+        </view>
+        <view class='button'>
+          <button class='button1' type='primary' size="mini" bindtap="receive" id="{{item.orderID}}">收货</button>
+        </view>
+      </view>      
+    </scroll-view>
+  </swiper-item>
+
+  <!-- 取消 -->
+  <swiper-item>
+    <scroll-view class="hot-box" scroll-y="true">
+      <view class="orderDetails" wx:for="{{lostOrder}}" wx:key=" ">
+         <view class="orderListTitle">
+          <text class="userName">{{item.clientID}}</text>
+          <text class="orderStatus">{{item.orderState}}</text>
+        </view>
+        <view class="orderListDetails">
+
+          <view class="productInfo">
+            <text class="productContent">{{item.orderContent}}</text>
+            <view class="productTitle">预定时间: {{item.orderTime}}</view>
+          </view>
+        </view>
+
+        <view class="productCount">
+          <view>
+            <text>合计：￥{{item.orderMoney}}</text>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </swiper-item>
+
+</swiper>
+
