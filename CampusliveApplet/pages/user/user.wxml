@@ -1,3 +1,0 @@
-<!--miniprogram/pages/user/user.wxml-->
-<text>欢迎{{username}}</text>
-
