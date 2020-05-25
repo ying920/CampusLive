@@ -240,54 +240,63 @@ public class UserOrderController {
 
         try {
 
-            //获取已下单，未接单订单
-            JSONArray missedOrderJsonArray = new JSONArray();
-            List<UserOrder> missedOrderList = userOrderMapper.getMyMissedOrder(clientID);
-            for (UserOrder userOrder : missedOrderList) {
-                JSONObject missedOrderJson = new JSONObject(userOrder.toString());
-                missedOrderJsonArray.put(missedOrderJson);
-            }
-            returnDataJson.put("MissedOrder", missedOrderJsonArray);
-
             //获取订单取消订单
             JSONArray canceledOrderJsonArray = new JSONArray();
-            List<UserOrder> canceledOrderList = userOrderMapper.getMyCanceledOrder(clientID);
+            List<UserOrder> canceledOrderList = userOrderMapper.getTheOrder(clientID,ORDER_CANCELED);
             for (UserOrder userOrder : canceledOrderList) {
                 JSONObject cancelOrderJson = new JSONObject(userOrder.toString());
                 canceledOrderJsonArray.put(cancelOrderJson);
             }
             returnDataJson.put("CanceledOrder", canceledOrderJsonArray);
 
-            //获取已接单，未完成订单
-            JSONArray receivedOrderJsonArray = new JSONArray();
-            List<UserOrder> receivedOrderList = userOrderMapper.getMyReceivedOrder(clientID);
-            for (UserOrder userOrder : receivedOrderList) {
-                JSONObject receivedOrderJson = new JSONObject(userOrder.toString());
-                receivedOrderJsonArray.put(receivedOrderJson);
+            //获取已下单,未付款订单
+            JSONArray missedOrderJsonArray = new JSONArray();
+            List<UserOrder> missedOrderList = userOrderMapper.getTheOrder(clientID,ORDER_DEFAULT);
+            for (UserOrder userOrder : missedOrderList) {
+                JSONObject missedOrderJson = new JSONObject(userOrder.toString());
+                missedOrderJsonArray.put(missedOrderJson);
             }
-            returnDataJson.put("ReceivedOrder", receivedOrderJsonArray);
+            returnDataJson.put("MissedOrder", missedOrderJsonArray);
 
-            //获取已完成，未付款订单
-            JSONArray finishedOrderJsonArray = new JSONArray();
-            List<UserOrder> finishedOrderList = userOrderMapper.getMyFinishedOrder(clientID);
-            for (UserOrder userOrder : finishedOrderList) {
-                JSONObject finishedOrderJson = new JSONObject(userOrder.toString());
-                finishedOrderJsonArray.put(finishedOrderJson);
-            }
-            returnDataJson.put("FinishedOrder", finishedOrderJsonArray);
-
-            //获取已付款，未评分订单
+            //获取已付款，未接单订单
             JSONArray paidOrderJsonArray = new JSONArray();
-            List<UserOrder> paidOrderList = userOrderMapper.getMyPaidOrder(clientID);
+            List<UserOrder> paidOrderList = userOrderMapper.getTheOrder(clientID,ORDER_PAID);
             for (UserOrder userOrder : paidOrderList) {
                 JSONObject paidOrderJson = new JSONObject(userOrder.toString());
                 paidOrderJsonArray.put(paidOrderJson);
             }
             returnDataJson.put("PaidOrder", paidOrderJsonArray);
 
+            //获取已接单,未完成订单
+            JSONArray receivedOrderJsonArray = new JSONArray();
+            List<UserOrder> receivedOrderList = userOrderMapper.getTheOrder(clientID,ORDER_RECEIVED);
+            for (UserOrder userOrder : receivedOrderList) {
+                JSONObject receivedOrderJson = new JSONObject(userOrder.toString());
+                receivedOrderJsonArray.put(receivedOrderJson);
+            }
+            returnDataJson.put("ReceivedOrder", receivedOrderJsonArray);
+
+            //获取已完成,未收货订单
+            JSONArray finishedOrderJsonArray = new JSONArray();
+            List<UserOrder> finishedOrderList = userOrderMapper.getTheOrder(clientID,ORDER_FINISHED);
+            for (UserOrder userOrder : finishedOrderList) {
+                JSONObject finishedOrderJson = new JSONObject(userOrder.toString());
+                finishedOrderJsonArray.put(finishedOrderJson);
+            }
+            returnDataJson.put("FinishedOrder", finishedOrderJsonArray);
+
+            //获取已收货,未评价订单
+            JSONArray getOrderJsonArray = new JSONArray();
+            List<UserOrder> getOrderList = userOrderMapper.getTheOrder(clientID,ORDER_GET);
+            for (UserOrder userOrder : getOrderList) {
+                JSONObject getOrderJson = new JSONObject(userOrder.toString());
+                getOrderJsonArray.put(getOrderJson);
+            }
+            returnDataJson.put("GetOrder", getOrderJsonArray);
+
             //获取已评分，无问题订单
             JSONArray markedOrderJsonArray = new JSONArray();
-            List<UserOrder> markedOrderList = userOrderMapper.getMyMarkedOrder(clientID);
+            List<UserOrder> markedOrderList = userOrderMapper.getTheOrder(clientID,ORDER_MARKED);
             for (UserOrder userOrder : markedOrderList) {
                 JSONObject markedOrderJson = new JSONObject(userOrder.toString());
                 markedOrderJsonArray.put(markedOrderJson);
@@ -296,7 +305,7 @@ public class UserOrderController {
 
             //获取需要售后订单
             JSONArray afterSaleOrderJsonArray = new JSONArray();
-            List<UserOrder> afterSaleOrderList = userOrderMapper.getMyAfterSaleOrder(clientID);
+            List<UserOrder> afterSaleOrderList = userOrderMapper.getTheOrder(clientID,ORDER_AFTER_SALE);
             for (UserOrder userOrder : afterSaleOrderList) {
                 JSONObject afterSaleOrderJson = new JSONObject(userOrder.toString());
                 afterSaleOrderJsonArray.put(afterSaleOrderJson);
@@ -335,25 +344,25 @@ public class UserOrderController {
         try {
             //获取已接单，未完成订单
             JSONArray receivedServerOrderJsonArray = new JSONArray();
-            List<UserOrder> receivedServerOrderList = userOrderMapper.getMyReceivedServerOrder(serverID);
+            List<UserOrder> receivedServerOrderList = userOrderMapper.getTheServerOrder(serverID,ORDER_RECEIVED);
             for (UserOrder userOrder : receivedServerOrderList) {
                 JSONObject receivedServerOrderJson = new JSONObject(userOrder.toString());
                 receivedServerOrderJsonArray.put(receivedServerOrderJson);
             }
             returnDataJson.put("ReceivedServerOrder", receivedServerOrderJsonArray);
 
-            //获取已完成，未付款订单
+            //获取已完成,未收货订单
             JSONArray finishedServerOrderJsonArray = new JSONArray();
-            List<UserOrder> finishedServerOrderList = userOrderMapper.getMyFinishedServerOrder(serverID);
+            List<UserOrder> finishedServerOrderList = userOrderMapper.getTheServerOrder(serverID,ORDER_FINISHED);
             for (UserOrder userOrder : finishedServerOrderList) {
                 JSONObject finishedServerOrderJson = new JSONObject(userOrder.toString());
                 finishedServerOrderJsonArray.put(finishedServerOrderJson);
             }
             returnDataJson.put("FinishedServerOrder", finishedServerOrderJsonArray);
 
-            //获取已付款，未评分订单
+            //获取已收货,未评价订单
             JSONArray paidServerOrderJsonArray = new JSONArray();
-            List<UserOrder> paidServerOrderList = userOrderMapper.getMyPaidServerOrder(serverID);
+            List<UserOrder> paidServerOrderList = userOrderMapper.getTheServerOrder(serverID,ORDER_GET);
             for (UserOrder userOrder : paidServerOrderList) {
                 JSONObject paidServerOrderJson = new JSONObject(userOrder.toString());
                 paidServerOrderJsonArray.put(paidServerOrderJson);
@@ -362,7 +371,7 @@ public class UserOrderController {
 
             //获取已评分，无问题订单
             JSONArray markedServerOrderJsonArray = new JSONArray();
-            List<UserOrder> markedServerOrderList = userOrderMapper.getMyMarkedServerOrder(serverID);
+            List<UserOrder> markedServerOrderList = userOrderMapper.getTheServerOrder(serverID,ORDER_MARKED);
             for (UserOrder userOrder : markedServerOrderList) {
                 JSONObject markedServerOrderJson = new JSONObject(userOrder.toString());
                 markedServerOrderJsonArray.put(markedServerOrderJson);
@@ -371,7 +380,7 @@ public class UserOrderController {
 
             //获取需要售后订单
             JSONArray afterSaleServerOrderJsonArray = new JSONArray();
-            List<UserOrder> afterSaleServerOrderList = userOrderMapper.getMyAfterSaleServerOrder(serverID);
+            List<UserOrder> afterSaleServerOrderList = userOrderMapper.getTheServerOrder(serverID,ORDER_AFTER_SALE);
             for (UserOrder userOrder : afterSaleServerOrderList) {
                 JSONObject afterSaleServerOrderJson = new JSONObject(userOrder.toString());
                 afterSaleServerOrderJsonArray.put(afterSaleServerOrderJson);

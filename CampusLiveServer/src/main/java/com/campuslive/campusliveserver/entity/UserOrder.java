@@ -9,15 +9,16 @@ package com.campuslive.campusliveserver.entity;
 
 public class UserOrder {
     //定义订单状态
-    //state=0 -> 订单已下单,未接单, state=-1 -> 订单取消, state=1 -> 订单已结单,未完成, state=2 -> 订单已完成,未付款
-    //state=3 -> 订单已付款,未评分, state=4 -> 订单已评分,无问题, state=5 -> 订单需售后或投诉
-    static public int ORDER_DEFAULT = 0;
+    //state=-1 -> 订单取消, state=1 -> 订单已下单,未付款, state=2 -> 订单已付款，未接单, state=3 -> 订单已接单,未完成, state=4 -> 订单已完成,未收货
+    //state=5 -> 订单已收货,未评价, state=6 -> 订单已评分,无问题, state=7 -> 订单需售后或投诉
     static public int ORDER_CANCELED = -1;
-    static public int ORDER_RECEIVED = 1;
-    static public int ORDER_FINISHED = 2;
-    static public int ORDER_PAID = 3;
-    static public int ORDER_MARKED = 4;
-    static public int ORDER_AFTER_SALE = 5;
+    static public int ORDER_DEFAULT = 1;
+    static public int ORDER_PAID = 2;
+    static public int ORDER_RECEIVED = 3;
+    static public int ORDER_FINISHED = 4;
+    static public int ORDER_GET = 5;
+    static public int ORDER_MARKED = 6;
+    static public int ORDER_AFTER_SALE = 7;
 
     //定义创建订单操作结果
     //state=0 -> 创建成功, state=-1 -> 订单创建失败
