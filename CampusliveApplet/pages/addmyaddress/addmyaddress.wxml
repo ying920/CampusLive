@@ -1,0 +1,13 @@
+<!--miniprogram/pages/addmyaddress/addmyaddress.wxml-->
+<!-- 我的地址中添加新地址 -->
+<view class='container'>
+<form  bindsubmit="formSubmit">
+<view>
+<text>请输入新地址：</text>
+<input name="newaddress" />
+</view>
+<view class='button'>
+<button type='primary' form-type='submit'>确认</button>
+</view>
+</form>
+</view>

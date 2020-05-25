@@ -1,0 +1,50 @@
+/* pages/mypage/mypage.wxss */
+
+
+.avatar-wrapper {
+  background-color: crimson;
+  padding: 25px 0;
+}
+
+.avatar-wrapper .avatar {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.avatar-wrapper .avatar image {
+  width: 100px;
+  height: 100px;
+}
+
+.avatar-wrapper .text {
+  text-align: center;
+  color: #fff;
+}
+
+.listimg image {
+  margin-right: 5px;
+  margin-left: 8px;
+  vertical-align: middle;
+  width: 20px;
+  height: 20px;
+}
+
+.content{
+  display: flex;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+/*分割线样式*/
+.divLine{
+ background: #E0E3DA;
+ width: 100%;
+ height: 5rpx;
+}
+
+.arrows image {
+  vertical-align: middle;
+  width: 15px;
+  height: 15px;
+  margin-left: 500rpx;
+}
