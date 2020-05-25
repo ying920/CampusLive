@@ -45,7 +45,7 @@ public class User {
     private String userName;
     private String userSchool;
     private int userAge;
-    private int userPhone;
+    private String userPhone;
     private String userMail;
     private String userWechat;
     private double userBalance;
@@ -98,11 +98,11 @@ public class User {
         this.userAge = userAge;
     }
 
-    public int getUserPhone() {
+    public String getUserPhone() {
         return userPhone;
     }
 
-    public void setUserPhone(int userPhone) {
+    public void setUserPhone(String userPhone) {
         this.userPhone = userPhone;
     }
 
