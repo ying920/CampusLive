@@ -27,8 +27,8 @@ public class UserOrder {
 
     //定义修改订单状态操作结果
     //state=0 -> 修改成功, state=-1 -> 订单修改失败
-    static public int MODIFY_ORDER_STATE_SUCCESSFULLY = 0;
-    static public int MODIFY_ORDER_STATE_FAILED = -1;
+    static public int MODIFY_ORDER_SUCCESSFULLY = 0;
+    static public int MODIFY_ORDER_FAILED = -1;
 
     //定义查询订单状态操作结果
     //state=0 -> 查询成功, state=-1 -> 订单查询失败

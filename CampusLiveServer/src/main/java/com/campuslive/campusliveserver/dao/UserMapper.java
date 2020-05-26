@@ -42,4 +42,13 @@ public interface UserMapper {
     //获取指定用户个人信息
     @Select("select * from user where userID=#{userID}")
     User getMyAccount(int userID);
+
+    //获取账户余额
+    @Select("select userBalance from user where userID=#{userID}")
+    double getUserBalance(int userID);
+
+    //修改账户余额
+    @Update("update user set userBalance=userBalance+#{balance} where userID=#{userID}")
+    void modifyUserBalance(int userID,double balance);
+
 }

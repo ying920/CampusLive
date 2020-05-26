@@ -29,19 +29,6 @@ public class UserController {
         this.studentMapper = studentMapper;
     }
 
-//    //form提交形式
-//    //验证账号密码
-//    @PostMapping(value="/login")
-//    public String login(@RequestParam("userID") int userID,
-//                        @RequestParam("userPsd") String userPsd) {
-//        User user = new User();
-//        user.setUserID(userID);
-//        user.setUserPsd(userPsd);
-//        System.out.printf(userID+userPsd);
-//        userMapper.add(user);
-//        return "id:"+userID+", Psd:"+userPsd;
-//    }
-
     //json形式
 
     /**
@@ -93,6 +80,7 @@ public class UserController {
         User user = new User();
         user.setUserID(userID);
         user.setUserType(0);
+        user.setUserBalance(0);
         //1-Android产生密码
         if(check==1){
             user.setUserPsd(userPsd);
@@ -168,12 +156,42 @@ public class UserController {
      * @throws JSONException 抛出JSON相关异常
      */
     @RequestMapping(value="/get-my-account/{userID}", method= RequestMethod.GET)
-    public String getAllMyOrder(@PathVariable int userID) throws JSONException{
+    public String getMyAccount(@PathVariable int userID) throws JSONException{
         //创建返回Json对象
         JSONObject returnJson = new JSONObject();
 
         try {
             JSONObject returnDataJson = new JSONObject(userMapper.getMyAccount(userID).toString());
+            returnJson.put("data", returnDataJson);
+            returnJson.put("msg", "Query user successfully!");
+            returnJson.put("check", QUERY_USER_SUCCESSFULLY);
+        }catch (Exception e){
+            returnJson.put("data",null);
+            returnJson.put("msg","Query user failed!");
+            returnJson.put("check",QUERY_USER_FAILED);
+        }
+        return returnJson.toString();
+    }
+
+    /**
+     * @author 林新宇
+     * @Phone 17810204868
+     * @email aomiga523@163.com
+     * @description 查询个人账户操作，GET请求
+     * @param userID GET传入参数
+     * @return json格式字符串 详见RGetUserBalanceJSON.txt
+     * @throws JSONException 抛出JSON相关异常
+     */
+    @RequestMapping(value="/get-user-balance/{userID}", method= RequestMethod.GET)
+    public String getUserBalance(@PathVariable int userID) throws JSONException{
+        //创建返回Json对象
+        JSONObject returnJson = new JSONObject();
+
+        try {
+            JSONObject returnDataJson = new JSONObject();
+            double userBalance = userMapper.getUserBalance(userID);
+            returnDataJson.put("userID",userID);
+            returnDataJson.put("userBalance",userBalance);
             returnJson.put("data", returnDataJson);
             returnJson.put("msg", "Query user successfully!");
             returnJson.put("check", QUERY_USER_SUCCESSFULLY);
