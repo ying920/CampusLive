@@ -51,4 +51,8 @@ public interface UserMapper {
     @Update("update user set userBalance=userBalance+#{balance} where userID=#{userID}")
     void modifyUserBalance(int userID,double balance);
 
+    //修改用户评分
+    @Update("update user set userCredit=#{userCredit} where userID=#{userID}")
+    void modifyUserCredit(int userID,double userCredit);
+
 }

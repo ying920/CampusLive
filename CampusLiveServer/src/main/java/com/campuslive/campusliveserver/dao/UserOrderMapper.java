@@ -71,4 +71,8 @@ public interface UserOrderMapper {
     //更改订单评论
     @Update("update userOrder set orderRemarkContent=#{orderRemarkContent},orderScore=#{orderScore} where orderID=#{orderID}")
     void addOrderRemark(int orderID, String orderRemarkContent,int orderScore);
+
+    //获取相应服务者订单评分的平均值
+    @Select("select avg(orderScore) from userOrder where serverID=#{serverID} and orderState=6")
+    double getUserCredit(int serverID);
 }
