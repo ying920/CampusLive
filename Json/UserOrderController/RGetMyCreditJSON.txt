@@ -1,0 +1,8 @@
+{
+    "msg": "Query user successfully!",
+    "data": {
+        "userCredit": 5,
+        "userID": 19990518
+    },
+    "check": 0
+}

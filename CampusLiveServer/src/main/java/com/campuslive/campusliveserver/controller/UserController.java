@@ -2,15 +2,13 @@ package com.campuslive.campusliveserver.controller;
 
 import com.campuslive.campusliveserver.dao.StudentMapper;
 import com.campuslive.campusliveserver.dao.UserMapper;
+import com.campuslive.campusliveserver.dao.UserOrderMapper;
 import com.campuslive.campusliveserver.entity.User;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.web.bind.annotation.*;
 
 import static com.campuslive.campusliveserver.entity.User.*;
-import static com.campuslive.campusliveserver.entity.UserOrder.QUERY_ORDER_FAILED;
-import static com.campuslive.campusliveserver.entity.UserOrder.QUERY_ORDER_SUCCESSFULLY;
 
 /**
  * @author 林新宇
@@ -23,24 +21,13 @@ import static com.campuslive.campusliveserver.entity.UserOrder.QUERY_ORDER_SUCCE
 public class UserController {
     private final UserMapper userMapper;
     private final StudentMapper studentMapper;
+    private final UserOrderMapper userOrderMapper;
 
-    public UserController(UserMapper userMapper, StudentMapper studentMapper) {
+    public UserController(UserMapper userMapper, StudentMapper studentMapper, UserOrderMapper userOrderMapper) {
         this.userMapper = userMapper;
         this.studentMapper = studentMapper;
+        this.userOrderMapper = userOrderMapper;
     }
-
-//    //form提交形式
-//    //验证账号密码
-//    @PostMapping(value="/login")
-//    public String login(@RequestParam("userID") int userID,
-//                        @RequestParam("userPsd") String userPsd) {
-//        User user = new User();
-//        user.setUserID(userID);
-//        user.setUserPsd(userPsd);
-//        System.out.printf(userID+userPsd);
-//        userMapper.add(user);
-//        return "id:"+userID+", Psd:"+userPsd;
-//    }
 
     //json形式
 
@@ -93,6 +80,7 @@ public class UserController {
         User user = new User();
         user.setUserID(userID);
         user.setUserType(0);
+        user.setUserBalance(0);
         //1-Android产生密码
         if(check==1){
             user.setUserPsd(userPsd);
@@ -168,12 +156,74 @@ public class UserController {
      * @throws JSONException 抛出JSON相关异常
      */
     @RequestMapping(value="/get-my-account/{userID}", method= RequestMethod.GET)
-    public String getAllMyOrder(@PathVariable int userID) throws JSONException{
+    public String getMyAccount(@PathVariable int userID) throws JSONException{
         //创建返回Json对象
         JSONObject returnJson = new JSONObject();
 
         try {
             JSONObject returnDataJson = new JSONObject(userMapper.getMyAccount(userID).toString());
+            returnJson.put("data", returnDataJson);
+            returnJson.put("msg", "Query user successfully!");
+            returnJson.put("check", QUERY_USER_SUCCESSFULLY);
+        }catch (Exception e){
+            returnJson.put("data",null);
+            returnJson.put("msg","Query user failed!");
+            returnJson.put("check",QUERY_USER_FAILED);
+        }
+        return returnJson.toString();
+    }
+
+    /**
+     * @author 林新宇
+     * @Phone 17810204868
+     * @email aomiga523@163.com
+     * @description 查询个人账户操作，GET请求
+     * @param userID GET传入参数
+     * @return json格式字符串 详见RGetUserBalanceJSON.txt
+     * @throws JSONException 抛出JSON相关异常
+     */
+    @RequestMapping(value="/get-user-balance/{userID}", method= RequestMethod.GET)
+    public String getUserBalance(@PathVariable int userID) throws JSONException{
+        //创建返回Json对象
+        JSONObject returnJson = new JSONObject();
+
+        try {
+            JSONObject returnDataJson = new JSONObject();
+            double userBalance = userMapper.getUserBalance(userID);
+            returnDataJson.put("userID",userID);
+            returnDataJson.put("userBalance",userBalance);
+            returnJson.put("data", returnDataJson);
+            returnJson.put("msg", "Query user successfully!");
+            returnJson.put("check", QUERY_USER_SUCCESSFULLY);
+        }catch (Exception e){
+            returnJson.put("data",null);
+            returnJson.put("msg","Query user failed!");
+            returnJson.put("check",QUERY_USER_FAILED);
+        }
+        return returnJson.toString();
+    }
+
+    /**
+     * @author 林新宇
+     * @Phone 17810204868
+     * @email aomiga523@163.com
+     * @description 获取用户的评分状态，GET请求
+     * @param userID GET传入参数
+     * @return json格式字符串 详见RMyCreditJSON.txt
+     * @throws JSONException 抛出JSON相关异常
+     */
+    @RequestMapping(value="/get-my-credit/{userID}", method= RequestMethod.GET)
+    public String getMyCredit(@PathVariable int userID) throws JSONException{
+        //创建返回Json对象
+        JSONObject returnJson = new JSONObject();
+
+        try {
+            JSONObject returnDataJson = new JSONObject();
+            double userCredit = userOrderMapper.getUserCredit(userID);
+            userMapper.modifyUserCredit(userID,userCredit);
+            returnDataJson.put("userID",userID);
+            returnDataJson.put("userCredit",userCredit);
+
             returnJson.put("data", returnDataJson);
             returnJson.put("msg", "Query user successfully!");
             returnJson.put("check", QUERY_USER_SUCCESSFULLY);

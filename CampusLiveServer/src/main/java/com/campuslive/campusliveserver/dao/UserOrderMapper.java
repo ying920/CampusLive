@@ -45,7 +45,7 @@ public interface UserOrderMapper {
     UserOrder getOrder(int orderID);
 
     //获取所有未接单订单信息
-    @Select("select * from userOrder where orderState=1")
+    @Select("select * from userOrder where orderState=2")
     List<UserOrder> getAllMissedOrder();
 
     //获取指定用户所有订单信息
@@ -55,58 +55,24 @@ public interface UserOrderMapper {
 //    //获取指定用户未接单订单信息
 //    @Select("select * from userOrder where clientID=#{clientID} and orderState=0")
 //    List<UserOrder> getMyMissedOrder(int clientID);
-//
-//    //获取指定用户已取消订单信息
-//    @Select("select * from userOrder where clientID=#{clientID} and orderState=-1")
-//    List<UserOrder> getMyCanceledOrder(int clientID);
-//
-//    //获取指定用户未接单订单信息
-//    @Select("select * from userOrder where clientID=#{clientID} and orderState=1")
-//    List<UserOrder> getMyReceivedOrder(int clientID);
-//
-//    //获取指定用户已完成订单信息
-//    @Select("select * from userOrder where clientID=#{clientID} and orderState=2")
-//    List<UserOrder> getMyFinishedOrder(int clientID);
-//
-//    //获取指定用户已付款订单信息
-//    @Select("select * from userOrder where clientID=#{clientID} and orderState=3")
-//    List<UserOrder> getMyPaidOrder(int clientID);
-//
-//    //获取指定用户已评分订单信息
-//    @Select("select * from userOrder where clientID=#{clientID} and orderState=4")
-//    List<UserOrder> getMyMarkedOrder(int clientID);
-//
-//    //获取指定用户售后订单信息
-//    @Select("select * from userOrder where clientID=#{clientID} and orderState=5")
-//    List<UserOrder> getMyAfterSaleOrder(int clientID);
 
+    //获取指定下单者指定状态订单
     @Select("select * from userOrder where clientID=#{clientID} and orderState=#{orderState}")
     List<UserOrder> getTheOrder(int clientID,int orderState);
 
 //    //获取指定服务用户未接单订单信息
 //    @Select("select * from userOrder where serverID=#{serverID} and orderState=1")
 //    List<UserOrder> getMyReceivedServerOrder(int serverID);
-//
-//    //获取指定服务用户已完成订单信息
-//    @Select("select * from userOrder where serverID=#{serverID} and orderState=2")
-//    List<UserOrder> getMyFinishedServerOrder(int serverID);
-//
-//    //获取指定服务用户已付款订单信息
-//    @Select("select * from userOrder where serverID=#{serverID} and orderState=3")
-//    List<UserOrder> getMyPaidServerOrder(int serverID);
-//
-//    //获取指定服务用户已评分订单信息
-//    @Select("select * from userOrder where serverID=#{serverID} and orderState=4")
-//    List<UserOrder> getMyMarkedServerOrder(int serverID);
-//
-//    //获取指定用户售后订单信息
-//    @Select("select * from userOrder where serverID=#{serverID} and orderState=5")
-//    List<UserOrder> getMyAfterSaleServerOrder(int serverID);
 
+    //获取指定服务者指定状态订单
     @Select("select * from userOrder where serverID=#{serverID} and orderState=#{orderState}")
     List<UserOrder> getTheServerOrder(int serverID,int orderState);
 
     //更改订单评论
     @Update("update userOrder set orderRemarkContent=#{orderRemarkContent},orderScore=#{orderScore} where orderID=#{orderID}")
     void addOrderRemark(int orderID, String orderRemarkContent,int orderScore);
+
+    //获取相应服务者订单评分的平均值
+    @Select("select avg(orderScore) from userOrder where serverID=#{serverID} and orderState=6")
+    double getUserCredit(int serverID);
 }

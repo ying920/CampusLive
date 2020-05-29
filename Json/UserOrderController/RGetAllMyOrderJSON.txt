@@ -3,18 +3,17 @@
     "msg": "Get all order successfully!",
     "data": {
         "ReceivedOrder": [],
-        "GetOrder": [],
         "PaidOrder": [],
         "MissedOrder": [
             {
                 "orderType": "1",
-                "orderScore": "0",
+                "orderScore": "5",
                 "orderAddress": "逸夫楼815",
-                "orderTime": "2020-05-13 16:31:29",
+                "orderTime": "2020-05-25 23:21:33",
                 "clientID": "19990523",
                 "orderMoney": "3.0",
                 "orderID": "1000000001",
-                "orderRemarkContent": "null",
+                "orderRemarkContent": "hao",
                 "orderReserveTime": "null",
                 "serverID": "19990208",
                 "orderState": "1",
@@ -22,23 +21,37 @@
             },
             {
                 "orderType": "1",
-                "orderScore": "0",
+                "orderScore": "5",
                 "orderAddress": "逸夫楼815",
-                "orderTime": "2020-05-11 19:22:07",
+                "orderTime": "2020-05-25 22:57:26",
                 "clientID": "19990523",
                 "orderMoney": "3.0",
-                "orderID": "1000000003",
-                "orderRemarkContent": "null",
+                "orderID": "1000000002",
+                "orderRemarkContent": "bjtu-q",
                 "orderReserveTime": "null",
-                "serverID": "0",
+                "serverID": "19990518",
                 "orderState": "1",
                 "orderContent": "西门取快递"
             }
         ],
-        "AfterSaleOrder": [],
         "CanceledOrder": [],
         "FinishedOrder": [],
-        "MarkedOrder": []
+        "OtherOrder": [
+            {
+                "orderType": "1",
+                "orderScore": "5",
+                "orderAddress": "逸夫楼815",
+                "orderTime": "2020-05-25 20:34:01",
+                "clientID": "19990523",
+                "orderMoney": "3.0",
+                "orderID": "1000000003",
+                "orderRemarkContent": "bjtu-2",
+                "orderReserveTime": "null",
+                "serverID": "0",
+                "orderState": "7",
+                "orderContent": "西门取快递"
+            }
+        ]
     },
     "check": 0
 }
