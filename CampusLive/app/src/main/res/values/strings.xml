@@ -13,4 +13,9 @@
     <string name="login_tip">若无账号，点此注册</string>
     <string name="register_tip_2">未收到验证码？点此重新发送</string>
     <string name="register_tip_1">点此获取验证码</string>
+    <string name="order_time">下单时间</string>
+    <string name="order_address">订单地址</string>
+    <string name="order_money">订单金额</string>
+    <string name="order_content">订单内容</string>
+    <string name="take_order">接单</string>
 </resources>
