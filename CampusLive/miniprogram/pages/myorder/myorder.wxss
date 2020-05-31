@@ -16,7 +16,7 @@
 } 
 
 .swiper-tab-list {
-	font-size: 15px;
+	font-size:15px;
 }
 
 .on {
@@ -93,12 +93,6 @@
   margin-left: 20rpx;
 }
 
-
-.orderListDetails .productImg image {
-  width: 100px;
-  height: 90%;
-}
-
  
 .orderListDetails .productInfo {
   flex: 4;
@@ -128,9 +122,16 @@
   margin-right: 30rpx;
 }
 
+.button{
+  height: 80rpx;
+  line-height: 80rpx;
+  border-bottom: 1rpx solid #f3f3f3;
+}
+
 .button .button1{
   float: right;
   margin-right: 10rpx;
+  margin-top: 10rpx;
   width: 20%;
   height: 60rpx;
   background-color: crimson;
@@ -138,6 +139,7 @@
   .button .button2{
     float: right;
     margin-right: 10rpx;
+    margin-top: 10rpx;
     width: 20%;
     height: 60rpx;
     background-color: crimson;

@@ -10,7 +10,9 @@
     "pages/myorder/myorder",
     "pages/addmyaddress/addmyaddress",
     "pages/evaluate/evaluate",
-    "pages/complain/complain"
+    "pages/complain/complain",
+    "pages/deposit/deposit",
+    "pages/withdraw/withdraw"
   ],
   "window": {
     "backgroundTextStyle": "light",

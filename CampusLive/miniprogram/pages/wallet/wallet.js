@@ -5,7 +5,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    menuitems: [ 
+      { text: '银行卡', url: '', icon: '/images/user/yinhangqia.png', tips: '', arrows: '/images/user/arrows.png' },
+      ]
   },
 
   /**
@@ -75,5 +77,18 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  deposit : function () {
+    wx.redirectTo({
+    
+      url: '../deposit/deposit'
+      })
+  },
+  withdraw : function () {
+    wx.redirectTo({
+    
+      url: '../withdraw/withdraw'
+      
+      })
   }
 })

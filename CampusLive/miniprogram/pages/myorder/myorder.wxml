@@ -16,9 +16,8 @@
           <text class="orderStatus">{{item.orderState}}</text>
         </view>
         <view class="orderListDetails">
-
           <view class="productInfo">
-          <text class="productContent">{{item.orderContent}}</text>
+            <text class="productContent">{{item.orderContent}}</text>
             <view class="productTitle">预定时间: {{item.orderTime}}</view>
           </view>
         </view>
@@ -61,6 +60,7 @@
           <button class='button1' type='primary' size="mini" bindtap="topay" id="{{item.orderID}}">付款</button>
           <button class='button2' type='primary' size="mini" bindtap="cancel" id="{{item.orderID}}">取消</button>
         </view>
+        
       </view>
     </scroll-view>
   </swiper-item>

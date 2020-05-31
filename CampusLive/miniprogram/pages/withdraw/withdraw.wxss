@@ -1,0 +1,33 @@
+/* miniprogram/pages/withdraw/withdraw.wxss */
+
+.title text{
+  font-size: 25px;
+  color: black;
+  }
+
+.title{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  }
+.inputtext{
+  width: 70%;
+  margin-left: 50px;
+  margin-right: 50px;
+  border-bottom: 1px solid gray;
+  margin-top: 20px;
+  }
+
+.inputtext text{
+  font-size: 180px;
+  color: black;
+  }
+
+.btn{
+  width:50%;  
+  background-color:crimson;  
+  color:white;
+  height:45px;  
+  margin-top: 20px;
+}
+

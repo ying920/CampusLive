@@ -24,7 +24,7 @@ Page({
         console.log(res.data.msg)
         _this.setData({
           //alreadyOrder待改
-          alreadyOrder:res.data.data.MarkedOrder,
+          alreadyOrder:res.data.data.OtherOrder,
           waitPayOrder:res.data.data.MissedOrder,
           waittakeOrder:res.data.data.PaidOrder,
           waitreceiveOrder:res.data.data.FinishedOrder,

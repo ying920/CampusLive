@@ -1,0 +1,14 @@
+<!--miniprogram/pages/withdraw/withdraw.wxml-->
+<view class='pay'>
+<view class='title'>
+<text>提现</text>
+</view>
+<view>
+  <!-- view就是下划线 -->
+<input class="inputtext"></input>
+</view>
+<view class='button1'> 
+<button class='btn' bindtap="submit">确认</button> 
+</view>
+</view>
+
