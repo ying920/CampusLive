@@ -9,11 +9,13 @@ Page({
     money1 :0,
     flag:0,
   },
-  onLoad: function (option) {
+  onLoad: function (options) {
     this.showInputLayer();
     this.setData({
-      money1:option.money1,
+      money1:options.money1,
     });
+    
+
   },
 
   upDate:function(){
@@ -68,11 +70,9 @@ Page({
       this.setData({
          pwdVal: e.detail.value ,
       });
+      
       if (e.detail.value.length == 6){
         if(e.detail.value==this.data.rightpwd){
-          // this.setData({
-          //     money:this.data.money - this.data.money1
-          // }),
           this.setData({
             flag:1
           }),
@@ -94,6 +94,26 @@ Page({
               
             }
           });
+          var orderid2 = wx.getStorageSync("orderid")
+          console.log(orderid2)
+
+          wx.request({
+            url: 'http://littleeyes.cn:8080/change-order-state',
+            method: 'POST',
+            data:{
+              data:{
+                "orderID": orderid2,
+                "orderState":"2",
+              },
+              check: 0
+            },
+            header: {  
+              'content-type': 'application/json'  //这里注意POST请求content-type是小写，大写会报错  
+            },
+            success:function(res){
+              console.log(res.data)
+            }
+          })
    
         }else{
           wx.showToast({

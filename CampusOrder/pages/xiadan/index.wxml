@@ -181,7 +181,7 @@
 
 <!-- 下单规则 -->
 <view class="dz-rule">
-  <view class="dz-rule__text" bindtap="show">计价规则 ></view>
+  <view class="dz-rule__text" bindtap="show">计价参考规则 ></view>
 </view>
 
 <!-- 下单按钮 -->
