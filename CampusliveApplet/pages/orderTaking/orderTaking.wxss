@@ -1,0 +1,37 @@
+/* pages/orderTaking/orderTaking.wxss */
+.Title{
+  height: 70px;
+  width: 100%;
+  text-align: center;
+  line-height: 200rpx;
+  font-size: 18px;
+  box-shadow: 0px 0px 8px  rgba(223, 8, 8, 0.07);
+}
+
+.orderList{
+  /* background-color: #eee7e7fa; */
+  height: 100%;
+  width: 80%;
+  margin-left: 5%;
+  box-shadow: 4px 4px 8px  rgba(223, 8, 8, 0.07);
+  margin-bottom: 30px;
+}
+
+.btn1 {
+  width: 60%;
+  margin-top: 20rpx;
+  background-color: rgb(223, 165, 111);
+  color: white;
+  border-radius: 98rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+
+.btn1::after {
+  border-radius: 98rpx;
+  border: 0; 
+}

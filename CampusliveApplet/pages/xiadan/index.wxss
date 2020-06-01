@@ -1,0 +1,38 @@
+/* swiper{
+  width: 100%;
+  height: calc(100vw * 352 * 1125); 
+}
+image{
+  width: 100%;
+} */
+
+page {
+  padding-bottom: 90rpx;
+}
+.revice_address_row .address_btn {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content:center;
+  color: #ff0000;
+}
+.dz-footer{
+  margin-top: 310px;
+  justify-content:center; 
+  align-items:center;
+  display:flex;
+}
+.dz-rule{
+  justify-content:right; 
+  text-align:right;
+  float:right;
+}
+.mainmap{
+  width: 100%;
+  height:600rpx;
+}
+.refresh{
+  position: relative;
+  top: 85%;
+  left: 90%;
+}

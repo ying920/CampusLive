@@ -1,0 +1,31 @@
+<!--pages/main/home.wxml-->
+<!-- 首页 -->
+<view class="advertisement">
+	<swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+		<swiper-item>
+			<image src="/images/ad1.jpg"></image>
+		</swiper-item>
+		<swiper-item>
+			<image src="/images/ad2.jpg"></image>
+		</swiper-item>
+		<swiper-item>
+			<image src="/images/ad3.jpg"></image>
+		</swiper-item>
+	</swiper>
+</view>
+<view class="function">
+	<view class="funcion-flex" >
+		<view class="flex-item add-order-button">
+			<button bindtap = "order" plain="true" >
+				<image src="/images/xiadan0.png"></image>
+				<text>快速下单</text>
+			</button>
+		</view>
+		<view class="flex-item message-list-button">
+			<button bindtap = "list" plain="true">
+				<image src="/images/xiaoxi.png"></image>
+				<text>消息列表</text>
+			</button>
+		</view>
+	</view>
+</view>

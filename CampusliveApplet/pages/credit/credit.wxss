@@ -1,0 +1,19 @@
+.avatar-wrapper {
+  background-color: crimson;
+  padding: 25px 0;
+}
+
+.avatar-wrapper .avatar {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.avatar-wrapper .avatar image {
+  width: 80px;
+  height: 80px;
+}
+
+.avatar-wrapper .text {
+  text-align: center;
+  color: #fff;
+}

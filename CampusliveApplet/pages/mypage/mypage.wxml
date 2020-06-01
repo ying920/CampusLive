@@ -1,0 +1,31 @@
+<view class="mine-wrapper">
+  <view class="avatar-wrapper">
+    <view>
+        <view class="avatar">
+        <image style="border-radius:50%;" src="{{'/images/user/user1.jpg'}}"></image>
+        </view> 
+         <view class="text" wx:for="{{user}}"> 
+         <text>{{item.userID}}</text>
+         </view>
+    </view>
+  </view>
+     <view class="list-wrapper">
+        <view class="alllists">
+        <block wx:for="{{menuitems}}" wx:key="menu_for">
+         <navigator url="{{item.url}}" class="lists">
+           <view class='content'>
+             <view class="listimg">
+             <image src="{{item.icon}}"></image>
+             </view>          
+             <view class="listtext">{{item.text}}</view>
+             <view class="listicon">{{item.tips}}</view>
+             <view class="arrows">
+             <image src="{{item.arrows}}"></image> 
+             </view>  
+          </view> 
+           </navigator>        <!-- 分割线 -->
+             <view class="divLine"></view>
+         </block>
+        </view>  
+      </view>
+</view>

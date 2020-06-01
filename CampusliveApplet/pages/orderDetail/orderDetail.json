@@ -1,0 +1,18 @@
+{
+  "msg": "Modify userOrder state successfully!",
+  "data": {
+      "orderType": "1",
+      "orderScore": "0",
+      "orderAddress": "逸夫楼815",
+      "orderTime": "2020-05-19 09:02:58",
+      "clientID": "19990523",
+      "orderMoney": "3.0",
+      "orderID": "1000000002",
+      "orderRemarkContent": "null",
+      "orderReserveTime": "null",
+      "serverID": "19990208",
+      "orderState": "0",
+      "orderContent": "西门取快递"
+  },
+  "check": 0
+}

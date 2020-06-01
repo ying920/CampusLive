@@ -1,0 +1,60 @@
+/* pages/authenForm/authcommit.wxss */
+/* 整个页面 */
+page{
+  
+  width: 100%;
+  /* background: linear-gradient(#5681d7, #486ec3); */
+}
+/* 标题 */
+/* .title{
+  margin-left: 110px;
+} */
+/* 各个输入框及label */
+.changeInfo{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 80%;
+  margin: 50rpx auto;
+}
+/* 各个输入框的view */
+.changeInfoName{
+  position: relative;
+  height: 80rpx;
+  width: 100%;
+  border-radius: 10rpx;
+  background: rgb(228, 225, 225);
+  margin-bottom: 20rpx;
+  padding-left: 20rpx;
+  box-sizing: border-box;
+}
+
+/* 验证码获取按钮 */
+.codeBtn{
+  position: absolute;
+  right: 0;
+  top: 0;
+  color: #bbb;
+  width: 30px;
+  font-size: 30rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+}
+/* 输入框 */
+.changeInfoName input{
+  width: 80%;
+  height:100%;
+}
+/* 提交按钮 */
+.btn1 {
+  width: 50%;
+  margin-top: 10rpx;
+  margin-bottom: 20px;
+  background-color: rgb(216, 178, 142);
+  color: white;
+  border-radius: 98rpx;
+  /* display: flex; */
+  /* flex-direction: row; */
+  align-items: center;
+  justify-content: center;
+}

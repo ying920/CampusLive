@@ -1,0 +1,35 @@
+{
+  "msg":"Get all missed order successfully!",
+  "data":[
+    {
+      "orderType":"1",
+      "orderScore":"0",
+      "orderAddress":"逸夫楼815",
+      "orderTime":"2020-05-11 19:22:02",
+      "clientID":"19990523",
+      "orderMoney":"3.0",
+      "orderID":"1000000002",
+      "orderRemarkContent":"null",
+      "orderReserveTime":"null",
+      "serverID":"0",
+      "orderState":"0",
+      "orderContent":"西门取快递"
+    },
+    {
+      "orderType":"1",
+      "orderScore":"0",
+      "orderAddress":"逸夫楼815",
+      "orderTime":"2020-05-13 12:59:57",
+      "clientID":"17301069",
+      "orderMoney":"3.0",
+      "orderID":"1000000004",
+      "orderRemarkContent":"null",
+      "orderReserveTime":"2020-05-16 19:21:58",
+      "serverID":"0",
+      "orderState":"0",
+      "orderContent":"西门取快递"
+    }
+  ],
+  "check":0,
+  "navigationBarTitleText": "接单"
+}

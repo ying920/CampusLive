@@ -1,0 +1,35 @@
+<ad unit-id="adunit-e406b44681194b7e"></ad>
+<scroll-view upper-threshold="100" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}" scroll-y="true" focus="{{mode}}" enable-back-to-top="true" style="height: {{scroll_height}}px;" class="message-list">
+	<!-- 每一行 -->
+	<view class="row" wx:for="{{message_list}}" wx:key="" id="row_{{index}}">
+		<!-- 日期 -->
+		<view class="datetime" wx:if="{{item.create_time != ''}}">{{item.create_time}}</view>
+		<!-- 头像与内容文本 -->
+		<view class="body" style="flex-flow: {{item.myself == 0 ? 'row' : 'row-reverse'}}">
+			<view class="avatar-container">
+				<image class="avatar" src="{{item.head_img_url}}" />
+			</view>
+			<!-- 画三角箭头 -->
+			<view class="triangle" style="{{item.myself == 1 ? 'right: 140rpx; background: #7ECB4B' : 'left: 140rpx;'}}"></view>
+			<view class="content" style="{{item.myself == 1 ? 'background: #7ECB4B' : ''}}">
+				<image class="picture" wx:if="{{item.msg_type == 'image'}}" src="{{item.content}}" mode="widthFix" bindtap="preview" data-src="{{item.content}}" />
+				<view wx:else="{{item.msg_type == 'text'}}">{{item.content}}</view>
+			</view>
+		</view>
+	</view>
+</scroll-view>
+<view class="hud-container" wx:if="{{status != state.normal}}">
+	<view class="hud-background"></view>
+	<view class="hud-body">
+		<image src="./images/mic.png" />
+		<view class="tip {{status == state.cancel ? 'warning' : ''}}">{{tips[status]}}</view>
+	</view>
+</view>
+<view class="reply">
+	<image src="./images/{{mode ? 'voice' : 'text'}}.png" class="voice-image" bindtap="switchMode" />
+	<view class="opration-area">
+		<input wx:if="{{mode}}" type="text" confirm-type="send" bindconfirm="reply" value="{{content}}" />
+		<button class="voice-button" bindlongtap="record" bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd" wx:else>{{tips[status]}}</button>
+	</view>
+	<image src="./images/image.png" class="choose-image" bindtap="chooseImage" />
+</view>

@@ -1,0 +1,53 @@
+<!--pages/authenForm/authcommit.wxml-->
+<!-- //标题 -->
+<!-- <text class="title">实名认证</text> -->
+
+<!-- //表单 -->
+<form bindsubmit="formSubmit" bindreset="formReset">
+  
+<view class="changeInfo">
+  <!-- //输入姓名 -->
+  <view class="weui-cells__title">姓名</view>
+    <view class='changeInfoName'>
+      <input placeholder='' bindinput='getNameValue' value='{{name}}'/> 
+    </view>
+
+  <!-- //输入学校 -->
+  <view class="weui-cells__title">学校</view>
+    <view class='changeInfoName'>
+      <input placeholder='' bindinput='getSchValue' value='{{school}}'/> 
+    </view>
+<!-- 
+  //输入学号，输入类型为数字 -->
+  <view class="weui-cells__title">学号</view>
+  <view class='changeInfoName'>
+    <input placeholder='' bindinput='getSIDValue' type="number" value='{{studentid}}'/> 
+  </view>
+
+  <!-- //输入身份证号，类型为身份证号 -->
+  <view class="weui-cells__title">身份证号</view>
+  <view class='changeInfoName'>
+    <input placeholder='' bindinput='getIDValue' type="idcard" value='{{idnum}}'/> 
+  </view>
+
+  <!-- //输入手机号，类型为数字 -->
+  <!-- <view class="weui-cells__title">手机号</view>
+  <view class='changeInfoName'>    
+    <input placeholder='' bindinput='getPhoneValue' type="number" value='{{phone}}'/> 
+  </view> -->
+
+  <!-- //输入验证码 -->
+  <!-- <view class="weui-cells__title">验证码</view>
+  <view class='changeInfoName'>    
+    <input placeholder='' bindinput='getCodeValue' value='{{code}}' style='width:80%;'/> 
+    <button class='codeBtn' bindtap='getVerificationCode' disabled='{{disabled}}' >{{codename}}</button>
+  </view> -->
+
+</view>
+  
+  <!-- //提交与重置 -->
+  <view class="btn-area">
+    <button class="btn1" formType="submit">Submit</button>
+    <button class="btn1" formType="reset">Reset</button>
+  </view>
+</form>
