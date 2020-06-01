@@ -26,31 +26,31 @@ Page({
 		wx.navigateTo({
       url: '/pages/chat/chat',
     })
-    // wx.request({
-    //   'url': 'http://littleeyes.cn:8080/server-get-order/',
-    //   method: "POST",
-    //   header: {
-    //      "content-type": "application/json" 
-    //   },
-    //   data: {
-    //     data:{
-    //       orderID:orderID,
-    //       serverID: "19990518", 
-    //       orderState:"3"
-    //     },
-    //     check:0
-    //   },
+    wx.request({
+      'url': 'http://littleeyes.cn:8080/server-get-order/',
+      method: "POST",
+      header: {
+         "content-type": "application/json" 
+      },
+      // data: {
+      //   data:{
+      //     orderID:orderID,
+      //     serverID: "19990518", 
+      //     orderState:"3"
+      //   },
+      //   check:0
+      // },
       
-    //   success:function(res) {
-    //     console.log(res.data.data)
+      success:function(res) {
+        console.log(res.data.data)
         
-    //     wx.showToast({
-    //       title: '接单成功！',
-    //       icon: 'success',
-    //       duration: 2000
-    //     })
-    //   }
-    // })
+        wx.showToast({
+          title: '接单成功！',
+          icon: 'success',
+          duration: 2000
+        })
+      }
+    })
 	},
 
   /**

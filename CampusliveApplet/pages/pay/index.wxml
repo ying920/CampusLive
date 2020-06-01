@@ -3,9 +3,6 @@
     <view class='bottomwraper {{bottomwraperswitch==true?"hide":""}}'>
         <view class='detailposinfo'>
             <view class='detailposinfowrap'>
-
-                
-
                 <view class='detailpositem borderbot'>
                     <view class='weui-flex' >
                         <view class='weui-flex__item itemtitle item2'>

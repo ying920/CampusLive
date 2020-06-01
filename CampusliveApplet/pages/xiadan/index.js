@@ -118,9 +118,10 @@ Page({
         await showToast({title:"您还没选择商品类型及重量！"});
         return ;
       }
+      wx.setStorageSync('activeindex', activeIndex);
         //否则跳转到支付页面
       wx.navigateTo({
-        url: '../pay/index',
+        url: '../pay/index?orderAddress='+ dizhi1+'&thingtype='+thingType+'&orderContent='+dizhi2.all,
       });
       // var that = this
       // wx.request({
@@ -157,9 +158,10 @@ Page({
         await showToast({title:"您还没选择商品类型及重量！"});
         return ;
       }
+      wx.setStorageSync('activeindex', activeIndex);
         //否则跳转到支付页面
       wx.navigateTo({
-        url: '../pay/index',
+        url: '../pay/index?orderAddress='+ dizhi1+'&thingtype2='+thingType2+'&orderContent='+dizhi2.all,
       }); 
     }
     if(activeIndex==2){
@@ -174,9 +176,11 @@ Page({
        await showToast({title:"您还没选择需要办理的事情类型！"});
        return ;
      }
+
+     wx.setStorageSync('activeindex', activeIndex);
        //否则跳转到支付页面
      wx.navigateTo({
-       url: '../pay/index',
+      url: '../pay/index?orderAddress='+ dizhi1+'&thingtype3='+thingType3+'&orderContent='+dizhi2.all,
      }); 
    }
    var that = this
@@ -403,6 +407,26 @@ lng = that.data.longitude
    
   })
  console.log(that.data.latitude)
+},
+onTabItemTap() {
+  let self = this
+  if (wx.getStorageSync('auth')==0) {
+    wx.showModal({
+      title: '提示',
+      content: '账号尚未实名认证,请实名认证',
+      success: res => {
+        if (res.confirm) {
+          wx.navigateTo({
+            url: '/pages/authenForm/authcommit'
+          })
+        } else if (res.cancel) {
+          wx.reLaunch({
+            url: '/pages/homepage/home'
+          })
+        }
+      }
+    })
+  }
 }
 
 });

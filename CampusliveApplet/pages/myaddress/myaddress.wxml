@@ -12,5 +12,5 @@
     </view>  
 </view>
 <view class='button' bindtap="New">
-<button type='default'>添加新地址</button>
+<button class='btn'>添加新地址</button>
 </view>

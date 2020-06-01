@@ -18,3 +18,12 @@
   align-items: center;
   justify-content: center;
 }
+
+.orderList{
+  /* background-color: #898989; */
+  height: 100%;
+  width: 80%;
+  margin-left: 5%;
+  box-shadow: 4px 4px 8px  rgba(223, 8, 8, 0.07);
+  margin-bottom: 30px;
+}

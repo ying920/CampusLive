@@ -18,6 +18,26 @@ Page({
       url: '/pages/orderDetail/orderDetail',
     })
   },
+  onTabItemTap() {
+    let self = this
+    if (wx.getStorageSync('auth')==0) {
+      wx.showModal({
+        title: '提示',
+        content: '账号尚未实名认证,请实名认证',
+        success: res => {
+          if (res.confirm) {
+            wx.navigateTo({
+              url: '/pages/authenForm/authcommit'
+            })
+          } else if (res.cancel) {
+            wx.reLaunch({
+              url: '/pages/homepage/home'
+            })
+          }
+        }
+      })
+    }
+  },
   
   change:function(){
     var orderID = wx.getStorageSync('orderID');
@@ -31,7 +51,7 @@ Page({
       data: {
         data:{
           orderID:1000000001,
-          orderState:"1"
+          orderState:"2"
         },
         check:0
       },

@@ -18,10 +18,10 @@
   <!--下面内容-->
   <view id="list">
     <view class="list_item">
-      <image mode="aspectFill" class="item_img" src="https://cdn.jsdelivr.net/gh/AFreshCodeFarmer/FigureBed//img/Typora/example3.jpg" />
+      <image mode="aspectFill" class="item_img" src="/images/touxiang.jpg" />
+      <!-- <image class="gender-icon" src="/images/icons/user.png" />
       <image class="gender-icon" src="/images/icons/user.png" />
-      <image class="gender-icon" src="/images/icons/user.png" />
-      <image class="gender-icon" src="/images/icons/user.png" />
+      <image class="gender-icon" src="/images/icons/user.png" /> -->
       <view class="basic_info">
         <view class="row_view">
           <text class="title" style="margin-right:10rpx;">17301049</text>

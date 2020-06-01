@@ -1,5 +1,6 @@
 {
   "pages": [
+    
     "pages/homepage/home",
     "pages/chat/chat",
     "pages/MessageDetail/MessageDetail",
@@ -23,7 +24,8 @@
     "pages/logs/logs",
     "pages/orderDetail/orderDetail",
     "pages/messagelist",
-    "pages/messagelist/messagelist"
+    "pages/messagelist/messagelist",
+    "pages/withdraw/withdraw"
   ],
   "window": {
     "backgroundTextStyle": "light",

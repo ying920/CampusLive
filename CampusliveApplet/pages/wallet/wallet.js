@@ -5,14 +5,29 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    menuitems: [ 
+      { text: '银行卡', url: '', icon: '/images/user/yinhangqia.png', tips: '', arrows: '/images/user/arrows.png' },
+      ]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var _this = this
+    wx.request({
+      url: 'http://littleeyes.cn:8080/get-my-account/19990523',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      method: 'GET',
+      success: function (res) {
+        console.log(res.data.msg)
+        _this.setData({
+          user:res.data,
+        })
+      }
+    })
   },
 
   /**
@@ -62,5 +77,18 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  deposit : function () {
+    wx.redirectTo({
+    
+      url: '../deposit/deposit'
+      })
+  },
+  withdraw : function () {
+    wx.redirectTo({
+    
+      url: '../withdraw/withdraw'
+      
+      })
   }
 })

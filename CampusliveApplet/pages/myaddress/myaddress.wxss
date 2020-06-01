@@ -33,13 +33,19 @@
 
   .button{
     width:100%;  
-    border-radius: 3px;  
-    padding-top:2px;  
-    font-size:14px;  
-    background-color:#CC3333;  
-    color:white;  
-    overflow:hidden;  
+    /* border-radius: 3px;  
+    padding-top:2px;   */
+    font-size:18px;  
+    background-color:white;  
+    /* overflow:hidden;   */
+    
     height:45px;  
     bottom: 0;
     position: fixed;
   }
+
+  .btn{
+    color:white;
+    background-color:crimson;  
+  }
+

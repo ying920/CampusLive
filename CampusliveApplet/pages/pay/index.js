@@ -1,10 +1,16 @@
 import {showToast} from "../../utils/asyncWx.js";
+var util = require('../../utils/util.js')
+var util1 = require('../../utils/util1.js')
+var util2 = require('../../utils/util2.js')
+var util3 = require('../../utils/util3.js')
 
 var hours = [];
 var minuts = [];
 var date = new Date();
 var mt = date.getMinutes();
 var nowh = date.getHours();
+
+var timedate = util.formatTime(new Date());
 for (let i = nowh; i <= 23; i++) {
   hours.push(i)
 }
@@ -76,10 +82,24 @@ Page({
       discounttip:"请选择优惠券",//优惠券选择的提示信息,没有可用优惠券时变成没有可用优惠券
       
       errrmsg:"请填写完相关信息再下单",
+      orderContent:'',
+      orderAddress:'',
+      thingtype:'',
+      thingtype2:'',
+      thingtype3:'',
+      sendtime1:timedate,
+      orderid:0,
 
   },
   onLoad: function (options) {
-    
+ 
+    this.setData({
+      orderContent:options.orderContent,
+      orderAddress:options.orderAddress,
+      thingtype:options.thingtype,
+      thingtype2:options.thingtype2,
+      thingtype3:options.thingtype3,
+    })
   },
   onShow:function(){
     
@@ -159,7 +179,7 @@ Page({
   specialtimeselect: function () {
       this.setData({
           sendtime: "立即",
-          showcustompicker: false
+          showcustompicker: false,
       })
   },//立即发货的选择
   activegratuityinput: function () {
@@ -194,12 +214,16 @@ Page({
     if (this.data.pickertype =="time")
     {
       var time = {};
+      var time1 = {};
+      time1.day='';
+      time1.seconds=0;
       time.day = this.data.days[this.data.timepickervalue[0]];
       time.hour = this.data.hours[this.data.timepickervalue[1]];
       time.minut = this.data.minuts[this.data.timepickervalue[2]];
       var date = new Date();
       var hour=date.getHours();
       var mt = date.getMinutes();
+
       if(time.day=="今天")
       {
         if (time.hour < hour) {
@@ -216,9 +240,27 @@ Page({
           })
           return false;
         }
+        time1.day=util1.formatTime(new Date());
+        time1.hour = this.data.hours[this.data.timepickervalue[1]];
+        time1.minut = this.data.minuts[this.data.timepickervalue[2]];
+        time1.seconds=date.getSeconds();
       }
+      if(time.day=="明天"){
+        time1.day=util2.formatTime(new Date());
+        time1.hour = this.data.hours[this.data.timepickervalue[1]];
+        time1.minut = this.data.minuts[this.data.timepickervalue[2]];
+        time1.seconds=date.getSeconds();
+      }
+      if(time.day=="后天"){
+        time1.day=util3.formatTime(new Date());
+        time1.hour = this.data.hours[this.data.timepickervalue[1]];
+        time1.minut = this.data.minuts[this.data.timepickervalue[2]];
+        time1.seconds=date.getSeconds();
+      }
+
       this.setData({
         sendtime: time,
+        sendtime1:time1.day + time1.hour + ':' + time1.minut + ':' + time1.seconds,
       })
       this.hidecustompicker();
     }else{     
@@ -257,41 +299,106 @@ Page({
 
 
 xiadanzhifu:function(){
-  
+    var that = this
     const {totalmoney}=this.data;
 
     if(totalmoney===0.00){
       showToast({title:"您还没有选择费用"});
       return ;
     }
-    wx.navigateTo({
-        url: '../paymethod/index?money1=' + totalmoney,
-      })
+    var activeindex = wx.getStorageSync("activeindex")
 
-    var that = this
-    wx.request({
-      url: 'http://littleeyes.cn:8080/add-order',
-      method: 'POST',
-      data:{
+    if(activeindex=='0'){
+      wx.request({
+        url: 'http://littleeyes.cn:8080/add-order',
+        method: 'POST',
         data:{
-          "orderMoney": that.data.totalmoney,
-          "orderType": "1",
-          "clientID": "17221002",
-          "orderContent": "广东111222取快递",
-          "orderAddress": "逸夫楼815111111111",
-          "orderReserveTime": that.data.sendtime
+          data:{
+            "orderMoney": that.data.totalmoney,
+            "orderType": "1",
+            "clientID": "19990523",
+            "orderContent":that.data.thingtype+' '+'送到'+ ' '+that.data.orderContent,
+            "orderAddress": that.data.orderAddress,
+            "orderReserveTime": that.data.sendtime1
+          },
+          check: 0
         },
-        check: 0
-      },
-      header: {  
-        'content-type': 'application/json'  //这里注意POST请求content-type是小写，大写会报错  
-      },
-      success:function(res){
-        console.log(res.data)
-      },
-      fail:function(err){
-        console.log("post失败了 小老弟!"+err.errMsg)
-      }
+        header: {  
+          'content-type': 'application/json'  //这里注意POST请求content-type是小写，大写会报错  
+        },
+        success:function(res){
+          console.log(res.data)
+          console.log(res.data.data.orderID)
+          that.setData({
+            orderid:res.data.data.orderID,
+          })
+          wx.setStorageSync('orderid', res.data.data.orderID);
+        }
+      })
+    }
+    if(activeindex=='1'){
+      wx.request({
+        url: 'http://littleeyes.cn:8080/add-order',
+        method: 'POST',
+        data:{
+          data:{
+            "orderMoney": that.data.totalmoney,
+            "orderType": "1",
+            "clientID": "19990523",
+            "orderContent":that.data.thingtype2+' '+'从 '+ ' '+that.data.orderContent+ ' 取',
+            "orderAddress": that.data.orderAddress,
+            "orderReserveTime": that.data.sendtime1
+          },
+          check: 0
+        },
+        header: {  
+          'content-type': 'application/json'  //这里注意POST请求content-type是小写，大写会报错  
+        },
+        success:function(res){
+          console.log(res.data)
+          console.log(res.data.data.orderID)
+          that.setData({
+            orderid:res.data.data.orderID,
+          })
+          wx.setStorageSync('orderid', res.data.data.orderID);
+        }
+      })
+    }
+    if(activeindex=='2'){
+      wx.request({
+        url: 'http://littleeyes.cn:8080/add-order',
+        method: 'POST',
+        data:{
+          data:{
+            "orderMoney": that.data.totalmoney,
+            "orderType": "1",
+            "clientID": "19990523",
+            "orderContent": '去 ' +that.data.orderContent + ' '+ that.data.thingtype3,
+            "orderAddress": that.data.orderAddress,
+            "orderReserveTime": that.data.sendtime1
+          },
+          check: 0
+        },
+        header: {  
+          'content-type': 'application/json'  //这里注意POST请求content-type是小写，大写会报错  
+        },
+        success:function(res){
+          console.log(res.data)
+          console.log(res.data.data.orderID)
+          that.setData({
+            orderid:res.data.data.orderID,
+          })
+          wx.setStorageSync('orderid', res.data.data.orderID);
+        }
+      })
+    }
+
+   
+
+    
+
+    wx.navigateTo({
+      url: '../paymethod/index?money1=' + totalmoney,
     })
 
   },//点击下单并判断能否跳转到支付

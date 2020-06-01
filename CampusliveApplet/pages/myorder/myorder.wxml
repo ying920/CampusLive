@@ -8,7 +8,7 @@
 <swiper current="{{currtab}}" class="swiper-box" duration="300" style="height:{{deviceH-31}}px" bindchange="tabChange">
   <!-- 完成 -->
   <swiper-item>
-    <scroll-view class="hot-box" scroll-y="true">
+    <scroll-view class="hot-box" scroll-y="true" style="height:1150rpx;">
       <view  class="orderDetails" wx:for="{{alreadyOrder}}" wx:key=" ">
         <view class="orderListTitle">
           <text class="userName">{{item.clientID}}</text>
@@ -37,7 +37,7 @@
 
   <!-- 待付款 -->
   <swiper-item>
-    <scroll-view class="hot-box" scroll-y="true">
+    <scroll-view class="hot-box" scroll-y="true" style="height:1150rpx;">
       <view class="orderDetails" wx:for="{{waitPayOrder}}" wx:key=" ">
          <view class="orderListTitle">
           <text class="userName">{{item.clientID}}</text>
@@ -66,7 +66,7 @@
 
 	  <!-- 待接单 -->
   <swiper-item>
-    <scroll-view class="hot-box" scroll-y="true">
+    <scroll-view class="hot-box" scroll-y="true" style="height:1150rpx;">
       <view  class="orderDetails" wx:for="{{waittakeOrder}}" wx:key=" ">
          <view class="orderListTitle">
           <text class="userName">{{item.clientID}}</text>
@@ -94,7 +94,7 @@
 
   	  <!-- 已接单 -->
   <swiper-item>
-    <scroll-view class="hot-box" scroll-y="true">
+    <scroll-view class="hot-box" scroll-y="true" style="height:1150rpx;">
       <view  class="orderDetails" wx:for="{{takeOrder}}" wx:key=" ">
          <view class="orderListTitle">
           <text class="userName">{{item.clientID}}</text>
@@ -121,7 +121,7 @@
 
 	  <!-- 待收货 -->
   <swiper-item>
-    <scroll-view class="hot-box" scroll-y="true">
+    <scroll-view class="hot-box" scroll-y="true" style="height:1150rpx;">
       <view  class="orderDetails" wx:for="{{waitreceiveOrder}}" wx:key=" ">
         <view class="orderListTitle">
           <text class="userName">{{item.clientID}}</text>
@@ -149,7 +149,7 @@
 
   <!-- 取消 -->
   <swiper-item>
-    <scroll-view class="hot-box" scroll-y="true">
+    <scroll-view class="hot-box" scroll-y="true" style="height:1150rpx;">
       <view class="orderDetails" wx:for="{{lostOrder}}" wx:key=" ">
          <view class="orderListTitle">
           <text class="userName">{{item.clientID}}</text>

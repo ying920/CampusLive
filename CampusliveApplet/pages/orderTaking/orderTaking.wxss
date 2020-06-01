@@ -9,7 +9,7 @@
 }
 
 .orderList{
-  /* background-color: #898989; */
+  /* background-color: #eee7e7fa; */
   height: 100%;
   width: 80%;
   margin-left: 5%;
@@ -27,6 +27,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  margin-bottom: 10px;
 }
 
 

@@ -1,0 +1,19 @@
+<!--miniprogram/pages/deposit/deposit.wxml-->
+<view class='pay'>
+<view class='title'>
+<text>充值</text>
+</view>
+<view class='money_charge'>
+<button class='{{un_click1}}' bindtap='lv1'>10元</button>
+<button class='{{un_click2}}' bindtap='lv2'>30元</button>
+<button class='{{un_click3}}'bindtap='lv3'>50元</button>
+</view>
+<view class='money_charge'>
+<button class='{{un_click4}}' bindtap='lv4'>100元</button>
+<button class='{{un_click5}}' bindtap='lv5'>300元</button>
+<button class='{{un_click6}}'  bindtap='lv6'>500元</button>
+</view>
+<view class='button1'> 
+<button class='btn' bindtap="submit">确认</button> 
+</view>
+</view>

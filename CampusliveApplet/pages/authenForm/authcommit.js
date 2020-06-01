@@ -11,7 +11,8 @@ Page({
     phone:'',//手机号
     code:'',//验证码
     iscode:null,//用于存放验证码接口里获取到的code
-    codename:'获取验证码'
+    codename:'获取验证码',
+    disabled:true
   },
 
   formReset: function () {

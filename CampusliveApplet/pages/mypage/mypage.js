@@ -19,6 +19,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    
     var _this = this
     wx.request({
       url: 'http://littleeyes.cn:8080/get-my-account/'+'19990523',
@@ -31,6 +32,10 @@ Page({
         _this.setData({
           user:res.data,
         })
+        // wx.setStorage({
+        //   key: "auth",
+        //   data: res.data.userState
+        // })
       }
     })
 

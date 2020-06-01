@@ -1,0 +1,63 @@
+/* miniprogram/pages/deposit/deposit.wxss */
+.pay
+{
+  background-color: rgba(128, 128, 128, 0.075);
+  padding-top: 40rpx;
+  height: 1500rpx;
+}
+.title text{
+  font-size: 25px;
+  color: black;
+  }
+  .title{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    }
+.b_head
+{
+  text-align: center;
+  margin-bottom: 20rpx;
+}
+.money_charge
+{
+  margin-top: 5px;
+  background-color: white;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+}
+.money_box
+{
+  height: 130rpx;
+  width: 200rpx;
+  border-radius: 8%;
+  text-align: center;
+  line-height: 130rpx;
+  margin-top: 20rpx;
+  border: 1rpx grey solid;
+  color: grey;
+  background-color: white;
+  margin-bottom: 20rpx;
+}
+.money_box1
+{
+  border: 1rpx crimson solid;
+  color:crimson;
+  height: 130rpx;
+  width: 200rpx;
+  border-radius: 8%;
+  text-align: center;
+  line-height: 130rpx;
+  background-color: white;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+}   
+
+.btn{
+  width:50%;  
+  background-color:crimson;  
+  color:white;
+  height:45px;  
+  margin-top: 20px;
+}

@@ -20,14 +20,27 @@ Page({
       url: '/pages/xiadan/index',
     })
 	},
- 
-
 
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function (options) {
-
+		var _this = this
+    wx.request({
+      url: 'http://littleeyes.cn:8080/get-my-account/'+'19990523',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      method: 'GET',
+      success: function (res) {
+				console.log(res.data.msg)
+				console.log(res.data.data.userState)
+        wx.setStorage({
+          key: "auth",
+          data: res.data.data.userState
+        })
+      }
+    })
 	},
 
 	/**
