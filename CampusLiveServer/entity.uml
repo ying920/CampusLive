@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>com.campuslive.campusliveserver.entity</OriginalElement>
+  <nodes>
+    <node x="324.0" y="0.0">com.campuslive.campusliveserver.entity.UserOrder</node>
+    <node x="0.0" y="0.0">com.campuslive.campusliveserver.entity.User</node>
+    <node x="987.0" y="0.0">com.campuslive.campusliveserver.entity.UserAddress</node>
+    <node x="623.0" y="0.0">com.campuslive.campusliveserver.entity.ComplaintRecord</node>
+    <node x="0.0" y="849.0">com.campuslive.campusliveserver.entity.BillRecord</node>
+    <node x="188.0" y="849.0">com.campuslive.campusliveserver.entity.Student</node>
+  </nodes>
+  <notes />
+  <edges />
+  <settings layout="Hierarchic Group" zoom="0.6448683015440508" x="617.0" y="540.5" />
+  <SelectedNodes>
+    <node>com.campuslive.campusliveserver.entity.UserOrder</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

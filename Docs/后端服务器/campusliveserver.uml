@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>com.campuslive.campusliveserver</OriginalElement>
+  <nodes>
+    <node x="0.0" y="79.0">com.campuslive.campusliveserver.dao</node>
+    <node x="13.649999999999991" y="158.0">com.campuslive.campusliveserver.controller</node>
+    <node x="42.9" y="0.0">com.campuslive.campusliveserver.entity</node>
+    <node x="0.0" y="232.0">com.campuslive.campusliveserver.CampusliveserverApplicationTests</node>
+    <node x="219.89999999999998" y="0.0">com.campuslive.campusliveserver.CampusliveserverApplication</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.campuslive.campusliveserver.controller" target="com.campuslive.campusliveserver.dao">
+      <point x="-60.375" y="-14.5" />
+      <point x="33.77499999999999" y="133.0" />
+      <point x="27.75" y="133.0" />
+      <point x="-27.75" y="14.5" />
+    </edge>
+    <edge source="com.campuslive.campusliveserver.controller" target="com.campuslive.campusliveserver.entity">
+      <point x="60.375" y="-14.5" />
+      <point x="154.52499999999998" y="133.0" />
+      <point x="132.5" y="133.0" />
+      <point x="132.5" y="54.0" />
+      <point x="152.89999999999998" y="54.0" />
+      <point x="43.999999999999986" y="14.5" />
+    </edge>
+    <edge source="com.campuslive.campusliveserver.dao" target="com.campuslive.campusliveserver.entity">
+      <point x="0.0" y="-14.5" />
+      <point x="55.5" y="54.0" />
+      <point x="64.9" y="54.0" />
+      <point x="-44.0" y="14.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.2000000000000002" x="231.0" y="143.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
